@@ -870,9 +870,9 @@ In this exercise, you integrate the WWI App Service with the virtual network cre
 
 ### Task 1: Generate and export certificates for Point-to-Site
 
-Point-to-Site connections use certificates to authenticate. Each client computer that connects to a VNet using Point-to-Site must have a client certificate installed. In this task, you will generate a client certificate from a self-signed root certificate. 
+Point-to-Site connections use certificates to authenticate. Each client computer that connects to a VNet using Point-to-Site must have a client certificate installed. In this task, you will generate a client certificate from a self-signed root certificate.
 
-1. Switch over to your JumpBox VM, and right-click on the bottom left screen corner **(1)** and select **Windows Powershell (Admin) (2)** to start a new Powershell session. 
+1. Switch over to your JumpBox VM, and right-click on the bottom left screen corner **(1)** and select **Windows Powershell (Admin) (2)** to start a new Powershell session.
 
    ![Bottom left corner of the screen is highlighted. A context menu is open. Windows Powershell (Admin) selection is highlighted.](media/new-powershell-session.png)
 
