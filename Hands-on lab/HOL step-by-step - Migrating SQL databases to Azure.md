@@ -46,9 +46,10 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Deploy the web app to Azure](#task-1-deploy-the-web-app-to-azure)
     - [Task 2: Update App Service configuration](#task-2-update-app-service-configuration)
   - [Exercise 4: Integrate App Service with the virtual network](#exercise-4-integrate-app-service-with-the-virtual-network)
-    - [Task 1: Set point-to-site addresses](#task-1-set-point-to-site-addresses)
-    - [Task 2: Configure VNet integration with App Services](#task-2-configure-vnet-integration-with-app-services)
-    - [Task 3: Open the web application](#task-3-open-the-web-application)
+    - [Task 1: Generate and export certificates for Point-to-Site](#task-1-generate-and-export-certificates-for-point-to-site)
+    - [Task 2: Set point-to-site addresses](#task-2-set-point-to-site-addresses)
+    - [Task 3: Configure VNet integration with App Services](#task-3-configure-vnet-integration-with-app-services)
+    - [Task 4: Open the web application](#task-4-open-the-web-application)
   - [Exercise 5: Improve database security posture with Data Discovery and Classification and Azure Defender for SQL](#exercise-5-improve-database-security-posture-with-data-discovery-and-classification-and-azure-defender-for-sql)
     - [Task 1: Configure Data Discovery and Classification](#task-1-configure-data-discovery-and-classification)
     - [Task 2: Enable Azure Defender for SQL](#task-2-enable-azure-defender-for-sql)
@@ -867,7 +868,66 @@ Duration: 15 minutes
 
 In this exercise, you integrate the WWI App Service with the virtual network created during the Before the hands-on lab exercises. The ARM template created a Gateway subnet on the VNet, as well as a Virtual Network Gateway. Both of these resources are required to integrate App Service and connect to SQL MI.
 
-### Task 1: Set point-to-site addresses
+### Task 1: Generate and export certificates for Point-to-Site
+
+Point-to-Site connections use certificates to authenticate. Each client computer that connects to a VNet using Point-to-Site must have a client certificate installed. In this task, you will generate a client certificate from a self-signed root certificate.
+
+1. Switch over to your JumpBox VM, right-click on the bottom left screen corner **(1)**, and select **Windows PowerShell (Admin) (2)** to start a new PowerShell session.
+
+   ![Bottom left corner of the screen is highlighted. A context menu is open. Windows PowerShell (Admin) selection is highlighted.](media/new-powershell-session.png "Open new PowerShell session")
+
+2. Run the code snippets below to create a self-signed root **(1)** and client **(2)** certificate.
+
+   ![PowerShell window is presented. Self-signed root and client certificate creation commands are executed.](media/powershell-root-client-certificate-commands.png "Root and Client certificate creation commands")
+
+   ```powershell
+   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+   -Subject "CN=WWITTT" -KeyExportPolicy Exportable `
+   -HashAlgorithm sha256 -KeyLength 2048 `
+   -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+
+   New-SelfSignedCertificate -Type Custom -DnsName WWITTTCLIENT -KeySpec Signature `
+   -Subject "CN=WWITTTCLIENT" -KeyExportPolicy Exportable `
+   -HashAlgorithm sha256 -KeyLength 2048 `
+   -CertStoreLocation "Cert:\CurrentUser\My" `
+   -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+   ```
+
+3. Search for `Manage user certificates` **(1)** in the Start menu and launch **Manage user certificates** control panel. Navigate to **Current User > Personal > Certificates** to find the two certificates **(3)** named WWITTT and WWITTTCLIENT. Right-click WWITT.
+
+   ![Windows Search box is filled with "Manage user certificates". Manage user certificates result is selected.Current User > Personal > Certificates folder is shown. WWITTT and WWITTTCLIENT certificates are highlighted.](media/manager-user-certificates.png "WWITTT and WWITTTCLIENT certificates")
+
+4. Right-click **WWITTT (1)** and select **All Tasks (2) > Export (3)**. Select **Next** on the following screen.
+
+   ![WWITTT is selected. The right-click context menu is open. All Tasks submenu is open. The export command is highlighted.](media/root-certificate-export.png "Export WWITTT tasks")
+
+5. Select **No, do not export the private key (1)** and select **Next (2)** to continue.
+
+   ![No, do not export the private key selection is selected. The Next button is highlighted.](media/root-certificate-export-no-private-key.png "Export Private Key")
+
+6. Pick **Base-64 encoded X.509 (1)** and select **Next (2)** to continue.
+
+   ![Base-64 encoded X.509 is selected. The Next button is highlighted.](media/root-certificate-export-base-64.png "Export File Format")
+
+7. Pick desktop for the file location and type `wwi-root.cer` **(1)** for file name. Select **Next (2)** to continue.
+
+   ![wwi-root.cer on the desktop is provided as a save location. The Next button is highlighted.](media/root-certificate-export-to-desktop.png "Specify File to Export")
+
+8. Select **Finish** to close the dialog.
+
+9. Find the **wwi-root.cert (1)** file on the desktop and right-click to open the context menu. Select **Open with... (3)**.
+
+   ![wwi-root.cert context menu is open. Open with... command is highlighted.](media/root-certificate-open-with.png "WWI-root.cert context menu")
+
+10. Pick **Notepad (1)** and select **OK (2)**.
+
+    ![From file open dialog Notepad is selected. The OK button is highlighted.](media/root-certificate-open-with-notepad.png "Open Notepad")
+
+11. Highlight the Public Key without the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` parts. Copy the public key and paste the value into a text editor, such as Notepad.exe, for later reference.
+
+    ![CERT file is open in notepad. Public Key is highlighted.](media/root-certificate-public-key-selection.png "CERT file in Notepad")
+
+### Task 2: Set point-to-site addresses
 
 In this task, you configure the client address pool. The address pool is a range of private IP addresses that you specify below. Clients that connect over a Point-to-Site VPN dynamically receive an IP address from this range. You use a private IP address range that does not overlap with the VNet.
 
@@ -881,18 +941,22 @@ In this task, you configure the client address pool. The address pool is a range
 
 3. On the **Point-to-site** configuration page, set the following configuration:
 
-   - **Address pool**: Add a private IP address range that you want to use. The address space must be in one of the following address blocks, but should not overlap the address space used by the VNet.
+   - **Address pool (1)**: Add a private IP address range that you want to use. The address space must be in one of the following address blocks, but should not overlap the address space used by the VNet.
      - `10.0.0.0/8` - This means an IP address range from 10.0.0.0 to 10.255.255.255
      - `172.16.0.0/12` - This means an IP address range from 172.16.0.0 to 172.31.255.255
      - `192.168.0.0/16` - This means an IP address range from 192.168.0.0 to 192.168.255.255
-   - **Tunnel type**: Select **SSTP (SSL)**.
-   - **Authentication type**: Choose **Azure certificate**.
+   - **Tunnel type (2)**: Select **SSTP (SSL)**.
+   - **Authentication type (3)**: Choose **Azure certificate**.
+   - **Root Certificate Name (4)**: `WWITTT`
+   - **Public certificate data**: Paste the Public Key you noted in the previous task.
 
    ![The values specified above are entered into the Point-to-site configuration form.](media/virtual-network-gateway-point-to-site-configuration.png "Virtual network gateway")
 
-4. Select **Save** to validate and save the settings. It takes a few minutes for the save to finish.
+4. Select **Save** to validate and save the settings. It takes a few minutes for the save to finish. You can open **Notifications (1)** from the top bar in the portal and check progress **(2)** if needed.
 
-### Task 2: Configure VNet integration with App Services
+   ![Portal notifications list is open. Saved virtual network gateway message is highlighted.](media/virtual-network-gateway-save-status.png "Portal notifications list")
+
+### Task 3: Configure VNet integration with App Services
 
 In this task, you add the networking configuration to your App Service to enable communication with resources in the VNet.
 
@@ -926,7 +990,7 @@ In this task, you add the networking configuration to your App Service to enable
    >
    > If you receive a message adding the Virtual Network to Web App failed, select **Disconnect** on the VNet Configuration blade, and repeat steps 3 - 5 above.
 
-### Task 3: Open the web application
+### Task 4: Open the web application
 
 In this task, you verify your web application now loads, and you can see the home page of the web app.
 
