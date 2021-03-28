@@ -874,11 +874,11 @@ Point-to-Site connections use certificates to authenticate. Each client computer
 
 1. Switch over to your JumpBox VM, right-click on the bottom left screen corner **(1)**, and select **Windows PowerShell (Admin) (2)** to start a new PowerShell session.
 
-   ![Bottom left corner of the screen is highlighted. A context menu is open. Windows PowerShell (Admin) selection is highlighted.](media/new-powershell-session.png)
+   ![Bottom left corner of the screen is highlighted. A context menu is open. Windows PowerShell (Admin) selection is highlighted.](media/new-powershell-session.png "Open new PowerShell session")
 
 2. Run the code snippets below to create a self-signed root **(1)** and client **(2)** certificate.
 
-   ![PowerShell window is presented. Self-signed root and client certificate creation commands are executed.](media/powershell-root-client-certificate-commands.png)
+   ![PowerShell window is presented. Self-signed root and client certificate creation commands are executed.](media/powershell-root-client-certificate-commands.png "Root and Client certificate creation commands")
 
    ```powershell
    $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -895,37 +895,37 @@ Point-to-Site connections use certificates to authenticate. Each client computer
 
 3. Search for `Manage user certificates` **(1)** in the Start menu and launch **Manage user certificates** control panel. Navigate to **Current User > Personal > Certificates** to find the two certificates **(3)** named WWITTT and WWITTTCLIENT. Right-click WWITT.
 
-   ![Windows Search box is filled with "Manage user certificates". Manage user certificates result is selected.Current User > Personal > Certificates folder is shown. WWITTT and WWITTTCLIENT certificates are highlighted.](media/manager-user-certificates.png)
+   ![Windows Search box is filled with "Manage user certificates". Manage user certificates result is selected.Current User > Personal > Certificates folder is shown. WWITTT and WWITTTCLIENT certificates are highlighted.](media/manager-user-certificates.png "WWITTT and WWITTTCLIENT certificates")
 
 4. Right-click **WWITTT (1)** and select **All Tasks (2) > Export (3)**. Select **Next** on the following screen.
 
-   ![WWITTT is selected. The right-click context menu is open. All Tasks submenu is open. The export command is highlighted.](media/root-certificate-export.png)
+   ![WWITTT is selected. The right-click context menu is open. All Tasks submenu is open. The export command is highlighted.](media/root-certificate-export.png "Export WWITTT tasks")
 
 5. Select **No, do not export the private key (1)** and select **Next (2)** to continue.
 
-   ![No, do not export the private key selection is selected. The Next button is highlighted.](media/root-certificate-export-no-private-key.png)
+   ![No, do not export the private key selection is selected. The Next button is highlighted.](media/root-certificate-export-no-private-key.png "Export Private Key")
 
 6. Pick **Base-64 encoded X.509 (1)** and select **Next (2)** to continue.
 
-   ![Base-64 encoded X.509 is selected. The Next button is highlighted.](media/root-certificate-export-base-64.png)
+   ![Base-64 encoded X.509 is selected. The Next button is highlighted.](media/root-certificate-export-base-64.png "Export File Format")
 
 7. Pick desktop for the file location and type `wwi-root.cer` **(1)** for file name. Select **Next (2)** to continue.
 
-   ![wwi-root.cer on the desktop is provided as a save location. The Next button is highlighted.](media/root-certificate-export-to-desktop.png)
+   ![wwi-root.cer on the desktop is provided as a save location. The Next button is highlighted.](media/root-certificate-export-to-desktop.png "Specify File to Export")
 
 8. Select **Finish** to close the dialog.
 
 9. Find the **wwi-root.cert (1)** file on the desktop and right-click to open the context menu. Select **Open with... (3)**.
 
-   ![wwi-root.cert context menu is open. Open with... command is highlighted.](media/root-certificate-open-with.png)
+   ![wwi-root.cert context menu is open. Open with... command is highlighted.](media/root-certificate-open-with.png "WWI-root.cert context menu")
 
 10. Pick **Notepad (1)** and select **OK (2)**.
 
-    ![From file open dialog Notepad is selected. The OK button is highlighted.](media/root-certificate-open-with-notepad.png)
+    ![From file open dialog Notepad is selected. The OK button is highlighted.](media/root-certificate-open-with-notepad.png "Open Notepad")
 
 11. Highlight the Public Key without the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` parts. Copy the public key and paste the value into a text editor, such as Notepad.exe, for later reference.
 
-    ![CERT file is open in notepad. Public Key is highlighted.](media/root-certificate-public-key-selection.png)
+    ![CERT file is open in notepad. Public Key is highlighted.](media/root-certificate-public-key-selection.png "CERT file in Notepad")
 
 ### Task 2: Set point-to-site addresses
 
@@ -954,7 +954,7 @@ In this task, you configure the client address pool. The address pool is a range
 
 4. Select **Save** to validate and save the settings. It takes a few minutes for the save to finish. You can open **Notifications (1)** from the top bar in the portal and check progress **(2)** if needed.
 
-   ![Portal notifications list is open. Saved virtual network gateway message is highlighted.](media/virtual-network-gateway-save-status.png)
+   ![Portal notifications list is open. Saved virtual network gateway message is highlighted.](media/virtual-network-gateway-save-status.png "Portal notifications list")
 
 ### Task 3: Configure VNet integration with App Services
 
