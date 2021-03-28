@@ -872,13 +872,13 @@ In this exercise, you integrate the WWI App Service with the virtual network cre
 
 Point-to-Site connections use certificates to authenticate. Each client computer that connects to a VNet using Point-to-Site must have a client certificate installed. In this task, you will generate a client certificate from a self-signed root certificate.
 
-1. Switch over to your JumpBox VM, and right-click on the bottom left screen corner **(1)** and select **Windows Powershell (Admin) (2)** to start a new Powershell session.
+1. Switch over to your JumpBox VM, right-click on the bottom left screen corner **(1)**, and select **Windows PowerShell (Admin) (2)** to start a new PowerShell session.
 
-   ![Bottom left corner of the screen is highlighted. A context menu is open. Windows Powershell (Admin) selection is highlighted.](media/new-powershell-session.png)
+   ![Bottom left corner of the screen is highlighted. A context menu is open. Windows PowerShell (Admin) selection is highlighted.](media/new-powershell-session.png)
 
 2. Run the code snippets below to create a self-signed root **(1)** and client **(2)** certificate.
 
-   ![Powershell window is presented. Self-signed root and client certificate creation commands are executed.](media/powershell-root-client-certificate-commands.png)
+   ![PowerShell window is presented. Self-signed root and client certificate creation commands are executed.](media/powershell-root-client-certificate-commands.png)
 
    ```powershell
    $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -893,7 +893,7 @@ Point-to-Site connections use certificates to authenticate. Each client computer
    -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
    ```
 
-3. Search for `Manage user certificates` **(1)** in the Start menu and launch **Manage user certificates** control panel. Navigate to **Current User > Personal > Certificates** to find the two certificates **(3)** named WWITTT and WWITTTCLIENT. Right-click WWITT
+3. Search for `Manage user certificates` **(1)** in the Start menu and launch **Manage user certificates** control panel. Navigate to **Current User > Personal > Certificates** to find the two certificates **(3)** named WWITTT and WWITTTCLIENT. Right-click WWITT.
 
    ![Windows Search box is filled with "Manage user certificates". Manage user certificates result is selected.Current User > Personal > Certificates folder is shown. WWITTT and WWITTTCLIENT certificates are highlighted.](media/manager-user-certificates.png)
 
