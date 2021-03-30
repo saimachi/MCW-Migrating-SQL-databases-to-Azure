@@ -459,7 +459,7 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
 4. Next, enter the following `az ad sp create-for-rbac` command at the Cloud Shell prompt and then press `Enter` to run the command.
 
    ```powershell
-   az ad sp create-for-rbac -n "https://wide-world-importers" --role owner --scopes subscriptions/$subscriptionId/resourceGroups/$resourceGroup
+   az ad sp create-for-rbac -n "https://wide-world-importers" --role contributor --scopes subscriptions/$subscriptionId/resourceGroups/$resourceGroup
    ```
 
 5. Copy the output from the command into a text editor, as you need the `appId` and `password` in the next task. The output should be similar to:
@@ -474,11 +474,11 @@ In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azu
    }
    ```
 
-6. To verify the role assignment, select **Access control (IAM)** from the left-hand menu of the **hands-on-lab-SUFFIX** resource group blade, and then select the **Role assignments** tab and locate **wide-world-importers** under the OWNER role.
+6. To verify the role assignment, select **Access control (IAM)** from the left-hand menu of the **hands-on-lab-SUFFIX** resource group blade, and then select the **Role assignments** tab and locate **wide-world-importers** under the `Contributor` role.
 
-   ![The Role assignments tab is displayed, with wide-world-importers highlighted under OWNER in the list.](media/rg-hands-on-lab-role-assignments.png "Role assignments")
+   ![The Role assignments tab is displayed, with wide-world-importers highlighted under Contributor in the list.](media/rg-hands-on-lab-role-assignments.png "Role assignments")
 
-7. Next, issue another command to grant the CONTRIBUTOR role at the subscription level to the newly created service principal. At the Cloud Shell prompt, run the following command:
+7. Next, issue another command to grant the `Contributor` role at the subscription level to the newly created service principal. At the Cloud Shell prompt, run the following command:
 
    ```powershell
    az role assignment create --assignee https://wide-world-importers --role contributor
