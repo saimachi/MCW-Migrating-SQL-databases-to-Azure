@@ -4,10 +4,13 @@ This guide provides step-by-step instructions to manually provision and the conf
 
 November 2020
 
-**Contents**:
+## Contents
 
 - [Manual resource deployment and setup guide](#manual-resource-deployment-and-setup-guide)
+  - [Contents](#contents)
   - [Task 1: Create a virtual network](#task-1-create-a-virtual-network)
+    - [Create virtual network](#create-virtual-network)
+    - [Configure virtual network](#configure-virtual-network)
   - [Task 2: Create a VPN gateway](#task-2-create-a-vpn-gateway)
   - [Task 3: Provision SQL MI](#task-3-provision-sql-mi)
   - [Task 4: Create the JumpBox VM](#task-4-create-the-jumpbox-vm)
@@ -24,13 +27,15 @@ November 2020
 
 ## Task 1: Create a virtual network
 
-In this task, you create and configure a virtual network (VNet), which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associate the route table with the ManagedInstance subnet, and add a Management subnet to the VNet.
+In this task, you create a virtual network (VNet), which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associate the route table with the ManagedInstance subnet, and add a Management subnet to the VNet.
+
+### Create virtual network
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter "virtual network" into the Search the Marketplace box, and then select **Virtual Network** from the results.
+2. Enter **vnet** into the Search the Marketplace box, and then select **Virtual Network** from the results.
 
    !["Virtual Network" is entered into the Search the Marketplace box. Virtual Network is selected in the results.](media/create-resource-vnet.png "Create virtual Network")
 
@@ -50,31 +55,37 @@ In this task, you create and configure a virtual network (VNet), which will cont
    - **Name**: Enter `hands-on-lab-SUFFIX-vnet`
    - **Region**: Select the region you are using for resources in this hands-on lab.
 
-   ![The values specified above are entered into the appropriate fields on the Create Virtual Network Basics tab.](media/create-virtual-network-basics-tab.png "Create virtual network Basics tab")
-
 5. Select **Next: IP Addresses**.
 
-6. On the **IP Addresses** tab, select **default** under subnets and edit the subnet's properties as follows:
+   ![The values specified above are entered into the appropriate fields on the Create Virtual Network Basics tab.](media/create-virtual-network-basics-tab.png "Create virtual network Basics tab")
+
+6. On the **IP Addresses** tab, select **default** under subnets 
+
+7. Edit the subnet's properties as follows:
 
    - **Subnet Name**: Enter `ManagedInstance`
    - **Address space**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated in the VNet's IPv4 address space, in the format **10.X.0.0/24**.
    - Select **Save**.
 
+8. Select **Review + create**. The default values will be used for the remaining tabs, so they can be skipped.
+
    ![On the Create virtual IP Addresses tab, the values specified above are entered into the appropriate fields.](media/create-virtual-network-ip-addresses-tab.png "Create virtual network IP addresses tab")
 
-7. Select **Review + create**. The default values will be used for the remaining tabs, so they can be skipped.
+9. On the **Review + create** tab, ensure the **Validation passed** message is displayed and select **Create**. It will take a few seconds for the virtual network to provision.
 
-8. On the **Review + create** tab, ensure the **Validation passed** message is displayed and select **Create**. It will take a few seconds for the virtual network to provision.
-
-9. When it completes, you will get a notification in the Azure portal that the deployment succeeded. Select **Go to resource** within the notification.
+10. When it completes, you will get a notification in the Azure portal that the deployment succeeded. Select **Go to resource** within the notification.
 
    ![The Go to resource button is highlighted in the deployment succeeded notification in the Azure portal.](media/vnet-go-to-resource.png "Deployment succeeded notification")
 
-10. On the Virtual network blade, select **Subnets** under Settings in the left-hand menu, and then select **+ Subnet** from the top menu.
+### Configure virtual network
+
+In this task, you configure this virtual network (VNet).
+
+1. On the Virtual network blade, select **Subnets** under Settings in the left-hand menu, and then select **+ Subnet** from the top menu.
 
     ![The Subnets item is highlighted and selected in the left-hand menu of the Virtual network blade, and + Subnet is highlighted in the top menu.](media/vnet-subnets-add.png "Add subnet")
 
-11. On the Add subnet blade, enter the following:
+2. On the Add subnet blade, enter the following:
 
     - **Name**: Enter `Management`
     - **Address range**: Accept the default value, which should be a subnet mask of /24, within the address range of your VNet.
@@ -84,21 +95,19 @@ In this task, you create and configure a virtual network (VNet), which will cont
     - **Service endpoints**: Leave set to **0 selected**.
     - **Subnet delegation**: Leave set to **None**.
 
-    ![On the Add subnet blade, Management is entered into the name field, and the default values are specified for the remaining settings.](media/add-subnet-management.png "Add subnet")
+3. Select **OK**.
 
-12. Select **OK**.
-
-13. Back on the **Subnets** blade, select **+ Gateway Subnet**.
+4. Back on the **Subnets** blade, select **+ Gateway Subnet**.
 
     ![Subnets is selected and highlighted in the left-hand menu. On the Subnets blade, +Gateway subnet is highlighted.](media/vnet-add-gateway-subnet.png "Subnets")
 
-14. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
+5. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
 
     ![The Add subnet form is displayed, with the default values.](media/vnet-add-gateway-subnet-form.png "Add subnet")
 
     > **Note**: The default address range creates a gateway subnet with a CIDR block of /24. This provides enough IP addresses to accommodate additional future configuration requirements.
 
-15. Select **OK**.
+6. Select **OK**.
 
 ## Task 2: Create a VPN gateway
 
@@ -108,7 +117,7 @@ In this task, you set up a Virtual Network Gateway.
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter "virtual network gateway" into the Search the Marketplace box, and select **Virtual network gateway** from the results.
+2. Enter **network gateway** into the Search the Marketplace box, and select **Virtual network gateway** from the results.
 
    !["Virtual network gateway" is entered into the Search the Marketplace box, and Virtual network gateway is highlighted in the results.](media/create-resource-virtual-network-gateway.png "Create a resource")
 
@@ -157,7 +166,7 @@ In this task, you create an Azure SQL Managed Instance.
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter "sql managed instance" into the Search the Marketplace box, and then select **Azure SQL Managed Instance** from the results.
+2. Enter **sql managed instance** into the Search the Marketplace box, and then select **Azure SQL Managed Instance** from the results.
 
    !["Sql managed instance" is entered into the Search the Marketplace box. Azure SQL Managed Instance is selected in the results.](media/create-resource-sql-mi.png "Create SQL Managed Instance")
 
@@ -212,7 +221,7 @@ In this task, you provision a virtual machine (VM) in Azure. The VM image used h
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter "visual studio 2019" into the Search the Marketplace box, and then select **Visual Studio 2019 Latest** from the results.
+2. Enter **visual studio 2019** into the Search the Marketplace box, and then select **Visual Studio 2019 Latest** from the results.
 
    !["Visual studio 2019" is entered into the Search the Marketplace box. Visual Studio 2019 Latest is selected in the search results.](./media/create-resource-visual-studio-vm.png "Create Visual Studio 2019 virtual machine")
 
@@ -283,7 +292,7 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter "SQL Server 2008 R2 SP3 on Windows Server 2008 R2" into the Search the Marketplace box.
+2. Enter **sql server 2008** into the Search the Marketplace box.
 
 3. On the **SQL Server 2008 R2 SP3 on Windows Server 2008 R2** blade, select **SQL Server R2 SP3 Standard on Windows Server 2008 R2** for the software plan and then select **Create**.
 
@@ -367,11 +376,11 @@ In this task, you provision an instance of the Azure Database Migration Service 
 
 > **Important**: This service requires that you have registered the `Microsoft.DataMigration` resource provider within your subscription in Azure. You can find the steps to complete this in the Before the HOL guide.
 
-1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+Create a resource** from the menu.
+1. In the [Azure portal](https://portal.azure.com/), select the **Show portal menu** icon and then select **+ Create a resource** from the menu.
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter "database migration" into the Search the Marketplace box, select **Azure Database Migration Service** from the results, and select **Create** on the Azure Database Migration Service blade.
+2. Enter **database migration** into the Search the Marketplace box, select **Azure Database Migration Service** from the results, and select **Create** on the Azure Database Migration Service blade.
 
    !["Database migration" is entered into the Search the Marketplace box. Azure Database Migration Service is selected in the results.](media/create-resource-azure-database-migration-service.png "Create Azure Database Migration Service")
 
@@ -411,7 +420,7 @@ In this task, you provision an App Service (Web app), which will be used for hos
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. In the [Azure portal](https://portal.azure.com/), select **+Create a resource**, enter "web app" into the Search the Marketplace box, select **Web App** from the results.
+2. In the [Azure portal](https://portal.azure.com/), select **+ Create a resource**, enter **azure web app** into the Search the Marketplace box, select **Web App** from the results.
 
    ![+Create a resource is selected in the Azure navigation pane, and "web app" is entered into the Search the Marketplace box. Web App is selected in the results.](media/create-resource-web-app.png "Create Web App")
 
@@ -455,7 +464,7 @@ In this task, you create an Azure Storage account.
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter "storage account" into the Search the Marketplace box, select **Storage account - blob, file, table, queue** from the results, and then select **Create** on the Storage account blade.
+2. Enter **storage account** into the Search the Marketplace box, select **Storage account** from the results, and then select **Create** on the Storage account blade.
 
    !["Storage account" is entered into the Search the Marketplace box. Storage account is selected in the results.](media/create-resource-storage-account.png "Create Storage account")
 
@@ -471,9 +480,7 @@ In this task, you create an Azure Storage account.
      - **Storage account name**: Enter `sqlmistoreSUFFIX`
      - **Location**: Select the location you are using for resources in this hands-on lab.
      - **Performance**: Choose **Standard**.
-     - **Account kind**: Select **StorageV2 (general purpose v2)**.
      - **Replication**: Select **Locally-redundant storage (LRS)**.
-     - **Access tier**: Choose **Hot**.
 
      ![On the Create storage account blade, the values specified above are entered into the appropriate fields.](media/storage-create-account-basics-tab.png "Create storage account")
 
