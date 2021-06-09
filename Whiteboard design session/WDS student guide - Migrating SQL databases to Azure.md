@@ -1,16 +1,14 @@
+# Migrating SQL databases to Azure whiteboard design session student guide
+
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/main/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
-<div class="MCWHeader1">
-Migrating SQL databases to Azure
-</div>
+## Context
 
-<div class="MCWHeader2">
-Whiteboard design session student guide
-</div>
+|Section|MCT|Last update|
+|---|---|---|
+|Whiteboard design session student guide|Migrating SQL databases to Azure|June 2021|
 
-<div class="MCWHeader3">
-November 2020
-</div>
+## Content update note
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -22,21 +20,38 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-**Contents**
+## Contents
+
+<!-- TOC -->
 
 - [Migrating SQL databases to Azure whiteboard design session student guide](#migrating-sql-databases-to-azure-whiteboard-design-session-student-guide)
+  - [Context](#context)
+  - [Content update note](#content-update-note)
+  - [Contents](#contents)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+    - [Step 1 Outcome](#step-1-outcome)
     - [Customer situation](#customer-situation)
     - [Customer needs](#customer-needs)
     - [Customer objections](#customer-objections)
     - [Infographic for common scenarios](#infographic-for-common-scenarios)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 2 Outcome](#step-2-outcome)
+    - [Business needs](#business-needs)
+    - [Design](#design)
+      - [High-level architecture](#high-level-architecture)
+      - [Game databases](#game-databases)
+      - [Gaming services](#gaming-services)
+      - [Data warehouse and reporting](#data-warehouse-and-reporting)
+      - [Regional outages](#regional-outages)
+    - [Prepare](#prepare)
   - [Step 3: Present the solution](#step-3-present-the-solution)
+    - [Step 3 Outcome](#step-3-outcome)
+    - [Presentation](#presentation)
   - [Wrap-up](#wrap-up)
   - [Additional references](#additional-references)
 
-# Migrating SQL databases to Azure whiteboard design session student guide
+<!-- TOC -->
 
 ## Abstract and learning objectives
 
@@ -46,7 +61,7 @@ At the end of this whiteboard design session, you will be better able to design 
 
 ## Step 1: Review the customer case study
 
-**Outcome**
+### Step 1 Outcome
 
 Analyze your customer's needs.
 
@@ -123,13 +138,13 @@ To help you better understand their current environment, WWI has provided the fo
 
 ## Step 2: Design a proof of concept solution
 
-**Outcome**
+### Step 2 Outcome
 
 Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
 Timeframe: 60 minutes
 
-**Business needs**
+### Business needs
 
 Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
 
@@ -137,11 +152,11 @@ Directions: With all participants at your table, answer the following questions 
 
 2. What customer business needs do you need to address with your solution?
 
-**Design**
+### Design
 
 Directions: With all participants at your table, respond to the following questions on a flip chart:
 
-_High-level architecture_
+#### High-level architecture
 
 1. Without getting into the details (the following sections address the particulars), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
 
@@ -151,7 +166,7 @@ _High-level architecture_
 
 4. What functionality should you include in the PoC?
 
-_Game databases_
+#### Game databases
 
 1. What are the factors that WWI should consider when deciding between PaaS or IaaS options for hosting their SQL databases in Azure?
 
@@ -163,7 +178,7 @@ _Game databases_
 
 5. Are there features of a PaaS database service that could help to reduce the impact of read-only reports running directly against their gaming databases?
 
-_Gaming services_
+#### Gaming services
 
 1. How should WWI handle migrating their gaming services VMs into Azure?
 
@@ -173,7 +188,7 @@ _Gaming services_
 
 4. How can the gaming services be made highly-available?
 
-_Data warehouse and reporting_
+#### Data warehouse and reporting
 
 1. What would you recommend as the target platform for their data warehouse in Azure?
 
@@ -181,11 +196,11 @@ _Data warehouse and reporting_
 
 3. What is the upgrade path for their SSIS packages, SSAS cubes, and SSRS reports?
 
-_Regional outages_
+#### Regional outages
 
 1. How can their gaming services be recovered within the specified RTO/RPO?
 
-**Prepare**
+### Prepare
 
 Directions: With all participants at your table:
 
@@ -199,13 +214,13 @@ Prepare a 15-minute chalk-talk style presentation to the customer.
 
 ## Step 3: Present the solution
 
-**Outcome**
+### Step 3 Outcome
 
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
 Timeframe: 30 minutes
 
-**Presentation**
+### Presentation
 
 Directions:
 
