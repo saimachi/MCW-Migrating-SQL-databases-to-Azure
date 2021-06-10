@@ -4,7 +4,7 @@
 
 ## Context
 
-|Section|MCT|Last update|
+|Section|MCW|Last update|
 |---|---|---|
 |Whiteboard design session trainer guide|Migrating SQL databases to Azure|June 2021|
 
