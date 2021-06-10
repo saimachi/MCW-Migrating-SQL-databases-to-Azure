@@ -607,7 +607,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![In the migration monitoring window, a status of Log shipping in progress is highlighted.](media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
 
-You can leave Azure Portal browser window open and come back to check that migration is over. The migration process takes around an hour.
+You can leave Azure Portal browser window open and come back to check that migration is over. This is perfect timing for a break.
 
 ### Task 7: Perform migration cutover
 
@@ -664,6 +664,8 @@ Since you performed an "online data migration," the migration wizard continuousl
    > If you don't see it the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
 
 10. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
+
+    ![A status of Uplooaded is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-uploaded.png "Migration Wizard")
 
 11. After the transaction logs are uploaded, they are restored to the database. Once again, continue selecting **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
 
@@ -732,17 +734,16 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    - **Authentication**: Select **SQL Server Authentication**.
    - **Login**: Enter `sqlmiuser`
    - **Password**: Enter `Password.1234567890`
-   - Check the **Remember password** box.
-
-   ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-connect-to-server-sql-mi.png "Connect to Server")
 
 8. Select **Connect**.
 
+   ![The SQL managed instance details specified above are entered into the Connect to Server dialog.](media/ssms-connect-to-server-sql-mi.png "Connect to Server")
+
 9. The SQL MI connection appears below the SQLSERVER2008 connection. Expand Databases the SQL MI connection and select the `WideWorldImporters` database.
 
-   ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](media/ssms-sql-mi-database.png "SSMS Object Explorer")
-
 10. With the `WideWorldImporters` database selected, select **New Query** on the SSMS toolbar to open a new query window.
+
+   ![In the SSMS Object Explorer, the SQL MI connection is expanded, and the WideWorldImporters database is highlighted and selected.](media/ssms-sql-mi-database.png "SSMS Object Explorer")
 
 11. In the new query window, enter the following SQL script:
 
@@ -757,7 +758,9 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
     ![In the new query window, the query above has been entered, and in the results pane, the new Space Adventure game is highlighted.](media/ssms-query-game-table.png "SSMS Query")
 
-13. You are done using the SqlServer2008 VM. Close any open windows and log off the VM. The JumpBox VM is used for the remaining tasks of this hands-on lab.
+13. You are done using the SqlServer2008 VM. **Close** any open windows and **log off** the VM.
+
+The JumpBox VM is used for the remaining tasks of this hands-on lab.
 
 ## Exercise 3: Update the web application to use the new SQL MI database
 
@@ -818,7 +821,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
     ![On the Visual Studio welcome screen, the Sign in button is highlighted.](media/visual-studio-sign-in.png "Visual Studio")
 
-12. At the security warning prompt, uncheck **Ask me for every project in this solution**, and then select **OK**.
+12. If you receive a security warning prompt, uncheck **Ask me for every project in this solution**, and then select **OK**.
 
     ![A Visual Studio security warning is displayed, and the Ask me for every project in this solution checkbox is unchecked and highlighted.](media/visual-studio-security-warning.png "Visual Studio")
 
@@ -836,9 +839,9 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
 16. Finally, in the **App Service** box, select your subscription, expand the hands-on-lab-SUFFIX resource group, and select the `wwi-web-UNIQUEID` Web App.
 
-    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab-SUFFIX resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
-
 17. Select **Finish**.
+
+    ![In the Publish dialog, The wwi-web-UNIQUEID Web App is selected and highlighted under the hands-on-lab-SUFFIX resource group.](media/vs-publish-web-app-service.png "Publish API App to Azure")
 
 18. Back on the Visual Studio Publish page for the `WideWorldImporters.Web` project, select **Publish** to start the process of publishing your Web API to your Azure API App.
 
@@ -888,9 +891,9 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 8. The updated value should look similar to the following screenshot.
 
-   ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](media/app-service-configuration-edit-conn-string-value.png "Connection string value")
-
 9. Select **OK**.
+
+   ![The updated connection string is displayed, with the fully qualified domain name of SQL MI highlighted within the string.](media/app-service-configuration-edit-conn-string-value.png "Connection string value")
 
 10. Repeat steps 3 - 7, this time for the `WwiReadOnlyContext` connection string.
 
@@ -920,7 +923,7 @@ In this exercise, you integrate the WWI App Service with the virtual network cre
 
 Point-to-Site connections use certificates to authenticate. Each client computer that connects to a VNet using Point-to-Site must have a client certificate installed. In this task, you will generate a client certificate from a self-signed root certificate.
 
-1. Switch over to your JumpBox VM, right-click on the bottom left screen corner **(1)**, and select **Windows PowerShell (Admin) (2)** to start a new PowerShell session.
+1. Switch over to your JumpBox VM, right-click on the windows 10 start menu, and select **Windows PowerShell (Admin) (2)** to open a new PowerShell session.
 
    ![Bottom left corner of the screen is highlighted. A context menu is open. Windows PowerShell (Admin) selection is highlighted.](media/new-powershell-session.png "Open new PowerShell session")
 
@@ -998,9 +1001,11 @@ In this task, you configure the client address pool. The address pool is a range
    - **Root Certificate Name (4)**: `WWITTT`
    - **Public certificate data**: Paste the Public Key you noted in the previous task.
 
+4. Select **Save** to validate and save the settings.
+
    ![The values specified above are entered into the Point-to-site configuration form.](media/virtual-network-gateway-point-to-site-configuration.png "Virtual network gateway")
 
-4. Select **Save** to validate and save the settings. It takes a few minutes for the save to finish. You can open **Notifications (1)** from the top bar in the portal and check progress **(2)** if needed.
+5. It takes a few minutes for the save to finish. You can open **Notifications (1)** from the top bar in the portal and check progress **(2)** if needed.
 
    ![Portal notifications list is open. Saved virtual network gateway message is highlighted.](media/virtual-network-gateway-save-status.png "Portal notifications list")
 
@@ -1068,11 +1073,9 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 1. On the WideWorldImporters Managed database blade, select the **Data Discovery & Classification** from the left-hand menu.
 
-   ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Data Discovery & Classification Dashboard")
-
 2. In the **Data Discovery & Classification** blade, select the info link with the message **We have found 35 columns with classification recommendations**.
 
-   ![The recommendations link on the Data Discovery & Classification blade is highlighted.](media/ads-data-discovery-and-classification-recommendations-link.png "Data Discovery & Classification")
+   ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Data Discovery & Classification Dashboard")
 
 3. Look over the list of recommendations to get a better understanding of the types of data and classifications that can be assigned, based on the built-in classification settings. In the list of classification recommendations, select the recommendation for the **Sales - CreditCard - CardNumber** field.
 
@@ -1094,9 +1097,9 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
    - **Information type**: Select **Credit Card**.
    - **Sensitivity level**: Select **Highly Confidential**.
 
-   ![The values specified above are entered into the Add classification dialog.](media/ads-data-discovery-and-classification-add-classification.png "Add classification")
-
 7. Select **Add classification**.
+
+   ![The values specified above are entered into the Add classification dialog.](media/ads-data-discovery-and-classification-add-classification.png "Add classification")
 
 8. Notice that the **Sales - CreditCard - CardNumber** field disappears from the recommendations list, and the number of recommendations drops by 1.
 
@@ -1109,8 +1112,6 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
     ![GDPR information is highlighted in the list of recommendations](media/ads-data-discovery-and-classification-recommendations-gdpr.png "Data Discovery & Classification")
 
 11. Check the **Select all** checkbox at the top of the list to select all the remaining recommended classifications, and then select **Accept selected recommendations**.
-
-    ![All the recommended classifications are checked, and the Accept selected recommendations button is highlighted.](media/ads-data-discovery-and-classification-accept-recommendations.png "Data Discovery & Classification")
 
 12. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
 
