@@ -4,7 +4,7 @@
 
 ## Context
 
-|Section|MCT|Last update|
+|Section|MCW|Last update|
 |---|---|---|
 |Before the hands-on lab setup guide|Migrating SQL databases to Azure|June 2021|
 
@@ -187,3 +187,7 @@ You are now ready to begin the ARM template deployment.
 > Check back in a few hours to monitor the progress of your SQL MI provisioning. If the provisioning goes on for longer than 7 hours, you may need to issue a support ticket in the Azure portal to request the provisioning process be unblocked by Microsoft support.
 
 You should follow all steps provided _before_ attending the Hands-on lab.
+
+> **Important**
+>
+> As soon as the SqlServer2008 VM is up, you should check if that `WideWorldImporters` database is up. Indeed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
