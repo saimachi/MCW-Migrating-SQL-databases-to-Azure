@@ -22,6 +22,8 @@ November 2020
   - [Task 10: Install required software on the JumpBox](#task-10-install-required-software-on-the-jumpbox)
   - [Task 11: Connect to SqlServer2008 VM](#task-11-connect-to-sqlserver2008-vm)
   - [Task 12: Configure the WideWorldImporters database on the SqlServer2008 VM](#task-12-configure-the-wideworldimporters-database-on-the-sqlserver2008-vm)
+    - [Restore database](#restore-database)
+    - [Configure database user and service](#configure-database-user-and-service)
 
 > **Important**: Many Azure resources require globally unique names. Throughout these steps, you will see the word "SUFFIX" as part of resource names. You should replace this with your Microsoft alias, initials, or another value to ensure resources are uniquely named.
 
@@ -646,9 +648,14 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
 In this task, you restore and configure the `WideWorldImporters` database on the SQL Server 2008 R2 instance.
 
-1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak), and save it to the `C:\` of the VM.
+### Restore database
 
-2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
+
+    > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
+    > **Hint**: Copy file url to VM using Internet EXplorer : `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
+
+2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering **sql server** into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio** from the search results.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
@@ -660,7 +667,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
    ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
 
-5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
+5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **From device** under Source, and then select the Browse (`...`) button to the right of the Device box.
 
    ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
 
@@ -674,54 +681,52 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `WideWorldImporters` database.
 
-   ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
+9. Click the restore check mark. Select **WildWorldImporters** from **to database** menu. Then, select **OK** to start to restore.
 
-9. Select **OK** to start the restore.
+   ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
 
 10. Select **OK** in the dialog when the database restore is complete.
 
     ![A dialog is displayed with a message that the database WideWorldImporters was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
 
-11. Next, you execute a script in SSMS to create the `WorkshopUser` account. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
+### Configure database user and service
+
+1. Next, you execute a script in SSMS to create the `WorkshopUser` account. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-12. Copy and paste the SQL script below into the new query window:
+2. Copy and paste the SQL script below into the new query window:
 
-    ```sql
-    USE master;
-    GO
+   ```sql
+   USE master;
+   GO
 
-    -- Create a login and user named WorkshopUser
-    CREATE LOGIN WorkshopUser WITH PASSWORD = N'Password.1234567890';
-    GO
+   EXEC sp_addsrvrolemember
+      @loginame = N'WorkshopUser',
+      @rolename = N'sysadmin';
+   GO
 
-    EXEC sp_addsrvrolemember
-        @loginame = N'WorkshopUser',
-        @rolename = N'sysadmin';
-    GO
+   -- Assign the user to the WideWorldImporters database
+   USE WideWorldImporters;
+   GO
 
-    -- Assign the user to the WideWorldImporters database
-    USE WideWorldImporters;
-    GO
+   IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'WorkshopUser')
+   BEGIN
+      CREATE USER [WorkshopUser] FOR LOGIN [WorkshopUser]
+      EXEC sp_addrolemember N'db_datareader', N'WorkshopUser'
+   END;
+   GO
+   ```
 
-    IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'WorkshopUser')
-    BEGIN
-        CREATE USER [WorkshopUser] FOR LOGIN [WorkshopUser]
-        EXEC sp_addrolemember N'db_datareader', N'WorkshopUser'
-    END;
-    GO
-    ```
-
-13. To run the script, select **Execute** from the SSMS toolbar.
+3. To run the script, select **Execute** from the SSMS toolbar.
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
-14. Select **New Query** from the SSMS toolbar again.
+4. Select **New Query** from the SSMS toolbar again.
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-15. Next, copy and paste the SQL script below into the new query window. This script enables Service broker on the `WideWorldImporters` database.
+5. Next, copy and paste the SQL script below into the new query window. This script enables Service broker on the `WideWorldImporters` database.
 
     ```sql
     USE [WideWorldImporters];
@@ -737,6 +742,6 @@ In this task, you restore and configure the `WideWorldImporters` database on the
     GO
     ```
 
-16. To run the script, select **Execute** from the SSMS toolbar.
+6. To run the script, select **Execute** from the SSMS toolbar.
 
     ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")

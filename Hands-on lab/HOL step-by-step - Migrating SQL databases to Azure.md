@@ -1,16 +1,14 @@
+# Migrating SQL databases to Azure hands-on lab step-by-step
+
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/main/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
-<div class="MCWHeader1">
-Migrating SQL databases to Azure
-</div>
+## Context
 
-<div class="MCWHeader2">
-Hands-on lab step-by-step guide
-</div>
+|Section|MCW|Last update|
+|---|---|---|
+|Hands-on lab step-by-step guide|Migrating SQL databases to Azure|June 2021|
 
-<div class="MCWHeader3">
-November 2020
-</div>
+## Content update note
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -22,9 +20,14 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-**Contents**
+## Contents
+
+<!-- TOC -->
 
 - [Migrating SQL databases to Azure hands-on lab step-by-step](#migrating-sql-databases-to-azure-hands-on-lab-step-by-step)
+  - [Context](#context)
+  - [Content update note](#content-update-note)
+  - [Contents](#contents)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -32,6 +35,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 1: Perform database assessments](#exercise-1-perform-database-assessments)
     - [Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM](#task-1-connect-to-the-wideworldimporters-database-on-the-sqlserver2008-vm)
     - [Task 2: Perform assessment for migration to Azure SQL Database](#task-2-perform-assessment-for-migration-to-azure-sql-database)
+      - [Install Framework 4.8](#install-framework-48)
+      - [Install migration assistant](#install-migration-assistant)
+      - [Launch migration assistant](#launch-migration-assistant)
     - [Task 3: Perform assessment for migration to Azure SQL Managed Instance](#task-3-perform-assessment-for-migration-to-azure-sql-managed-instance)
   - [Exercise 2: Migrate the database to SQL MI](#exercise-2-migrate-the-database-to-sql-mi)
     - [Task 1: Create an SMB network share on the SqlServer2008 VM](#task-1-create-an-smb-network-share-on-the-sqlserver2008-vm)
@@ -65,7 +71,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Delete Azure resource groups](#task-1-delete-azure-resource-groups)
     - [Task 2: Delete the wide-world-importers service principal](#task-2-delete-the-wide-world-importers-service-principal)
 
-# Migrating SQL databases to Azure hands-on lab step-by-step
+<!-- TOC -->
 
 ## Abstract and learning objectives
 
@@ -165,7 +171,43 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
-1. On the SqlSever2008 VM, launch DMA from the Windows Start menu by typing "data migration" into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
+#### Install Framework 4.8
+
+As **Microsoft Data Migration Assistant** requires framework 4.8 to operate, please install it with hereinafter instructions.
+
+   ![Migration assistant require framework .Net 4.8.](media/download-framework-4-8.png "Download framework 4.8")
+
+1. Download offline setup file from [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into Internet Explorer address bar.
+
+2. **Download** and **Run** installation package to proceed with new .Net framework 4.8 setup.
+
+3. Scroll down terms, then **Agree** license terms, and click on **Install** button.
+
+   ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
+
+4. After installation
+
+#### Install migration assistant
+
+Install **Microsoft Data Migration Assistant** on SqlSever2008 VM, by accessing [editor's page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
+
+1. Open `https://www.microsoft.com/en-us/download/details.aspx?id=53595` url in Internet Explorer.
+
+2. Then use download button to get installation files.
+
+   ![Copy url to Internet explorer then download installation file.](media/download-migration-assistant.png "Download Migration Assistant")
+
+3. Agree and complete download, in order to proceed with installation. Install by executing downloaded file on SqlSever2008 VM.
+
+   ![Proceed with complete installation when prompted.](media/proceed-complete-installation.png "Proceed complete installation")
+
+4. As with previous installation, start by clicking **Next**. Scroll down terms, then **Agree** license terms, and click on **Install** button.
+
+#### Launch migration assistant
+
+You can now proceed with data migration, by following steps:
+
+1. On the SqlSever2008 VM, launch DMA from the Windows Start. It should appear highlighted, as you just installed it. Else you can access it with Windows menu by typing **data migration** into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
 
@@ -173,23 +215,22 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
    ![The new project icon is highlighted in DMA.](media/dma-new.png "New DMA project")
 
-3. In the New project pane, set the following:
+3. In the New project pane, set **Project name** as `ToAzureSqlDb`
+
+4. Ensure that following options are set with default values, then click **Create** button.
 
    - **Project type**: Select **Assessment**.
-   - **Project name**: Enter `ToAzureSqlDb`
    - **Assessment type**: Select **Database Engine**.
    - **Source server type**: Select **SQL Server**.
    - **Target server type**: Select **Azure SQL Database**.
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.png "New project settings")
 
-4. Select **Create**.
-
 5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/dma-options.png "DMA options")
 
-6. On the **Sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
+6. On the **Select sources** screen, enter the following into the **Connect to a server** dialog that appears on the right-hand side:
 
    - **Server name**: Select **SQLSERVER2008**.
    - **Authentication type**: Select **SQL Server Authentication**.
@@ -198,9 +239,9 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
    - **Encrypt connection**: Check this box.
    - **Trust server certificate**: Check this box.
 
-   ![In the Connect to a server dialog, the values specified above are entered.](media/dma-connect-to-a-server.png "Connect to a server")
-
 7. Select **Connect**.
+
+   ![In the Connect to a server dialog, the values specified above are entered.](media/dma-connect-to-a-server.png "Connect to a server")
 
 8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
 
@@ -216,6 +257,10 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
     > The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
 
+11. **Cancel** migration for this project by going **back** to home page.
+
+    ![Cancel migration by going back to home page.](media/dma-cancel-project-migration.png "Cancel project migration")
+
 ### Task 3: Perform assessment for migration to Azure SQL Managed Instance
 
 With one PaaS offering ruled out due to feature parity, perform a second DMA assessment against Azure SQL Managed Instance (SQL MI). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
@@ -226,15 +271,12 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 2. In the New project pane, set the following:
 
-   - **Project type**: Select **Assessment**.
    - **Project name**: Enter `ToSqlMi`
-   - **Assessment type**: Select **Database Engine**.
-   - **Source server type**: Select **SQL Server**.
    - **Target server type**: Select **Azure SQL Database Managed Instance**.
 
-   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.png "New project settings")
-
 3. Select **Create**.
+
+   ![The new project settings for doing a SQL Server to Azure SQL Managed Instance migration assessment are entered into the dialog.](media/dma-new-project-to-sql-mi.png "New project settings")
 
 4. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
 
@@ -259,19 +301,24 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 8. Select **Start Assessment**.
 
-   ![Start assessment](media/dma-start-assessment-to-sql-mi.png "Start assessment")
+   ![Start assessment](media/dma-start-assessment-to-azure-sql-db.png "Start assessment")
 
-9. Review the SQL Server feature parity and Compatibility issues options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
+9. Review the **SQL Server feature parity** issues options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
 
    ![For a target platform of Azure SQL Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mi.png "Database feature parity")
 
+10. Review the **Compatibility issues** options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
    ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
 
    > **Note**
    >
    > The assessment report for migrating the `WideWorldImporters` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full-text search changes do not impact the migration of the `WideWorldImporters` database to SQL MI.
 
-10. The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
+The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
+
+You can close **Data Migration Assistant** by **double clicking** program icon. Also **confirm** that your are **not saving projects**, as you have another migration process is mind right now.
+
+   ![Close data migration assistant.](media/dma-close-data-migration-assistant.png "Close data migration assistant")
 
 ## Exercise 2: Migrate the database to SQL MI
 
@@ -313,7 +360,7 @@ In this task, you create a new SMB network share on the SqlServer2008 VM. DMS us
 
 In this task, you use the SQL Server Configuration Manager to update the service account used by the SQL Server (MSSQLSERVER) service to the `sqlmiuser` account. Changing the account used for this service ensures it has the appropriate permissions to write backups to the shared folder.
 
-1. On your SqlServer2008 VM, select the **Start menu**, enter "sql configuration" into the search bar, and then select **SQL Server Configuration Managed** from the search results.
+1. On your SqlServer2008 VM, select the **Start menu**, enter **sql configuration** into the search bar, and then select **SQL Server Configuration Managed** from the search results.
 
    ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](media/windows-start-sql-configuration-manager.png "Windows search")
 
@@ -328,11 +375,11 @@ In this task, you use the SQL Server Configuration Manager to update the service
 3. In the SQL Server (MSSQLSERVER) Properties dialog, select **This account** under Log on as, and enter the following:
 
    - **Account name**: `sqlmiuser`
-   - **Password**: `Password.1234567890`
-
-   ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as, and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
+   - **Password**: `Password.1234567890` and same value to **Confirm password** field
 
 4. Select **OK**.
+
+   ![In the SQL Server (MSSQLSERVER) Properties dialog, This account is selected under Log on as, and the sqlmiuser account name and password are entered.](media/sql-server-service-properties.png "SQL Server (MSSQLSERVER) Properties")
 
 5. Select **Yes** in the Confirm Account Change dialog.
 
@@ -342,13 +389,13 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
-7. Close the SQL Server Configuration Manager.
+7. **Close** the SQL Server Configuration Manager.
 
 ### Task 3: Create a backup of the WideWorldImporters database
 
 To perform online data migrations, DMS looks for database and transaction log backups in the shared SMB backup folder on the source database server. In this task, you create a backup of the `WideWorldImporters` database using SSMS and write it to the `\\SQLSERVER2008\dms-backups` SMB network share you made in a previous task. The backup file needs to include a checksum, so you add that during the backup steps.
 
-1. On the SqlServer2008 VM, open **Microsoft SQL Server Management Studio 17** by entering "sql server" into the search bar in the Windows Start menu.
+1. On the SqlServer2008 VM, open **Microsoft SQL Server Management Studio 17** by entering **microsoft sql** into the search bar in the Windows Start menu.
 
    ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
@@ -393,11 +440,13 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
     ![Screenshot of the dialog confirming the database backup was completed successfully.](media/ssms-backup-complete.png "Backup complete")
 
+As backup is done, you can close both **popup** and **management studio** window.
+
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
 In this task, you use the Azure Cloud shell to retrieve the information necessary to connect to your SqlServer2008 VM from DMS.
 
-1. In the [Azure portal](https://portal.azure.com), select the Azure Cloud Shell icon from the top menu.
+1. From any station, connect to [Azure portal](https://portal.azure.com), select the Azure Cloud Shell icon from the top menu.
 
    ![The Azure Cloud Shell icon is highlighted in the Azure portal's top menu.](media/cloud-shell-icon.png "Azure Cloud Shell")
 
@@ -428,7 +477,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
    >
    > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
-6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as Notepad.exe, for later reference.
+6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as **Notepad.exe** or **VSCode**, for later reference.
 
    ![The output from the az vm list-ip-addresses command is displayed in the Cloud Shell, and the public IP address for the SqlServer2008 VM is highlighted.](media/cloud-shell-az-vm-list-ip-addresses.png "Azure Cloud Shell")
 
@@ -503,63 +552,62 @@ In this task, you create a new online data migration project in DMS for the `Wid
    - **Target server type**: Select **Azure SQL Database Managed Instance**.
    - **Choose type of activity**: Select **Online data migration** and select **Save**.
 
-   ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-new-migration-project-blade.png "New migration project")
-
 4. Select **Create and run activity**.
+
+   ![The New migration project blade is displayed, with the values specified above entered into the appropriate fields.](media/dms-new-migration-project-blade.png "New migration project")
 
 5. On the Migration Wizard **Select source** tab, enter the following:
 
-   - **Source SQL Server instance name**: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, `40.65.112.26`.
-   - **Authentication type**: Select SQL Authentication.
+   - **Source SQL Server instance name**: Enter the IP address of your SqlServer2008 VM that you copied into a text editor in the previous task. For example, `104.40.208.46`.
+   - **Authentication type**: Select `SQL Authentication`.
    - **Username**: Enter `WorkshopUser`
    - **Password**: Enter `Password.1234567890`
    - **Connection properties**: Check both Encrypt connection and Trust server certificate.
 
-   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
-
 6. Select **Next : Select target**.
+
+   ![The Migration Wizard Select source tab is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-source.png "Migration Wizard Select source")
 
 7. On the Migration Wizard **Select target** tab, enter the following:
 
    - **Application ID**: Enter the `appId` value from the output of the `az ad sp create-for-rbac' command you executed in the last task.
    - **Key**: Enter the `password` value from the output of the `az ad sp create-for-rbac' command you executed in the last task.
-   - **Skip the Application ID Contributor level access check on the subscription**: Leave this unchecked.
-   - **Subscription**: Select the subscription you are using for this hand-on lab.
    - **Target Azure SQL Managed Instance**: Select the sqlmi-UNIQUEID instance.
    - **SQL Username**: Enter `sqlmiuser`
    - **Password**: Enter `Password.1234567890`
 
-   ![The Migration Wizard Select target tab is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-target.png "Migration Wizard Select target")
-
 8. Select **Next : Select databases**.
+
+   ![The Migration Wizard Select target tab is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-select-target.png "Migration Wizard Select target")
 
 9. On the Migration Wizard **Select databases** tab, select `WideWorldImporters`.
 
-   ![The Migration Wizard Select databases tab is displayed, with the WideWorldImporters database selected.](media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
-
 10. Select **Next : Configure migration settings**.
+
+   ![The Migration Wizard Select databases tab is displayed, with the WideWorldImporters database selected.](media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
 
 11. On the Migration Wizard **Configure migration settings** tab, enter the following configuration:
 
     - **Network share location**: Populate this field with the path to the SMB network share you created previously by entering `\\SQLSERVER2008\dms-backups`.
     - **Windows User Azure Database Migration Service impersonates to upload files to Azure Storage**: Enter `SQLSERVER2008\sqlmiuser.`
     - **Password**: Enter `Password.1234567890`
-    - **Subscription containing storage account**: Select the subscription you are using for this hands-on lab.
     - **Storage account**: Select the **sqlmistoreUNIQUEID** storage account.
-
-    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-configure-migration-settings.png "Migration Wizard Configure migration settings")
 
 12. Select **Next : Summary**.
 
+    ![The Migration Wizard Configure migration settings tab is displayed, with the values specified above entered into the appropriate fields.](media/dms-migration-wizard-configure-migration-settings.png "Migration Wizard Configure migration settings")
+
 13. On the Migration Wizard **Summary** tab, enter `WwiMigration` as the **Activity name**.
 
-    ![The Migration Wizard summary tab is displayed, WwiMigration is entered into the name field, and Validate my database(s) is selected in the Choose validation option blade, with all three validation options selected.](media/dms-migration-wizard-migration-summary.png "Migration Wizard Summary")
-
 14. Select **Start migration**.
+
+    ![The Migration Wizard summary tab is displayed, WwiMigration is entered into the name field, and Validate my database(s) is selected in the Choose validation option blade, with all three validation options selected.](media/dms-migration-wizard-migration-summary.png "Migration Wizard Summary")
 
 15. Monitor the migration on the status screen that appears. You can select the refresh icon in the toolbar to retrieve the latest status. Continue selecting **Refresh** every 5-10 seconds until you see the status change to **Log shipping in progress**. When that status appears, move on to the next task.
 
     ![In the migration monitoring window, a status of Log shipping in progress is highlighted.](media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
+
+You can leave Azure Portal browser window open and come back to check that migration is over. The migration process takes around an hour.
 
 ### Task 7: Perform migration cutover
 
