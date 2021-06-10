@@ -1,16 +1,14 @@
+# Migrating SQL databases to Azure whiteboard design session trainer guide
+
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/main/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
-<div class="MCWHeader1">
-Migrating SQL databases to Azure
-</div>
+## Context
 
-<div class="MCWHeader2">
-Whiteboard design session trainer guide
-</div>
+|Section|MCT|Last update|
+|---|---|---|
+|Whiteboard design session trainer guide|Migrating SQL databases to Azure|June 2021|
 
-<div class="MCWHeader3">
-November 2020
-</div>
+## Content update note
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -22,39 +20,65 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-**Contents**
+## Contents
 
-- [Trainer information](#trainer-information)
-  - [Role of the trainer](#role-of-the-trainer)
-  - [Whiteboard design session flow](#whiteboard-design-session-flow)
+<!-- TOC -->
+
+- [Migrating SQL databases to Azure whiteboard design session trainer guide](#migrating-sql-databases-to-azure-whiteboard-design-session-trainer-guide)
+  - [Context](#context)
+  - [Content update note](#content-update-note)
+  - [Contents](#contents)
+  - [Trainer information](#trainer-information)
+    - [Role of the trainer](#role-of-the-trainer)
+    - [Whiteboard design session flow](#whiteboard-design-session-flow)
+  - [Step 1: Review the customer case study (15 minutes)](#step-1-review-the-customer-case-study-15-minutes)
+    - [Step 1 Outcome](#step-1-outcome)
+  - [Step 2: Design a proof of concept solution (60 minutes)](#step-2-design-a-proof-of-concept-solution-60-minutes)
+    - [Step 2 Outcome](#step-2-outcome)
+  - [Step 3: Present the solution (30 minutes)](#step-3-present-the-solution-30-minutes)
+    - [Outcome](#outcome)
+    - [Wrap-up (15 minutes)](#wrap-up-15-minutes)
   - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
   - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Migrating SQL databases to Azure whiteboard design session student guide](#migrating-sql-databases-to-azure-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+    - [Step (1) Outcome](#step-1-outcome-1)
     - [Customer situation](#customer-situation)
     - [Customer needs](#customer-needs)
     - [Customer objections](#customer-objections)
     - [Infographic for common scenarios](#infographic-for-common-scenarios)
   - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step (2) Outcome](#step-2-outcome-1)
+    - [Business needs](#business-needs)
+    - [Design](#design)
+      - [High-level architecture](#high-level-architecture)
+      - [Game databases](#game-databases)
+      - [Gaming services](#gaming-services)
+      - [Data warehouse and reporting](#data-warehouse-and-reporting)
+      - [Regional outages](#regional-outages)
+      - [Prepare](#prepare)
   - [Step 3: Present the solution](#step-3-present-the-solution)
+    - [Step (3) Outcome](#step-3-outcome)
+    - [Presentation](#presentation)
   - [Wrap-up](#wrap-up)
   - [Additional references](#additional-references)
-- [Migrating SQL databases to Azure whiteboard design session trainer guide](#migrating-sql-databases-to-azure-whiteboard-design-session-trainer-guide)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-  - [Step 3: Present the solution](#step-3-present-the-solution-1)
-  - [Wrap-up](#wrap-up-1)
+  - [Trainer checklists](#trainer-checklists)
+    - [Checklist step 1: Review the customer case study](#checklist-step-1-review-the-customer-case-study)
+    - [Checklist step 2: Design a proof of concept solution](#checklist-step-2-design-a-proof-of-concept-solution)
+    - [Checklist step 3: Present the solution](#checklist-step-3-present-the-solution)
+    - [Checklist wrap-up](#checklist-wrap-up)
   - [Preferred target audience](#preferred-target-audience)
   - [Preferred solution](#preferred-solution)
   - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
   - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
 
-# Trainer information
+<!-- TOC -->
+
+## Trainer information
 
 Thank you for taking time to support the whiteboard design sessions as a trainer!
 
-## Role of the trainer
+### Role of the trainer
 
 An amazing trainer:
 
@@ -78,13 +102,13 @@ An amazing trainer:
 
 - Effectively leads the feedback process.
 
-## Whiteboard design session flow
+### Whiteboard design session flow
 
 Each whiteboard design session uses the following flow:
 
-**Step 1: Review the customer case study (15 minutes)**
+## Step 1: Review the customer case study (15 minutes)
 
-**Outcome**
+### Step 1 Outcome
 
 Analyze your customer's needs.
 
@@ -94,9 +118,9 @@ Analyze your customer's needs.
 
 - Potential issues, objectives and blockers
 
-**Step 2: Design a proof of concept solution (60 minutes)**
+## Step 2: Design a proof of concept solution (60 minutes)
 
-**Outcome**
+### Step 2 Outcome
 
 Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
@@ -108,9 +132,9 @@ Design a solution and prepare to present the solution to the target customer aud
 
 - Prepare to present your solution.
 
-**Step 3: Present the solution (30 minutes)**
+## Step 3: Present the solution (30 minutes)
 
-**Outcome**
+### Outcome
 
 Present solution to your customer:
 
@@ -120,7 +144,7 @@ Present solution to your customer:
 
 - Receive feedback
 
-**Wrap-up (15 minutes)**
+### Wrap-up (15 minutes)
 
 - Review preferred solution
 
@@ -162,8 +186,6 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
 
-# Migrating SQL databases to Azure whiteboard design session student guide
-
 ## Abstract and learning objectives
 
 In this whiteboard design session, you work in a group to develop a plan for migrating on-premises VMs and SQL Server databases into a combination of IaaS and PaaS services in Azure. You provide guidance on performing assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and Azure's managed database offerings. You then design a solution for migrating their on-premises services, including VMs and databases, into Azure, with minimal down-time. Finally, you provide guidance on enabling some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
@@ -172,7 +194,7 @@ At the end of this whiteboard design session, you will be better able to design 
 
 ## Step 1: Review the customer case study
 
-**Outcome**
+### Step (1) Outcome
 
 Analyze your customer's needs.
 
@@ -249,13 +271,13 @@ To help you better understand their current environment, WWI has provided the fo
 
 ## Step 2: Design a proof of concept solution
 
-**Outcome**
+### Step (2) Outcome
 
 Design a solution and prepare to present the solution to the target customer audience in a 15-minute chalk-talk format.
 
 Timeframe: 60 minutes
 
-**Business needs**
+### Business needs
 
 Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
 
@@ -263,11 +285,11 @@ Directions: With all participants at your table, answer the following questions 
 
 2. What customer business needs do you need to address with your solution?
 
-**Design**
+### Design
 
 Directions: With all participants at your table, respond to the following questions on a flip chart:
 
-_High-level architecture_
+#### High-level architecture
 
 1. Without getting into the details (the following sections address the particulars), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
 
@@ -277,7 +299,7 @@ _High-level architecture_
 
 4. What functionality should you include in the PoC?
 
-_Game databases_
+#### Game databases
 
 1. What are the factors that WWI should consider when deciding between PaaS or IaaS options for hosting their SQL databases in Azure?
 
@@ -289,7 +311,7 @@ _Game databases_
 
 5. Are there features of a PaaS database service that could help to reduce the impact of read-only reports running directly against their gaming databases?
 
-_Gaming services_
+#### Gaming services
 
 1. How should WWI handle migrating their gaming services VMs into Azure?
 
@@ -299,7 +321,7 @@ _Gaming services_
 
 4. How can the gaming services be made highly-available?
 
-_Data warehouse and reporting_
+#### Data warehouse and reporting
 
 1. What would you recommend as the target platform for their data warehouse in Azure?
 
@@ -307,11 +329,11 @@ _Data warehouse and reporting_
 
 3. What is the upgrade path for their SSIS packages, SSAS cubes, and SSRS reports?
 
-_Regional outages_
+#### Regional outages
 
 1. How can their gaming services be recovered within the specified RTO/RPO?
 
-**Prepare**
+#### Prepare
 
 Directions: With all participants at your table:
 
@@ -325,13 +347,13 @@ Prepare a 15-minute chalk-talk style presentation to the customer.
 
 ## Step 3: Present the solution
 
-**Outcome**
+### Step (3) Outcome
 
 Present a solution to the target customer audience in a 15-minute chalk-talk format.
 
 Timeframe: 30 minutes
 
-**Presentation**
+### Presentation
 
 Directions:
 
@@ -392,9 +414,9 @@ Migrate SQL Server to an Azure SQL Managed Instance  - Guide         | <https://
 | Cloud Adoption Framework for Azure | <https://docs.microsoft.com/azure/cloud-adoption-framework/overview> |
 | Azure Migrate | <https://docs.microsoft.com/azure/migrate/migrate-services-overview> |
 
-# Migrating SQL databases to Azure whiteboard design session trainer guide
+## Trainer checklists
 
-## Step 1: Review the customer case study
+### Checklist step 1: Review the customer case study
 
 - Check in with your table participants to introduce yourself as the trainer.
 
@@ -404,7 +426,7 @@ Migrate SQL Server to an Azure SQL Managed Instance  - Guide         | <https://
 
 - Ready, set, go! Let the table participants begin.
 
-## Step 2: Design a proof of concept solution
+### Checklist step 2: Design a proof of concept solution
 
 - Check in with your tables to ensure that they are transitioning from step to step on time.
 
@@ -416,7 +438,7 @@ Migrate SQL Server to an Azure SQL Managed Instance  - Guide         | <https://
 
   - Try asking questions first that will lead the participants to discover the answers on their own.
 
-## Step 3: Present the solution
+### Checklist step 3: Present the solution
 
 - Determine which table will be paired with your table before Step 3 begins.
 
@@ -430,7 +452,7 @@ Migrate SQL Server to an Azure SQL Managed Instance  - Guide         | <https://
 
   - If needed, the trainer may also provide feedback.
 
-## Wrap-up
+### Checklist wrap-up
 
 - Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
 
@@ -442,7 +464,7 @@ The primary audience is business and technology decision-makers. From the case s
 
 ## Preferred solution
 
-_High-level architecture_
+_High-level architecture_:
 
 1. Without getting into the details (the following sections address the particulars), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
 
@@ -519,7 +541,7 @@ _High-level architecture_
      - Gaming services VNet for hosting gaming services VMs, with VNet peering back to SQL MI VNet.
      - Secure channel for connecting to the databases from on-premises development machines for troubleshooting.
 
-_Game databases_
+_Game databases_:
 
 1. What are the factors that WWI should consider when deciding between PaaS or IaaS options for hosting their SQL databases in Azure?
 
@@ -593,7 +615,7 @@ _Game databases_
 
    The feature is intended for applications that include logically separated read-only workloads, such as analytics. Therefore, they could gain performance benefits using this additional capacity at no extra cost.
 
-_Gaming services_
+_Gaming services_:
 
 1. How should WWI handle migrating their gaming services VMs into Azure?
 
@@ -621,7 +643,7 @@ _Gaming services_
 
    Azure SQL Managed Instance comes with built-in high-availability. Transactional replication could be used to keep data in sync between multiple regions.
 
-_Data warehouse and reporting_
+_Data warehouse and reporting_:
 
 1. What would you recommend as the target platform for their data warehouse in Azure?
 
@@ -655,7 +677,7 @@ _Data warehouse and reporting_
 
    There is no direct PaaS equivalent of SSRS. However, there are several options available for continuing to use the SSRS reports. The most straightforward, and possibly easiest, option is for WWI to migrate their SSRS server to run on an Azure VM (IaaS). Another approach is to rewrite their reports as paginated reports in Microsoft Power BI. If opting to move their reports into Power BI, customers should be aware of the [RDL Migration Tool](https://github.com/microsoft/RdlMigration), which can be used to assist with migrating existing SSRS reports from local servers to a Power BI workspace.
 
-_Regional outages_
+_Regional outages_:
 
 1. How can their gaming services be recovered within the specified RTO/RPO?
 
