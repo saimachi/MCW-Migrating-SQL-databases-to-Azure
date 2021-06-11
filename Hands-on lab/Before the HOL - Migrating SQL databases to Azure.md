@@ -61,11 +61,11 @@ In this exercise, you set up your environment for use in the rest of the hands-o
 
    ![Resource groups is highlighted in the Azure services list.](media/azure-services-resource-groups.png "Navigate to resource group")
 
-1. On the Resource groups blade, select **+ Create**.
+2. On the Resource groups blade, select **+ Create**.
 
    ![Create is highlighted in the toolbar on Resource groups blade.](media/resource-groups-add.png "Create resource group")
 
-1. On the Create a resource group **Basics** tab, enter the following:
+3. On the Create a resource group **Basics** tab, enter the following:
 
    - **Subscription**: Select the subscription you are using for this hands-on lab.
    - **Resource group**: Enter `hands-on-lab-SUFFIX` as the name of the new resource group.
@@ -73,9 +73,9 @@ In this exercise, you set up your environment for use in the rest of the hands-o
 
    ![The values specified above are entered into the Create a resource group Basics tab.](media/create-resource-group.png "Create resource group")
 
-1. Select **Review + Create**.
+4. Select **Review + Create**.
 
-1. On the **Review + create** tab, ensure the Validation passed message is displayed and then select **Create**.
+5. On the **Review + create** tab, ensure the Validation passed message is displayed and then select **Create**.
 
 ## Task 2: Register the Microsoft DataMigration resource provider
 
