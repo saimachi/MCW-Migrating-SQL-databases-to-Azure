@@ -397,7 +397,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 1. On the SqlServer2008 VM, open **Microsoft SQL Server Management Studio 17** by entering **microsoft sql** into the search bar in the Windows Start menu.
 
-   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
+   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/ .png "Windows start menu search")
 
 2. In the SSMS **Connect to Server** dialog, enter **SQLSERVER2008** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
@@ -1105,7 +1105,7 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
 9. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
 
-   ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save.png "Save")
+   ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save-button.png "Save")
 
 10. Other recommendations you can review are the **HumanResources - Employee** fields for **NationIDNumber** and **BirthDate**. Note that the recommendation service flagged these fields as **Confidential - GDPR**. WWI maintains data about gamers from around the world, including Europe, so having a tool that helps them discover data that may be relevant to GDPR compliance is very helpful.
 
