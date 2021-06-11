@@ -61,7 +61,7 @@ In this task, you create a virtual network (VNet), which will contain your SQL m
 
    ![The values specified above are entered into the appropriate fields on the Create Virtual Network Basics tab.](media/create-virtual-network-basics-tab.png "Create virtual network Basics tab")
 
-6. On the **IP Addresses** tab, select **default** under subnets 
+6. On the **IP Addresses** tab, select **default** under subnets
 
 7. Edit the subnet's properties as follows:
 
