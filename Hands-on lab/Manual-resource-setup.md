@@ -2,11 +2,16 @@
 
 This guide provides step-by-step instructions to manually provision and the configure resources created by the ARM template referenced in the before the hands-on lab guide.
 
-November 2020
+## Context
+
+|Section|MCW|Last update|
+|---|---|---|
+|Manual resources setup|Migrating SQL databases to Azure|June 2021|
 
 ## Contents
 
 - [Manual resource deployment and setup guide](#manual-resource-deployment-and-setup-guide)
+  - [Context](#context)
   - [Contents](#contents)
   - [Task 1: Create a virtual network](#task-1-create-a-virtual-network)
     - [Create virtual network](#create-virtual-network)

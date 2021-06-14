@@ -185,7 +185,9 @@ As **Microsoft Data Migration Assistant** requires framework 4.8 to operate, ple
 
    ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
 
-4. After installation
+4. After framework setup, **restarting** VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Restarting generally takes less than 2 minutes.
+
+   ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
 #### Install migration assistant
 
@@ -308,6 +310,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
    ![For a target platform of Azure SQL Managed Instance, no issues are listed.](media/dma-feature-parity-sql-mi.png "Database feature parity")
 
 10. Review the **Compatibility issues** options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
+
    ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
 
    > **Note**
@@ -397,7 +400,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
 1. On the SqlServer2008 VM, open **Microsoft SQL Server Management Studio 17** by entering **microsoft sql** into the search bar in the Windows Start menu.
 
-   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/ .png "Windows start menu search")
+   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
 
 2. In the SSMS **Connect to Server** dialog, enter **SQLSERVER2008** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
 
