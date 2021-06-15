@@ -1,14 +1,16 @@
-# Migrating SQL databases to Azure whiteboard design session trainer guide
-
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/main/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
-## Context
+<div class="MCWHeader1">
+Migrating SQL databases to Azure
+</div>
 
-|Section|MCW|Last update|
-|---|---|---|
-|Whiteboard design session trainer guide|Migrating SQL databases to Azure|June 2021|
+<div class="MCWHeader2">
+Whiteboard design session trainer guide
+</div>
 
-## Content update note
+<div class="MCWHeader3">
+June 2021
+</div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -24,22 +26,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Migrating SQL databases to Azure whiteboard design session trainer guide](#migrating-sql-databases-to-azure-whiteboard-design-session-trainer-guide)
-  - [Context](#context)
-  - [Content update note](#content-update-note)
-  - [Contents](#contents)
-  - [Trainer information](#trainer-information)
-    - [Role of the trainer](#role-of-the-trainer)
-    - [Whiteboard design session flow](#whiteboard-design-session-flow)
-  - [Step 1: Review the customer case study (15 minutes)](#step-1-review-the-customer-case-study-15-minutes)
-    - [Step 1 Outcome](#step-1-outcome)
-  - [Step 2: Design a proof of concept solution (60 minutes)](#step-2-design-a-proof-of-concept-solution-60-minutes)
-    - [Step 2 Outcome](#step-2-outcome)
-  - [Step 3: Present the solution (30 minutes)](#step-3-present-the-solution-30-minutes)
-    - [Outcome](#outcome)
-    - [Wrap-up (15 minutes)](#wrap-up-15-minutes)
-  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
+- [Migrating SQL databases to Azure whiteboard design session student guide](#migrating-sql-databases-to-azure-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Step (1) Outcome](#step-1-outcome-1)
@@ -185,6 +172,8 @@ When participants are doing activities, you can **look ahead to refresh your mem
 **Ask first**, whenever possible. Before launching into a topic, learn your audience's opinions about it and experiences with it. Asking first enables you to assess their level of knowledge and experience, and leaves them more open to what you are presenting.
 
 **Wait for responses**. If you ask a question such as, "What's your experience with (fill in the blank)?" then wait. Do not be afraid of a little silence. If you leap into the silence, your participants will feel you are not serious about involving them and will become passive. Give participants a chance to think, and if no one answers, patiently ask again. You will usually get a response.
+
+# Migrating SQL databases to Azure whiteboard design session student guide
 
 ## Abstract and learning objectives
 

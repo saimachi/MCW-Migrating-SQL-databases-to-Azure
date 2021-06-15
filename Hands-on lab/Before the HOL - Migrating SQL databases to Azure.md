@@ -1,14 +1,16 @@
-# Before Hands-on lab
-
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/main/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
-## Context
+<div class="MCWHeader1">
+Migrating SQL databases to Azure
+</div>
 
-|Section|MCW|Last update|
-|---|---|---|
-|Before the hands-on lab setup guide|Migrating SQL databases to Azure|June 2021|
+<div class="MCWHeader2">
+Before the hands-on lab setup guide
+</div>
 
-## Content update note
+<div class="MCWHeader3">
+June 2021
+</div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -24,17 +26,14 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Before Hands-on lab](#before-hands-on-lab)
-  - [Context](#context)
-  - [Content update note](#content-update-note)
-  - [Contents](#contents)
-  - [Migrating SQL databases to Azure before the hands-on lab setup guide](#migrating-sql-databases-to-azure-before-the-hands-on-lab-setup-guide)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
-  - [Task 1: Create a resource group](#task-1-create-a-resource-group)
-  - [Task 2: Register the Microsoft DataMigration resource provider](#task-2-register-the-microsoft-datamigration-resource-provider)
-  - [Task 3: Validate subscription compatibility with SQL MI](#task-3-validate-subscription-compatibility-with-sql-mi)
-  - [Task 4: Run ARM template to provision lab resources](#task-4-run-arm-template-to-provision-lab-resources)
+- [Contents](#contents)
+- [Migrating SQL databases to Azure before the hands-on lab setup guide](#migrating-sql-databases-to-azure-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+- [Task 1: Create a resource group](#task-1-create-a-resource-group)
+- [Task 2: Register the Microsoft DataMigration resource provider](#task-2-register-the-microsoft-datamigration-resource-provider)
+- [Task 3: Validate subscription compatibility with SQL MI](#task-3-validate-subscription-compatibility-with-sql-mi)
+- [Task 4: Run ARM template to provision lab resources](#task-4-run-arm-template-to-provision-lab-resources)
 
 <!-- /TOC -->
 
@@ -153,9 +152,9 @@ You are now ready to begin the ARM template deployment.
 
    > **Note**: Running the ARM template occasionally results in a `ResourceDeploymentFailure` error, with a code of `VnetSubnetConflictedWithIntendedPolicy`. This error is not caused by an issue with the ARM template and appears to be the result of backend resource deployment issues in Azure. At this time, the workaround is first to try the deployment in a different region. If that does not work, try going through the [Manual resource setup guide](./Manual-resource-setup.md) to create the SQL MI database.
 
-3. On the custom deployment screen, click the **Build your own template in the editor** button.
+3. On the custom deployment screen, select the **Build your own template in the editor** button.
 
-   ![Locate and click the Build your own template in the editor button.](media/build-template-button.png "Build template button")
+   ![Locate and select the Build your own template in the editor button.](media/build-template-button.png "Build template button")
 
 4. Whether use **Load file** button or paste content from file **Hands-on lab/lab-files/ARM-template/azure-deploy.json** from repository.
 

@@ -1,14 +1,16 @@
-# Migrating SQL databases to Azure hands-on lab step-by-step
-
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/main/Media/ms-cloud-workshop.png "Microsoft Cloud Workshops")
 
-## Context
+<div class="MCWHeader1">
+Migrating SQL databases to Azure
+</div>
 
-|Section|MCW|Last update|
-|---|---|---|
-|Hands-on lab step-by-step guide|Migrating SQL databases to Azure|June 2021|
+<div class="MCWHeader2">
+Hands-on lab step-by-step guide
+</div>
 
-## Content update note
+<div class="MCWHeader3">
+June 2021
+</div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
@@ -25,9 +27,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 <!-- TOC -->
 
 - [Migrating SQL databases to Azure hands-on lab step-by-step](#migrating-sql-databases-to-azure-hands-on-lab-step-by-step)
-  - [Context](#context)
-  - [Content update note](#content-update-note)
-  - [Contents](#contents)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Overview](#overview)
   - [Solution architecture](#solution-architecture)
@@ -72,6 +71,8 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 2: Delete the wide-world-importers service principal](#task-2-delete-the-wide-world-importers-service-principal)
 
 <!-- TOC -->
+
+# Migrating SQL databases to Azure hands-on lab step-by-step
 
 ## Abstract and learning objectives
 
@@ -181,7 +182,7 @@ As **Microsoft Data Migration Assistant** requires framework 4.8 to operate, ple
 
 2. **Download** and **Run** installation package to proceed with new .Net framework 4.8 setup.
 
-3. Scroll down terms, then **Agree** license terms, and click on **Install** button.
+3. Scroll down terms, then **Agree** license terms, and select **Install** button.
 
    ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
 
@@ -203,7 +204,7 @@ Install **Microsoft Data Migration Assistant** on SqlSever2008 VM, by accessing 
 
    ![Proceed with complete installation when prompted.](media/proceed-complete-installation.png "Proceed complete installation")
 
-4. As with previous installation, start by clicking **Next**. Scroll down terms, then **Agree** license terms, and click on **Install** button.
+4. As with previous installation, start by selecting **Next**. Scroll down terms, then **Agree** license terms, and validate with **Install** button.
 
 #### Launch migration assistant
 
@@ -219,7 +220,7 @@ You can now proceed with data migration, by following steps:
 
 3. In the New project pane, set **Project name** as `ToAzureSqlDb`
 
-4. Ensure that following options are set with default values, then click **Create** button.
+4. Ensure that following options are set with default values, then select **Create**.
 
    - **Project type**: Select **Assessment**.
    - **Assessment type**: Select **Database Engine**.
@@ -319,7 +320,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
 
-You can close **Data Migration Assistant** by **double clicking** program icon. Also **confirm** that your are **not saving projects**, as you have another migration process is mind right now.
+You can close **Data Migration Assistant** by **double-click** program icon. Also **confirm** that your are **not saving projects**, as you have another migration process is mind right now.
 
    ![Close data migration assistant.](media/dma-close-data-migration-assistant.png "Close data migration assistant")
 
@@ -1022,7 +1023,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 2. On the App Service blade, select **Networking** from the left-hand menu and then select **Click here to configure** under **VNet Integration**.
 
-   ![On the App Service blade, Networking is selected in the left-hand menu, and Click here to configure is highlighted under VNet Integration.](media/app-service-networking.png "App Service")
+   ![On the App Service blade, Networking is selected in the left-hand menu, then Click here to configure is highlighted under VNet Integration.](media/app-service-networking.png "App Service")
 
 3. Select **Add VNet** on the VNet Configuration blade.
 
