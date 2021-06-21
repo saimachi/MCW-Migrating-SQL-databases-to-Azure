@@ -182,11 +182,11 @@ As **Microsoft Data Migration Assistant** requires framework 4.8 to operate, ple
 
 2. **Download** and **Run** installation package to proceed with new .Net framework 4.8 setup.
 
-3. Scroll down terms, then **Agree** license terms, and select **Install** button.
+3. Scroll down terms, then **Agree** license terms, and select the **Install** button.
 
    ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
 
-4. After framework setup, **restarting** VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Restarting generally takes less than 2 minutes.
+4. After framework setup, **restarting** VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
 
    ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
@@ -210,7 +210,7 @@ Install **Microsoft Data Migration Assistant** on SqlSever2008 VM, by accessing 
 
 You can now proceed with data migration, by following steps:
 
-1. On the SqlSever2008 VM, launch DMA from the Windows Start. It should appear highlighted, as you just installed it. Else you can access it with Windows menu by typing **data migration** into the search bar and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. On the SqlSever2008 VM, launch DMA from the Windows Start. It should appear highlighted, as you just installed it. Otherwise, you can access it using the Windows menu by typing **data migration** into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
 
@@ -220,7 +220,7 @@ You can now proceed with data migration, by following steps:
 
 3. In the New project pane, set **Project name** as `ToAzureSqlDb`
 
-4. Ensure that following options are set with default values, then select **Create**.
+4. Ensure following options are set with default values, then select **Create**.
 
    - **Project type**: Select **Assessment**.
    - **Assessment type**: Select **Database Engine**.
@@ -320,7 +320,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
 
-You can close **Data Migration Assistant** by **double-click** program icon. Also **confirm** that your are **not saving projects**, as you have another migration process is mind right now.
+You can close **Data Migration Assistant** by double-clicking the program icon. Also, **confirm** you are **not saving projects**, as you have another migration process in mind right now.
 
    ![Close data migration assistant.](media/dma-close-data-migration-assistant.png "Close data migration assistant")
 
@@ -615,9 +615,9 @@ You can leave Azure Portal browser window open and come back to check that migra
 
 ### Task 7: Perform migration cutover
 
-Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cut over to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
+Since you performed an "online data migration," the migration wizard continuously monitors the SMB network share for newly added log backup files. Online migrations enable any updates on the source database to be captured until you initiate the cutover to the SQL MI database. In this task, you add a record to one of the database tables, backup the logs, and complete the migration of the `WideWorldImporters` database by cutting over to the SQL MI database.
 
-1. In the Azure portal's migration status window and select **WideWorldImporters** under database name to view further details about the database migration.
+1. In the Azure portal's migration status window, select **WideWorldImporters** under database name to view further details about the database migration.
 
    ![The WideWorldImporters database name is highlighted in the migration status window.](media/dms-migration-wizard-database-name.png "Migration status")
 
@@ -638,7 +638,7 @@ Since you performed an "online data migration," the migration wizard continuousl
    GO
 
    INSERT [dbo].[Game] (Title, Description, Rating, IsOnlineMultiplayer)
-   VALUES ('Space Adventure', 'Explore the universe with are newest online multiplayer gaming experience. Build custom  rocket ships, and take off for the stars in an infinite open-world adventure.', 'T', 1)
+   VALUES ('Space Adventure', 'Explore the universe with our newest online multiplayer gaming experience. Build custom  rocket ships, and take off for the stars in an infinite open-world adventure.', 'T', 1)
    ```
 
 6. Execute the query by selecting **Execute** in the SSMS toolbar.
@@ -665,7 +665,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    > **Note**
    >
-   > If you don't see it the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
+   > If you don't see it in the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
 
 10. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
 
@@ -964,7 +964,7 @@ Point-to-Site connections use certificates to authenticate. Each client computer
 
    ![Base-64 encoded X.509 is selected. The Next button is highlighted.](media/root-certificate-export-base-64.png "Export File Format")
 
-7. Pick desktop for the file location and type `wwi-root.cer` **(1)** for file name. Select **Next (2)** to continue.
+7. Pick desktop for the file location and type `wwi-root.cer` **(1)** for the file name. Select **Next (2)** to continue.
 
    ![wwi-root.cer on the desktop is provided as a save location. The Next button is highlighted.](media/root-certificate-export-to-desktop.png "Specify File to Export")
 
