@@ -75,7 +75,7 @@ In this task, you create a virtual network (VNet), which will contain your SQL m
 
 9. On the **Review + create** tab, ensure the **Validation passed** message is displayed and select **Create**. It will take a few seconds for the virtual network to provision.
 
-10. When it completes, you will get a notification in the Azure portal that the deployment succeeded. Select **Go to resource** within the notification.
+10. When it completes, you will get a notification in the Azure portal the deployment succeeded. Select **Go to resource** within the notification.
 
    ![The Go to resource button is highlighted in the deployment succeeded notification in the Azure portal.](media/vnet-go-to-resource.png "Deployment succeeded notification")
 
@@ -529,9 +529,9 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
 
-8. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
+8. Select **Yes** to connect, if prompted the identity of the remote computer cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
+   ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
 9. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
 
@@ -612,9 +612,9 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
-5. Select **Yes** to connect, if prompted that the identity of the remote computer cannot be verified.
+5. Select **Yes** to connect, if prompted the identity of the remote computer cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
+   ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
 6. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
 
@@ -687,7 +687,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 10. Select **OK** in the dialog when the database restore is complete.
 
-    ![A dialog is displayed with a message that the database WideWorldImporters was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
+    ![A dialog is displayed with a message the database WideWorldImporters was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
 
 ### Configure database user and service
 

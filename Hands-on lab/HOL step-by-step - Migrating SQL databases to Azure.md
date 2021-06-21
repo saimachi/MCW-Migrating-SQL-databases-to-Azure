@@ -148,9 +148,9 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
-8. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
+8. Select **Yes** to connect if prompted the remote computer's identity cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
+   ![In the Remote Desktop Connection dialog box, a warning states the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
 9. Once logged in, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering "sql server" into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio 17** from the search results.
 
@@ -389,7 +389,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
    ![The Yes button is highlighted in the Confirm Account Change dialog.](media/confirm-account-change.png "Confirm Account Change")
 
-6. Observe that the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
+6. Observe the **Log On As** value for the SQL Server (MSSQLSERVER) service changed to `./sqlmiuser`.
 
    ![In the list of SQL Server Services, the SQL Server (MSSQLSERVER) service is highlighted.](media/sql-server-service.png "SQL Server Services")
 
@@ -805,9 +805,9 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
 
-7. Select **Yes** to connect if prompted that the remote computer's identity cannot be verified.
+7. Select **Yes** to connect if prompted the remote computer's identity cannot be verified.
 
-   ![In the Remote Desktop Connection dialog box, a warning states that the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
+   ![In the Remote Desktop Connection dialog box, a warning states the remote computer's identity cannot be verified and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
 8. Once logged in, open File Explorer by selecting it in the Windows start bar.
 
@@ -851,7 +851,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
     ![The Publish button is highlighted on the Publish page in Visual Studio.](media/visual-studio-publish-web-app.png "Publish")
 
-19. When the publish completes, you will see a message on the Visual Studio Output page that the publish succeeded.
+19. When the publish completes, you will see a message on the Visual Studio Output page the publish succeeded.
 
     ![The Publish Succeeded message is displayed in the Visual Studio Output pane.](media/visual-studio-output-publish-succeeded.png "Visual Studio")
 
@@ -907,7 +907,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 12. When prompted that changes to application settings and connection strings will restart your application, select **Continue**.
 
-    ![The prompt warning that the application will be restarted is displayed, and the Continue button is highlighted.](media/app-service-restart.png "Restart prompt")
+    ![The prompt warning the application will be restarted is displayed, and the Continue button is highlighted.](media/app-service-restart.png "Restart prompt")
 
 13. Select **Overview** to the left of the Configuration blade to return to the overview blade of your App Service.
 
@@ -1039,7 +1039,7 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![The values specified above are entered into the Network Feature Status dialog.](media/app-service-vnet-network-feature-status.png "Network Feature Status configuration")
 
-5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select **Refresh** to see the details. You should see that the certificate status is Certificates in sync. **Note**: If the certificate status is not in sync, try hitting refresh, as it can take a moment for that status to be reflected.
+5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select **Refresh** to see the details. You should see the certificate status is Certificates in sync. **Note**: If the certificate status is not in sync, try hitting refresh, as it can take a moment for that status to be reflected.
 
    ![The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted.](media/app-service-vnet-details.png "App Service")
 
@@ -1055,7 +1055,7 @@ In this task, you verify your web application now loads, and you can see the hom
 
    ![The App service URL is highlighted.](media/app-service-url.png "App service URL")
 
-2. Verify that the web site and data are loaded correctly. The page should look similar to the following:
+2. Verify the web site and data are loaded correctly. The page should look similar to the following:
 
    ![Screenshot of the WideWorldImporters Operations Web App.](media/wwi-web-app.png "WideWorldImporters Web")
 
@@ -1073,11 +1073,11 @@ In this exercise, you enable set up some of the advanced security features of SQ
 
 ### Task 1: Configure Data Discovery and Classification
 
-In this task, you review the [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) feature of Azure SQL. Data Discovery & Classification introduces a new tool for discovering, classifying, labeling, and reporting the sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (e.g., business, financial, healthcare) can play a pivotal role in your organizational information protection stature.
+In this task, you review the [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) feature of Azure SQL. Data Discovery & Classification introduces a new tool for discovering, classifying, labeling, and reporting sensitive data in your databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in your database, not just the database. Discovering and classifying your most sensitive data (e.g., business, financial, healthcare) can play a pivotal role in your organizational information protection stature.
 
 1. On the WideWorldImporters Managed database blade, select the **Data Discovery & Classification** from the left-hand menu.
 
-2. In the **Data Discovery & Classification** blade, select the info link with the message **We have found 35 columns with classification recommendations**.
+2. In the **Data Discovery & Classification** blade, select the info link with the message, **We have found 35 columns with classification recommendations**.
 
    ![The Data Discovery & Classification tile is displayed.](media/ads-data-discovery-and-classification-pane.png "Data Discovery & Classification Dashboard")
 
@@ -1105,13 +1105,13 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
    ![The values specified above are entered into the Add classification dialog.](media/ads-data-discovery-and-classification-add-classification.png "Add classification")
 
-8. Notice that the **Sales - CreditCard - CardNumber** field disappears from the recommendations list, and the number of recommendations drops by 1.
+8. Notice the **Sales - CreditCard - CardNumber** field disappears from the recommendations list, and the number of recommendations drops by 1.
 
 9. Select **Save** on the toolbar of the Data Classification window. It may take several minutes for the save to complete.
 
    ![Save the updates to the classified columns list.](media/ads-data-discovery-and-classification-save-button.png "Save")
 
-10. Other recommendations you can review are the **HumanResources - Employee** fields for **NationIDNumber** and **BirthDate**. Note that the recommendation service flagged these fields as **Confidential - GDPR**. WWI maintains data about gamers from around the world, including Europe, so having a tool that helps them discover data that may be relevant to GDPR compliance is very helpful.
+10. Other recommendations you can review are the **HumanResources - Employee** fields for **NationIDNumber** and **BirthDate**. Note the recommendation service flagged these fields as **Confidential - GDPR**. WWI maintains data about gamers from around the world, including Europe, so having a tool that helps them discover data that may be relevant to GDPR compliance is very helpful.
 
     ![GDPR information is highlighted in the list of recommendations](media/ads-data-discovery-and-classification-recommendations-gdpr.png "Data Discovery & Classification")
 
@@ -1159,11 +1159,11 @@ In this task, you review an assessment report generated by Azure Defender for th
 
    ![The Vulnerability assessment scan button is selected in the toolbar.](media/vulnerability-assessment-scan.png "Scan")
 
-3. When the scan completes, a dashboard displaying the number of failing and passing checks, along with a breakdown of the risk summary by severity level is displayed.
+3. When the scan completes, a dashboard will display the number of failing and passing checks, along with a breakdown of the risk summary by severity level.
 
    ![The Vulnerability Assessment dashboard is displayed.](media/sql-mi-vulnerability-assessment-dashboard.png "Vulnerability Assessment dashboard")
 
-4. In the scan results, take a few minutes to browse both the Failed and Passed checks, and review the types of checks that are performed. In the **Failed** the list, locate the security check for **Transparent data encryption**. This check has an ID of **VA1219**.
+4. In the scan results, browse both the Failed and Passed checks.  Also, review the types of checks that are performed. In the **Failed** the list, locate the security check for **Transparent data encryption**. This check has an ID of **VA1219**.
 
    ![The VA1219 finding for Transparent data encryption is highlighted.](media/sql-mi-vulnerability-assessment-failed-va1219.png "Vulnerability assessment")
 
@@ -1202,7 +1202,7 @@ In this task, you review an assessment report generated by Azure Defender for th
 
    > You turn transparent data encryption on and off on the database level. To enable transparent data encryption on a database in Azure SQL Managed Instance use must use T-SQL.
 
-9. Select **Execute** from the SSMS toolbar. After a few seconds, you will see a message that the "Commands completed successfully."
+9. Select **Execute** from the SSMS toolbar. After a few seconds, you will see a message the "Commands completed successfully."
 
 10. You can verify the encryption state and view information the associated encryption keys by using the [sys.dm_database_encryption_keys view](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql). Select **New Query** on the SSMS toolbar again, and paste the following query into the new query window:
 
@@ -1218,11 +1218,11 @@ In this task, you review an assessment report generated by Azure Defender for th
 
     > By default, service-managed transparent data encryption is used. A transparent data encryption certificate is automatically generated for the server that contains the database.
 
-12. Return to the Azure portal and the Azure Defender for SQL's Vulnerability Assessment blade of the `WideWorldImporters` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
+12. Return to the Azure portal and select the Azure Defender for SQL's Vulnerability Assessment blade of the `WideWorldImporters` managed database. On the toolbar, select **Scan** to start a new assessment of the database.
 
     ![The Vulnerability assessment scan button is selected in the toolbar.](media/vulnerability-assessment-scan.png "Scan")
 
-13. When the scan completes, select the **Findings** tab, enter **VA1219** into the search filter box, and observe that the previous failure is no longer in the findings list.
+13. When the scan completes, select the **Findings** tab, enter **VA1219** into the search filter box, and observe the previous failure is no longer in the findings list.
 
     ![The Findings tab is highlighted, and VA1219 is entered into the search filter. The list displays no results.](media/sql-mi-vulnerability-assessment-failed-filter-va1219.png "Scan Findings List")
 
@@ -1266,7 +1266,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
    > The SQL script above creates a new user in the database named `DDMUser` and grants that user `SELECT` rights on the `Sales.CreditCard` table.
 
-5. Select **Execute** from the SSMS toolbar to run the query. You will get a message that the commands completed successfully in the Messages pane.
+5. Select **Execute** from the SSMS toolbar to run the query. You will get a message the commands completed successfully in the Messages pane.
 
 6. With the new user created, run a quick query to observe the results. Select **New Query** again, and paste the following into the new query window.
 
