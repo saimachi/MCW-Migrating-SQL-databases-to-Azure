@@ -18,7 +18,7 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2020 Microsoft Corporation. All rights reserved.
+© 2021 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
@@ -26,7 +26,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- TOC -->
 
-- [Contents](#contents)
 - [Migrating SQL databases to Azure before the hands-on lab setup guide](#migrating-sql-databases-to-azure-before-the-hands-on-lab-setup-guide)
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
@@ -123,7 +122,7 @@ Before running the ARM template, it is beneficial to quickly verify that you can
 
    > **Note**: If you see the message stating that Managed Instance creation is not available for the chosen subscription type, follow the instructions for [obtaining a larger quota for SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#obtaining-a-larger-quota-for-sql-managed-instance) before proceeding with the following steps.
 
-6. Be happy if you don't have any warning! Just **cancel** current operation by closing blade.
+6. Be happy if you don't have any warnings! Just **cancel** current operation by closing blade.
 
    ![The closing button is located on top left below user name.](media/cancel-resource-sql-mi.png "Cancel SQL MI resource creation")
 
@@ -158,7 +157,7 @@ You are now ready to begin the ARM template deployment.
 
 4. Whether use **Load file** button or paste content from file **Hands-on lab/lab-files/ARM-template/azure-deploy.json** from repository.
 
-5. Then use **Save** button to validate template.
+5. Select the **Save** button to validate the template.
 
    ![Load file or paste content from lab file azure-deploy.json from ARM-template folder .](media/load-template-file.png "Load template file")
 
@@ -187,6 +186,6 @@ You are now ready to begin the ARM template deployment.
 
 > **Important**
 >
-> As soon as the SqlServer2008 VM is up, you should check if that `WideWorldImporters` database is up. Indeed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
+> As soon as the SqlServer2008 VM is up, verify the `WideWorldImporters` database is up. The configuration script used by the ARM template may have failed during the VM setup. In this case, follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
 
 You should follow all steps provided *before* performing the Hands-on lab.
