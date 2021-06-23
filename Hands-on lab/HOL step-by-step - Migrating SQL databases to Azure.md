@@ -18,11 +18,11 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2020 Microsoft Corporation. All rights reserved.
+© 2021 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 <!-- TOC -->
 
@@ -34,9 +34,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Exercise 1: Perform database assessments](#exercise-1-perform-database-assessments)
     - [Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM](#task-1-connect-to-the-wideworldimporters-database-on-the-sqlserver2008-vm)
     - [Task 2: Perform assessment for migration to Azure SQL Database](#task-2-perform-assessment-for-migration-to-azure-sql-database)
-      - [Install Framework 4.8](#install-framework-48)
-      - [Install migration assistant](#install-migration-assistant)
-      - [Launch migration assistant](#launch-migration-assistant)
     - [Task 3: Perform assessment for migration to Azure SQL Managed Instance](#task-3-perform-assessment-for-migration-to-azure-sql-managed-instance)
   - [Exercise 2: Migrate the database to SQL MI](#exercise-2-migrate-the-database-to-sql-mi)
     - [Task 1: Create an SMB network share on the SqlServer2008 VM](#task-1-create-an-smb-network-share-on-the-sqlserver2008-vm)
@@ -314,9 +311,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
    ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
 
-   > **Note**
-   >
-   > The assessment report for migrating the `WideWorldImporters` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full-text search changes do not impact the migration of the `WideWorldImporters` database to SQL MI.
+   > **Note**: The assessment report for migrating the `WideWorldImporters` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full-text search changes do not impact the migration of the `WideWorldImporters` database to SQL MI.
 
 The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
 
@@ -368,9 +363,7 @@ In this task, you use the SQL Server Configuration Manager to update the service
 
    ![In the Windows Start menu, "sql configuration" is entered into the search box, and SQL Server Configuration Manager is highlighted in the search results.](media/windows-start-sql-configuration-manager.png "Windows search")
 
-   > **Note**
-   >
-   > Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which does not work for the installed SQL Server 2008 R2 database.
+   > **Note**: Be sure to choose **SQL Server Configuration Manager**, and not **SQL Server 2017 Configuration Manager**, which does not work for the installed SQL Server 2008 R2 database.
 
 2. In the SQL Server Configuration Managed dialog, select **SQL Server Services** from the tree view on the left, then right-click **SQL Server (MSSQLSERVER)** in the list of services and select **Properties** from the context menu.
 
@@ -462,9 +455,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
    ![In the You have no storage mounted dialog, a subscription has been selected, and the Create Storage button is highlighted.](media/cloud-shell-create-storage.png "Azure Cloud Shell")
 
-   > **Note**
-   >
-   > If the creation fails, you may need to select **Advanced settings** and specify the subscription, region, and resource group for the new storage account.
+   > **Note**: If the creation fails, you may need to select **Advanced settings** and specify the subscription, region, and resource group for the new storage account.
 
 4. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and you are presented with a PS Azure prompt.
 
@@ -477,9 +468,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
    az vm list-ip-addresses -g $resourceGroup -n SqlServer2008 --output table
    ```
 
-   > **Note**
-   >
-   > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+   > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions, then copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 6. Within the output, locate and copy the value of the `ipAddress` property below the `PublicIPAddresses` field. Paste the value into a text editor, such as **Notepad.exe** or **VSCode**, for later reference.
 
@@ -491,9 +480,7 @@ In this task, you use the Azure Cloud shell to retrieve the information necessar
 
 In this task, use the Azure Cloud Shell to create an Azure Active Directory (Azure AD) application and service principal (SP) that will provide DMS access to Azure SQL MI. You will grant the SP permissions to the hands-on-lab-SUFFIX resource group and your subscription.
 
-> **Important!**
->
-> You must have sufficient rights within your Azure AD tenant to create an Azure Active Directory application and service principal and assign roles on your subscription to complete this task.
+> **Important**: You must have sufficient rights within your Azure AD tenant to create an Azure Active Directory application and service principal and assign roles on your subscription to complete this task.
 
 1. Next, at the Cloud Shell prompt, issue a command to create a service principal named **wide-world-importers** and assign it contributor permissions to your **hands-on-lab-SUFFIX** resource group.
 
@@ -663,9 +650,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    ![On the WideWorldImporters blade, the Refresh button is highlighted. A status of Uploaded is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-queued.png "Migration wizard")
 
-   > **Note**
-   >
-   > If you don't see it in the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
+   > **Note**: If you don't see it in the transaction logs entry, continue selecting refresh every 10-15 seconds until it appears.
 
 10. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
 
@@ -687,9 +672,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     ![A status of Completed is displayed in the Complete cutover dialog.](media/dms-migration-wizard-complete-cutover-completed.png "Migration Wizard")
 
-    > **Note**
-    >
-    > If the progress bar has not moved after a few minutes, you can proceed to the next step and monitor the cutover progress on the WwiMigration blade by selecting refresh.
+    > **Note**: If the progress bar has not moved after a few minutes, you can proceed to the next step and monitor the cutover progress on the WwiMigration blade by selecting refresh.
 
 15. To return to the WwiMigration blade, close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the WideWorldImporters blade. Select **Refresh**, and you should see a status of **Completed** from the WideWorldImporters database.
 
@@ -720,9 +703,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
    az sql mi list --resource-group $resourceGroup
    ```
 
-   > **Note**
-   >
-   > If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
+   > **Note**: If you have multiple Azure subscriptions, and the account you are using for this hands-on lab is not your default account, you may need to run `az account list --output table` at the Azure Cloud Shell prompt to output a list of your subscriptions. Copy the Subscription Id of the account you are using for this lab and then run `az account set --subscription <your-subscription-id>` to set the appropriate account for the Azure CLI commands.
 
 5. Within the above command's output, locate and copy the value of the `fullyQualifiedDomainName` property. Paste the value into a text editor, such as Notepad.exe, for reference below.
 
@@ -772,9 +753,7 @@ Duration: 30 minutes
 
 With the `WideWorldImporters` database now running on SQL MI in Azure, the next step is to make the required modifications to the WideWorldImporters gamer information web application.
 
-> **Note**
->
-> Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance).
+> **Note**: Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance).
 
 ### Task 1: Deploy the web app to Azure
 
@@ -1043,9 +1022,7 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![The details of the VNet Configuration are displayed. The Certificate Status, Certificates in sync, is highlighted.](media/app-service-vnet-details.png "App Service")
 
-   > **Note**
-   >
-   > If you receive a message adding the Virtual Network to Web App failed, select **Disconnect** on the VNet Configuration blade, and repeat steps 3 - 5 above.
+   > **Note**: If you receive a message adding the Virtual Network to Web App failed, select **Disconnect** on the VNet Configuration blade, and repeat steps 3 - 5 above.
 
 ### Task 4: Open the web application
 
@@ -1059,9 +1036,7 @@ In this task, you verify your web application now loads, and you can see the hom
 
    ![Screenshot of the WideWorldImporters Operations Web App.](media/wwi-web-app.png "WideWorldImporters Web")
 
-   > **Note**
-   >
-   > It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the Azure Web App's toolbar.
+   > **Note**: It can often take several minutes for the network configuration to be reflected in the web app. If you get an error screen, try selecting Refresh a few times in the browser window. If that does not work, try selecting **Restart** on the Azure Web App's toolbar.
 
 3. Congratulations, you successfully connected your application to the new SQL MI database.
 
@@ -1177,9 +1152,7 @@ In this task, you review an assessment report generated by Azure Defender for th
 
    ![The details of the VA1219 - Transparent data encryption should be enabled finding are displayed with the description, impact, and remediation fields highlighted.](media/sql-mi-vulnerability-assessment-failed-va1219-remediation.png "Vulnerability Assessment")
 
-   > **Note**
-   >
-   > Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
+   > **Note**: Transparent data encryption (TDE) needs to be manually enabled for Azure SQL Managed Instance. TDE helps protect Azure SQL Database, Azure SQL Managed Instance, and Azure Data Warehouse against the threat of malicious activity. It performs real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
 
 7. On your JumpBox VM, open **Microsoft SQL Server Management Studio 18** from the Start menu, and enter the following information in the **Connect to Server** dialog.
 
@@ -1342,9 +1315,7 @@ From the findings of the Data Discovery & Classification report in ADS, you saw 
    ALTER COLUMN [LoginEmail] NVARCHAR(250) MASKED WITH (FUNCTION = 'Email()');
    ```
 
-   > **Note**
-   >
-   > Observe the use of the built-in `Email()` masking function above. This masking function is one of several pre-defined masks available in SQL Server databases.
+   > **Note**: Observe the use of the built-in `Email()` masking function above. This masking function is one of several pre-defined masks available in SQL Server databases.
 
 4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
 
@@ -1441,9 +1412,7 @@ In this exercise, you will de-provision all Azure resources that you created in 
 
 1. In the Azure portal, select **Resource groups** from the left-hand menu, and locate and delete the **hands-on-lab-SUFFIX** following resource group.
 
-   > **Note**
-   >
-   > Deleting a resource group containing SQL MI does not always work the first time. The deletion failure can result in a few networking components (route table, SQL MI NSG, and VNet) remaining in the resource group, along with the SQL MI instance, after the first delete attempt. In this case, wait for the first process to complete, and then attempt to delete the resource group a second time. _You may need to allow several hours or more between delete attempts_.
+   > **Note**: Deleting a resource group containing SQL MI does not always work the first time. The deletion failure can result in a few networking components (route table, SQL MI NSG, and VNet) remaining in the resource group, along with the SQL MI instance, after the first delete attempt. In this case, wait for the first process to complete, and then attempt to delete the resource group a second time. _You may need to allow several hours or more between delete attempts_.
 
 ### Task 2: Delete the wide-world-importers service principal
 
