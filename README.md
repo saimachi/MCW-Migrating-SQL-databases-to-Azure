@@ -10,7 +10,7 @@ To facilitate online gameplay, they host gaming services on-premises using rente
 
 WWI is excited to learn more about how migrating to the cloud can improve its overall processes and address the concerns and issues with its on-premises setup. They are looking for a proof-of-concept (PoC) for migrating their gaming VMs and databases into the cloud. With an end goal of migrating their entire service to Azure, the WWI engineering team is also interested in understanding better what their overall architecture will look like in the cloud.
 
-November 2020
+June 2021
 
 ## Target audience
 
