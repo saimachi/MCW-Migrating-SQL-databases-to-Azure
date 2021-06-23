@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-November 2020
+June 2021
 </div>
 
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
@@ -18,17 +18,19 @@ Microsoft may have patents, patent applications, trademarks, copyrights, or othe
 
 The names of manufacturers, products, or URLs are provided for informational purposes only and Microsoft makes no representations and warranties, either expressed, implied, or statutory, regarding these manufacturers or the use of the products with any Microsoft technologies. The inclusion of a manufacturer or product does not imply endorsement of Microsoft of the manufacturer or product. Links may be provided to third party sites. Such sites are not under the control of Microsoft and Microsoft is not responsible for the contents of any linked site or any link contained in a linked site, or any changes or updates to such sites. Microsoft is not responsible for webcasting or any other form of transmission received from any linked site. Microsoft is providing these links to you only as a convenience, and the inclusion of any link does not imply endorsement of Microsoft of the site or the products contained therein.
 
-© 2020 Microsoft Corporation. All rights reserved.
+© 2021 Microsoft Corporation. All rights reserved.
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
 
+<!-- TOC -->
+
 - [Trainer information](#trainer-information)
-  - [Role of the trainer](#role-of-the-trainer)
-  - [Whiteboard design session flow](#whiteboard-design-session-flow)
-  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
+    - [Role of the trainer](#role-of-the-trainer)
+    - [Whiteboard design session flow](#whiteboard-design-session-flow)
+    - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
+    - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
 - [Migrating SQL databases to Azure whiteboard design session student guide](#migrating-sql-databases-to-azure-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
@@ -40,15 +42,17 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Step 3: Present the solution](#step-3-present-the-solution)
   - [Wrap-up](#wrap-up)
   - [Additional references](#additional-references)
-- [Migrating SQL databases to Azure whiteboard design session trainer guide](#migrating-sql-databases-to-azure-whiteboard-design-session-trainer-guide)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-  - [Step 3: Present the solution](#step-3-present-the-solution-1)
-  - [Wrap-up](#wrap-up-1)
-  - [Preferred target audience](#preferred-target-audience)
-  - [Preferred solution](#preferred-solution)
-  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+- [Migrating SQL databases to Azure whiteboard design session student guide](#migrating-sql-databases-to-azure-whiteboard-design-session-trainer-guide)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
+    - [Step 3: Present the solution](#step-3-present-the-solution-1)
+    - [Wrap-up](#wrap-up-1)
+    - [Preferred target audience](#preferred-target-audience)
+    - [Preferred solution](#preferred-solution)
+    - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
+    - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
+
+<!-- TOC -->
 
 # Trainer information
 
@@ -78,7 +82,7 @@ An amazing trainer:
 
 - Effectively leads the feedback process.
 
-## Whiteboard design session flow
+## Whiteboard design session flow 
 
 Each whiteboard design session uses the following flow:
 
@@ -122,7 +126,7 @@ Present solution to your customer:
 
 **Wrap-up (15 minutes)**
 
-- Review preferred solution
+-   Review preferred solution
 
 ## Before the whiteboard design session: How to prepare
 
@@ -170,7 +174,7 @@ In this whiteboard design session, you work in a group to develop a plan for mig
 
 At the end of this whiteboard design session, you will be better able to design a cloud migration solution for business-critical applications and databases.
 
-## Step 1: Review the customer case study
+## Step 1: Review the customer case study 
 
 **Outcome**
 
@@ -192,13 +196,13 @@ Wide World Importers (WWI) is the developer of the popular Tailspin Toys brand o
 
 They decided to take a conservative approach while introducing online gameplay, hosting the gaming services on-premises using rented hardware. This approach allowed them to enter the online gaming market with a minimal upfront investment and lower risk. For each game, their gaming services setup consists of three virtual machines running the gaming software and five game databases hosted on a single SQL Server 2008 R2 Enterprise instance. They are using the Service Broker feature of SQL Server for sending messages between gaming databases. In addition to the dedicated gaming VMs and databases, their gaming services include authentication and gateway VMs and databases shared across all their games.
 
-Molly Fischer, the CIO of WWI, stated that the response to adding online gameplay has far exceeded their initial estimates. While their games' increased popularity has been good for profitability, the rapid increase in demand for their services has made supporting the current setup problematic. Compounding this problem is the release schedule for new versions of their most popular games. They have a target schedule of releasing a new version every 12 - 18 months, which means adding new VMs and a database server for each new version they release, while also maintaining the services for all previous game versions. Each new release results in increased rental equipment costs, as well as a steadily growing workload on their already overburdened staff. Internally, they have discussed end-of-life scenarios for older game versions, but the number of players remains high for many of these games, so no decisions have been made about when to terminate support for those games.
+Molly Fischer, the CIO of WWI, stated the response to adding online gameplay has far exceeded their initial estimates. While their games' increased popularity has been good for profitability, the rapid increase in demand for their services has made supporting the current setup problematic. Compounding this problem is the release schedule for new versions of their most popular games. They have a target schedule of releasing a new version every 12 - 18 months, which means adding new VMs and a database server for each new version they release, while also maintaining the services for all previous game versions. Each new release results in increased rental equipment costs, as well as a steadily growing workload on their already overburdened staff. Internally, they have discussed end-of-life scenarios for older game versions, but the number of players remains high for many of these games, so no decisions have been made about when to terminate support for those games.
 
 At its foundation, WWI is a game development company, made up primarily of software developers. The few dedicated database and infrastructure resources they do have are struggling to keep up with an ever-expanding workload. Increasingly, game developers have had to step in to support the infrastructure, which is taking time away from game development and has resulted in several missed release timelines. Molly has expressed concerns over adding additional non-developer resources, as she feels this is outside of their core business. She hopes that migrating their services from on-premises to the cloud can alleviate some of their infrastructure management issues while simultaneously helping them refocus their efforts on delivering business value by releasing new and improved games.
 
 WWI indicated that their current hardware rental agreement ends in three months, and they're hoping to avoid signing another contract by migrating their existing VMs into Azure. They understand three months is a short timeframe, but believe a lift-and-shift approach of their gaming service VMs might be possible if they dedicate the appropriate resources. They already have VM images for each of their games that could be used in the process. They would like to know more about what a lift-and-shift migration might involve so they can plan resource allocation accordingly. They are also interested in learning more about whether this approach will provide better scaling options for the VM and database deployments on a per-game basis. Currently, they use the same number of VMs and databases for each game and version but have frequently run into issues hosting more gamers for popular games. They would like the ability to scale up to meet demand on new releases and more popular games, while also being able to scale down for older and less popular games. They would also like to investigate the possibility of globally distributing their gaming services to address latency issues reported by gamers accessing their services from other locations worldwide.
 
-Of great concern to the WWI leadership team is that SQL Server 2008 R2 is now beyond the end of support. They are interested in hearing more about fully-managed platform-as-a-service (PaaS) options in Azure for their databases. They lack employees with any real database administration skills, so they feel this would be an excellent first step towards reducing their infrastructure workload. They have requested assistance in assessing any compatibility issues between their current databases and PaaS options in Azure. They have read that the Service Broker feature of SQL Server is partially supported in Azure and would like clarification on whether they can continue to use this with the PaaS database offerings. They are using this functionality for several critical gaming processes, and cannot afford to lose this capability when migrating their gaming databases to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the gaming services to use an alternative message broker.
+Of great concern to the WWI leadership team is that SQL Server 2008 R2 is now beyond the end of support. They are interested in hearing more about fully-managed platform-as-a-service (PaaS) options in Azure for their databases. They lack employees with any real database administration skills, so they feel this would be an excellent first step towards reducing their infrastructure workload. They have requested assistance in assessing any compatibility issues between their current databases and PaaS options in Azure. They have read the Service Broker feature of SQL Server is partially supported in Azure and would like clarification on whether they can continue to use this feature with the PaaS database offerings. They are using this functionality for several critical gaming processes, and cannot afford to lose this capability when migrating their gaming databases to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the gaming services to use an alternative message broker.
 
 In addition to their gaming services, WWI is also interested in migrating their data warehouse and its associated services to the cloud. The data warehouse uses a Symmetric Multi-Processing (SMP) based architecture and is hosted on a dedicated SQL Server 2008 R2 instance. The data warehouse is presently around 20TB in size and is growing at a rate of about 250GB per month. They use the data warehouse to build SQL Server Analysis Services (SSAS) cubes and create reports using SQL Server Reporting Services (SSRS). The SSRS reports are deployed to sites in their SharePoint environment. They feel the data warehouse's performance is adequate for meeting the requirement of presenting data to business users via BI components, such as SSAS cubes, so they indicated a desire to stick with the current architecture, if possible. They do not believe the existing data warehouse requires a Massively Parallel Processing (MPP) architecture at this time. They collect numerous game telemetry data points, including remote monitoring and analysis of game servers and user telemetry (i.e., data on players' behavior, such as their interaction with games and other players). Code embedded in the gaming software transmits data to the gaming databases. Telemetry data is then loaded into the data warehouse hourly using SQL Server Integration Services (SSIS) packages. They also noted that their customer service personnel and developers frequently connect to the data warehouse for various activities.
 
@@ -267,7 +271,7 @@ Directions: With all participants at your table, answer the following questions 
 
 Directions: With all participants at your table, respond to the following questions on a flip chart:
 
-_High-level architecture_
+*High-level architecture*
 
 1. Without getting into the details (the following sections address the particulars), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
 
@@ -277,11 +281,11 @@ _High-level architecture_
 
 4. What functionality should you include in the PoC?
 
-_Game databases_
+*Game databases*
 
 1. What are the factors that WWI should consider when deciding between PaaS or IaaS options for hosting their SQL databases in Azure?
 
-2. From the options for hosting SQL databases in Azure, which would you recommend for hosting their gaming databases, and why do you think that the best choice? What pricing tier would you recommend?
+2. From the options for hosting SQL databases in Azure, which would you recommend for hosting their gaming databases, and why do you think that option is the best choice? What pricing tier would you recommend?
 
 3. How would you handle the data migration? Provide step-by-step instructions from assessment to data migration.
 
@@ -289,7 +293,7 @@ _Game databases_
 
 5. Are there features of a PaaS database service that could help to reduce the impact of read-only reports running directly against their gaming databases?
 
-_Gaming services_
+*Gaming services*
 
 1. How should WWI handle migrating their gaming services VMs into Azure?
 
@@ -299,7 +303,7 @@ _Gaming services_
 
 4. How can the gaming services be made highly-available?
 
-_Data warehouse and reporting_
+*Data warehouse and reporting*
 
 1. What would you recommend as the target platform for their data warehouse in Azure?
 
@@ -307,7 +311,7 @@ _Data warehouse and reporting_
 
 3. What is the upgrade path for their SSIS packages, SSAS cubes, and SSRS reports?
 
-_Regional outages_
+*Regional outages*
 
 1. How can their gaming services be recovered within the specified RTO/RPO?
 
@@ -434,7 +438,7 @@ Migrate SQL Server to an Azure SQL Managed Instance  - Guide         | <https://
 
 - Have the table participants reconvene with the larger session group to hear the facilitator/SME share the following preferred solution.
 
-## Preferred target audience
+##  Preferred target audience
 
 Molly Fischer, Chief Information Officer (CIO), Wide World Importers
 
@@ -442,7 +446,7 @@ The primary audience is business and technology decision-makers. From the case s
 
 ## Preferred solution
 
-_High-level architecture_
+*High-level architecture*
 
 1. Without getting into the details (the following sections address the particulars), diagram your initial vision for handling the top-level requirements for the game databases, gaming services VMs, data warehouse, and associated services. You will refine this diagram as you proceed.
 
@@ -472,7 +476,7 @@ _High-level architecture_
 
    _Prepay for reserved capacity_
 
-   It is also recommended that the customer prepay for compute resources with [reserved capacity](https://docs.microsoft.com/azure/azure-sql/database/reserved-capacity-overview) to save compared to pay-as-you-go prices. With Azure SQL Database reserved capacity, they would make an upfront commitment on SQL Database for one or three years to get a significant discount on the compute costs, saving them up to 80 percent.
+   It is also recommended the customer prepay for compute resources with [reserved capacity](https://docs.microsoft.com/azure/azure-sql/database/reserved-capacity-overview) to save compared to pay-as-you-go prices. With Azure SQL Database reserved capacity, they would make an upfront commitment on SQL Database for one or three years to get a significant discount on the compute costs, saving them up to 80 percent.
 
    _Azure Database Migration Service_
 
@@ -519,7 +523,7 @@ _High-level architecture_
      - Gaming services VNet for hosting gaming services VMs, with VNet peering back to SQL MI VNet.
      - Secure channel for connecting to the databases from on-premises development machines for troubleshooting.
 
-_Game databases_
+*Game databases*
 
 1. What are the factors that WWI should consider when deciding between PaaS or IaaS options for hosting their SQL databases in Azure?
 
@@ -533,7 +537,7 @@ _Game databases_
 
    - **Time to move to Azure**: SQL Server on an Azure VM will be an exact match of their environment, so migration from on-premises to Azure SQL VMs would be no different than moving their on-premises databases to another on-premises database server. SQL Managed Instance also enables straightforward migration. However, there might be some changes that they would need to apply before they can migrate to a managed instance. SQL DB can be a good target, but there are more feature and compatibility concerns, so this could be the slowest option, depending on the on-premises databases.
 
-2. From the options for hosting SQL databases in Azure, which would you recommend for hosting their gaming databases, and why do you think that the best choice? What pricing tier would you recommend?
+2. From the options for hosting SQL databases in Azure, which would you recommend for hosting their gaming databases, and why do you think that option is the best choice? What pricing tier would you recommend?
 
    The recommended option for hosting their gaming databases in Azure is to use Azure SQL Managed Instance in the Business Critical service tier.
 
@@ -593,7 +597,7 @@ _Game databases_
 
    The feature is intended for applications that include logically separated read-only workloads, such as analytics. Therefore, they could gain performance benefits using this additional capacity at no extra cost.
 
-_Gaming services_
+*Gaming services*
 
 1. How should WWI handle migrating their gaming services VMs into Azure?
 
@@ -601,7 +605,7 @@ _Gaming services_
 
    They could also consider using [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) (ASR) to replicate their on-premises VMs into Azure VMs, but is not the recommended approach, as it is designed specifically for business continuity and disaster recovery. It could be used, however, to manage replication for on-premises VMs into Azure.
 
-   > Note: The Azure Migrate: Server Migration tool uses some back-end Site Recovery functionality for performing lift-and-shift migrations of some on-premises machines.
+   > **Note**: The Azure Migrate: Server Migration tool uses some back-end Site Recovery functionality for performing lift-and-shift migrations of some on-premises machines.
 
 2. What would you recommend for addressing the latency issues experienced by gamers from other regions of the world?
 
@@ -621,7 +625,7 @@ _Gaming services_
 
    Azure SQL Managed Instance comes with built-in high-availability. Transactional replication could be used to keep data in sync between multiple regions.
 
-_Data warehouse and reporting_
+*Data warehouse and reporting*
 
 1. What would you recommend as the target platform for their data warehouse in Azure?
 
@@ -655,7 +659,7 @@ _Data warehouse and reporting_
 
    There is no direct PaaS equivalent of SSRS. However, there are several options available for continuing to use the SSRS reports. The most straightforward, and possibly easiest, option is for WWI to migrate their SSRS server to run on an Azure VM (IaaS). Another approach is to rewrite their reports as paginated reports in Microsoft Power BI. If opting to move their reports into Power BI, customers should be aware of the [RDL Migration Tool](https://github.com/microsoft/RdlMigration), which can be used to assist with migrating existing SSRS reports from local servers to a Power BI workspace.
 
-_Regional outages_
+*Regional outages*
 
 1. How can their gaming services be recovered within the specified RTO/RPO?
 
@@ -747,7 +751,7 @@ _Regional outages_
 
    Customer applications can connect to managed instances and query and update databases inside the virtual network, peered virtual network, or network connected by VPN or Azure ExpressRoute. This network must use an endpoint and a private IP address.
 
-   To reduce some of the complexity of connecting to SQL MI, it is also possible to access SQL MI through a [secure public endpoint](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-overview). SQL MI has a dedicated public endpoint address, which is disabled by default. If enabled, the client-side outbound firewall and network security group rules limit outbound connectivity to this endpoint. It is recommended that the traffic be allowed to connect to limited to well-known IP addresses.
+   To reduce some of the complexity of connecting to SQL MI, it is also possible to access SQL MI through a [secure public endpoint](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-overview). SQL MI has a dedicated public endpoint address, which is disabled by default. If enabled, the client-side outbound firewall and network security group rules limit outbound connectivity to this endpoint. It is recommended the traffic be allowed to connect to limited to well-known IP addresses.
 
 4. We want to avoid "vendor lock-in" when moving to the cloud. Will using PaaS services for hosting our databases allow us to have a valid exit strategy? Or should we stick to using VMs in Azure for hosting our databases?
 
