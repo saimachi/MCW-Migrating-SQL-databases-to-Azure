@@ -171,43 +171,43 @@ In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the
 
 #### Install Framework 4.8
 
-As **Microsoft Data Migration Assistant** requires framework 4.8 to operate, please install it with hereinafter instructions.
+As **Microsoft Data Migration Assistant** requires framework 4.8 to operate, install as instructed below: 
 
    ![Migration assistant require framework .Net 4.8.](media/download-framework-4-8.png "Download framework 4.8")
 
-1. Download offline setup file from [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into Internet Explorer address bar.
+1. Download the offline setup file from [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into an Internet Explorer address bar.
 
-2. **Download** and **Run** installation package to proceed with new .Net framework 4.8 setup.
+2. **Download** and **Run** the installation package to proceed with new .Net framework 4.8 setup.
 
-3. Scroll down terms, then **Agree** license terms, and select the **Install** button.
+3. Scroll down terms, **Accept** the license terms, and select **Install**.
 
    ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
 
-4. After framework setup, **restarting** VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
+4. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
 
    ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
 #### Install migration assistant
 
-Install **Microsoft Data Migration Assistant** on SqlSever2008 VM, by accessing [editor's page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
+Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM, by accessing [editor's page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
 
-1. Open `https://www.microsoft.com/en-us/download/details.aspx?id=53595` url in Internet Explorer.
+1. Open `https://www.microsoft.com/en-us/download/details.aspx?id=53595` in Internet Explorer.
 
-2. Then use download button to get installation files.
+2. Select **Download** to get installation files.
 
-   ![Copy url to Internet explorer then download installation file.](media/download-migration-assistant.png "Download Migration Assistant")
+   ![Copy the URL into Internet explorer then download installation file.](media/download-migration-assistant.png "Download Migration Assistant")
 
 3. Agree and complete download, in order to proceed with installation. Install by executing downloaded file on SqlSever2008 VM.
 
    ![Proceed with complete installation when prompted.](media/proceed-complete-installation.png "Proceed complete installation")
 
-4. As with previous installation, start by selecting **Next**. Scroll down terms, then **Agree** license terms, and validate with **Install** button.
+4. As with the previous installation, start by selecting **Next**. Scroll down terms, then **Accept** the license terms, and validate with **Install** button.
 
 #### Launch migration assistant
 
-You can now proceed with data migration, by following steps:
+You can now proceed with data migration, by following these steps:
 
-1. On the SqlSever2008 VM, launch DMA from the Windows Start. It should appear highlighted, as you just installed it. Otherwise, you can access it using the Windows menu by typing **data migration** into the search bar, and then selecting **Microsoft Data Migration Assistant** in the search results.
+1. On the SqlSever2008 VM, launch DMA from the Windows Start. It should appear highlighted, as you just installed it. Otherwise, you can access it using the Windows menu by typing **data migration** into the search bar, and selecting **Microsoft Data Migration Assistant** in the search results.
 
    ![In the Windows Start menu, "data migration" is entered into the search bar, and Microsoft Data Migration Assistant is highlighted in the Windows start menu search results.](media/windows-start-menu-dma.png "Data Migration Assistant")
 
@@ -215,7 +215,7 @@ You can now proceed with data migration, by following steps:
 
    ![The new project icon is highlighted in DMA.](media/dma-new.png "New DMA project")
 
-3. In the New project pane, set **Project name** as `ToAzureSqlDb`
+3. In the New project pane, set the **Project name** as `ToAzureSqlDb`.
 
 4. Ensure following options are set with default values, then select **Create**.
 
@@ -226,7 +226,7 @@ You can now proceed with data migration, by following steps:
 
    ![The new project settings for doing a SQL Server to Azure SQL Database migration assessment are entered into the dialog.](media/dma-new-project-to-azure-sql-db.png "New project settings")
 
-5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and then select **Next**.
+5. On the **Options** screen, ensure **Check database compatibility** and **Check feature parity** are checked and select **Next**.
 
    ![Check database compatibility and check feature parity are checked on the Options screen.](media/dma-options.png "DMA options")
 
@@ -243,7 +243,7 @@ You can now proceed with data migration, by following steps:
 
    ![In the Connect to a server dialog, the values specified above are entered.](media/dma-connect-to-a-server.png "Connect to a server")
 
-8. On the **Add sources** dialog that appears next, check the box for **WideWorldImporters** and select **Add**.
+8. On the **Add sources** dialog that appears, check the box for **WideWorldImporters** and select **Add**.
 
    ![The WideWorldImporters box is checked on the Add sources dialog.](media/dma-add-sources.png "Add sources")
 
@@ -255,7 +255,7 @@ You can now proceed with data migration, by following steps:
 
     ![For a target platform of Azure SQL DB, feature parity shows two features that are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](media/dma-feature-parity-service-broker-not-supported.png "Database feature parity")
 
-    > The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
+    > **Note**: The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
 
 11. **Cancel** migration for this project by going **back** to home page.
 
@@ -437,7 +437,7 @@ To perform online data migrations, DMS looks for database and transaction log ba
 
     ![Screenshot of the dialog confirming the database backup was completed successfully.](media/ssms-backup-complete.png "Backup complete")
 
-As backup is done, you can close both **popup** and **management studio** window.
+As backup is done, you can close both **popup** and **management studio** windows.
 
 ### Task 4: Retrieve SQL MI and SQL Server 2008 VM connection information
 
@@ -598,7 +598,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
     ![In the migration monitoring window, a status of Log shipping in progress is highlighted.](media/dms-migration-wizard-status-log-files-uploading.png "Migration status")
 
-You can leave Azure Portal browser window open and come back to check that migration is over. This is perfect timing for a break.
+You can leave Azure Portal browser window open and come back to check that migration is complete. This is a perfect time for a break.
 
 ### Task 7: Perform migration cutover
 
@@ -654,7 +654,7 @@ Since you performed an "online data migration," the migration wizard continuousl
 
 10. Continue selecting **Refresh**, and you should see the **WideWorldImportersLog.trn** status change to **Uploaded**.
 
-    ![A status of Uplooaded is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-uploaded.png "Migration Wizard")
+    ![A status of Uploaded is highlighted next to the WideWorldImportersLog.trn file in the list of active backup files.](media/dms-migration-wizard-transaction-log-uploaded.png "Migration Wizard")
 
 11. After the transaction logs are uploaded, they are restored to the database. Once again, continue selecting **Refresh** every 10-15 seconds until you see the status change to **Restored**, which can take a minute or two.
 
@@ -906,7 +906,7 @@ In this exercise, you integrate the WWI App Service with the virtual network cre
 
 Point-to-Site connections use certificates to authenticate. Each client computer that connects to a VNet using Point-to-Site must have a client certificate installed. In this task, you will generate a client certificate from a self-signed root certificate.
 
-1. Switch over to your JumpBox VM, right-click on the windows 10 start menu, and select **Windows PowerShell (Admin) (2)** to open a new PowerShell session.
+1. Switch over to your JumpBox VM, right-click on the Windows 10 start menu, and select **Windows PowerShell (Admin) (2)** to open a new PowerShell session.
 
    ![Bottom left corner of the screen is highlighted. A context menu is open. Windows PowerShell (Admin) selection is highlighted.](media/new-powershell-session.png "Open new PowerShell session")
 
@@ -1138,7 +1138,7 @@ In this task, you review an assessment report generated by Azure Defender for th
 
    ![The Vulnerability Assessment dashboard is displayed.](media/sql-mi-vulnerability-assessment-dashboard.png "Vulnerability Assessment dashboard")
 
-4. In the scan results, browse both the Failed and Passed checks.  Also, review the types of checks that are performed. In the **Failed** the list, locate the security check for **Transparent data encryption**. This check has an ID of **VA1219**.
+4. In the scan results, browse both the Failed and Passed checks and review the types of checks that are performed. In the **Failed** the list, locate the security check for **Transparent data encryption**. This check has an ID of **VA1219**.
 
    ![The VA1219 finding for Transparent data encryption is highlighted.](media/sql-mi-vulnerability-assessment-failed-va1219.png "Vulnerability assessment")
 
