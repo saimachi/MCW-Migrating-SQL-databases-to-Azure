@@ -22,7 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 <!-- TOC -->
 
@@ -37,16 +37,16 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 <!-- /TOC -->
 
-## Migrating SQL databases to Azure before the hands-on lab setup guide
+# Migrating SQL databases to Azure before the hands-on lab setup guide
 
-### Requirements
+## Requirements
 
 - Microsoft Azure subscription must be pay-as-you-go or MSDN.
   - Trial subscriptions will _not_ work.
 
 > **Important**: You must have sufficient rights within your Azure AD tenant to create an Azure Active Directory application and service principal and assign roles on your subscription to complete this hands-on lab.
 
-### Before the hands-on lab
+## Before the hands-on lab
 
 Duration: 15 minutes
 
@@ -54,7 +54,7 @@ In this exercise, you set up your environment for use in the rest of the hands-o
 
 > **Important**: Many Azure resources require globally unique names. Throughout these steps, the word "SUFFIX" appears as part of resource names. You should replace this with your Microsoft alias, initials, or other value to ensure uniquely named resources.
 
-## Task 1: Create a resource group
+### Task 1: Create a resource group
 
 1. In the [Azure portal](https://portal.azure.com), select **Resource groups** from the Azure services list.
 
@@ -76,7 +76,7 @@ In this exercise, you set up your environment for use in the rest of the hands-o
 
 5. On the **Review + create** tab, ensure the Validation passed message is displayed and then select **Create**.
 
-## Task 2: Register the Microsoft DataMigration resource provider
+### Task 2: Register the Microsoft DataMigration resource provider
 
 In this task, you register the `Microsoft.DataMigration` resource provider with your Azure subscription. Registration of this resource provider is necessary to create an Azure Database Migration Service within your subscription.
 
@@ -100,7 +100,7 @@ In this task, you register the `Microsoft.DataMigration` resource provider with 
 
    ![Registered is highlighted next to the Microsoft.DataMigration resource provider.](media/resource-providers-datamigration-registered.png "Microsoft DataMigration Resource Provider")
 
-## Task 3: Validate subscription compatibility with SQL MI
+### Task 3: Validate subscription compatibility with SQL MI
 
 Before running the ARM template, it is beneficial to quickly verify that you can provision SQL Managed Instance in your subscription.
 
@@ -127,7 +127,7 @@ Before running the ARM template, it is beneficial to quickly verify that you can
 
    ![The closing button is located on top left below user name.](media/cancel-resource-sql-mi.png "Cancel SQL MI resource creation")
 
-## Task 4: Run ARM template to provision lab resources
+### Task 4: Run ARM template to provision lab resources
 
 In this task, you run an Azure Resource Manager (ARM) template to create the resources required for this hands-on lab. The components are deployed inside a new virtual network (VNet) to facilitate communication between the VMs and SQL MI. The ARM template also adds inbound and outbound security rules to the network security groups associated with SQL MI and the VMs, including opening port 3389 to allow RDP connections to the JumpBox. In addition to creating resources, the ARM template also executes PowerShell scripts on each of the VMs to install software and configure the servers. The resources created by the ARM template include:
 
@@ -185,8 +185,8 @@ You are now ready to begin the ARM template deployment.
 
 > Check back in a few hours to monitor the progress of your SQL MI provisioning. If the provisioning goes on for longer than 7 hours, you may need to issue a support ticket in the Azure portal to request the provisioning process be unblocked by Microsoft support.
 
-You should follow all steps provided _before_ attending the Hands-on lab.
-
 > **Important**
 >
 > As soon as the SqlServer2008 VM is up, you should check if that `WideWorldImporters` database is up. Indeed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
+
+You should follow all steps provided *before* performing the Hands-on lab.
