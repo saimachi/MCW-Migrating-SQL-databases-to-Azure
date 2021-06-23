@@ -22,7 +22,7 @@ The names of manufacturers, products, or URLs are provided for informational pur
 
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
-## Contents
+**Contents**
 
 <!-- TOC -->
 
@@ -396,7 +396,7 @@ Migrate SQL Server to an Azure SQL Managed Instance  - Guide         | <https://
 | Cloud Adoption Framework for Azure | <https://docs.microsoft.com/azure/cloud-adoption-framework/overview> |
 | Azure Migrate | <https://docs.microsoft.com/azure/migrate/migrate-services-overview> |
 
-# Migrating SQL databases to Azure] whiteboard design session trainer guide
+# Migrating SQL databases to Azure whiteboard design session trainer guide
 
 ## Step 1: Review the customer case study
 
