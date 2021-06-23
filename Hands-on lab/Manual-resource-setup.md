@@ -4,10 +4,9 @@ This guide provides step-by-step instructions to manually provision and the conf
 
 June 2021
 
-## Contents
+**Contents**
 
 - [Manual resource deployment and setup guide](#manual-resource-deployment-and-setup-guide)
-  - [Contents](#contents)
   - [Task 1: Create a virtual network](#task-1-create-a-virtual-network)
     - [Create virtual network](#create-virtual-network)
     - [Configure virtual network](#configure-virtual-network)
@@ -653,7 +652,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
 
     > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
-    > **Hint**: Copy file url to VM using Internet EXplorer : `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
+    > **Hint**: Copy file URL to VM using Internet Explorer : `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering **sql server** into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio** from the search results.
 
@@ -681,7 +680,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `WideWorldImporters` database.
 
-9. Select the restore check mark. Select **WildWorldImporters** from **to database** menu. Then, select **OK** to start to restore.
+9. Select the restore check mark. Select **WideWorldImporters** from **to database** menu. Then, select **OK** to start to restore.
 
    ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
 
