@@ -10,6 +10,9 @@ function Disable-InternetExplorerESC {
 # Disable IE ESC
 Disable-InternetExplorerESC
 
+# Force TLS 1.2 use instead of TLS 1.0
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 # Download and extract the starter solution files
 Invoke-WebRequest 'https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip' -OutFile 'C:\MCW.zip'
 Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\hands-on-lab' -Force

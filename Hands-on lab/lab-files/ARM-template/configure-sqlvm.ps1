@@ -8,6 +8,9 @@ function Disable-InternetExplorerESC {
     Write-Host 'IE Enhanced Security Configuration (ESC) has been disabled.' -ForegroundColor Green
 }
 
+# Force TLS 1.2 use instead of TLS 1.0
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 # Disable IE ESC
 Disable-InternetExplorerESC
 

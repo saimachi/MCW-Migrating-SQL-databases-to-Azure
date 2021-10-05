@@ -96,9 +96,9 @@
         "managementSubnetName": "Management",
         "managementSubnetPrefix": "10.17.1.0/24",
         "jbCustomScriptFileName": "configure-jumpbox.ps1",
-        "jbCustomScriptUri": "[concat('https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('jbCustomScriptFileName'))]",
+        "jbCustomScriptUri": "[concat('https://raw.githubusercontent.com/saimachi/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('jbCustomScriptFileName'))]",
         "sqlCustomScriptFileName": "configure-sqlvm.ps1",
-        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('sqlCustomScriptFileName'))]",
+        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/saimachi/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('sqlCustomScriptFileName'))]",
         "appServicePlanName": "[concat(resourceGroup().name, '-asp')]",
         "webAppName": "[concat('wwi-web-', uniqueString(resourceGroup().id))]",
         "dmsName": "wwi-dms"
