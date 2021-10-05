@@ -2,7 +2,7 @@
 
 This guide provides step-by-step instructions to manually provision and the configure resources created by the ARM template referenced in the before the hands-on lab guide.
 
-June 2021
+September 2021
 
 **Contents**
 

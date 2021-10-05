@@ -59,6 +59,40 @@
             "metadata": {
                 "description": "Select the storage size."
             }
+        },
+        "AzureMigrateProjectLocation": {
+            "type": "string",
+            "allowedValues": [
+                "centralus",
+                "eastasia",
+                "northeurope",
+                "westeurope",
+                "westus2",
+                "australiasoutheast",
+                "uksouth",
+                "ukwest",
+                "canadacentral",
+                "centralindia",
+                "southindia",
+                "japaneast",
+                "japanwest",
+                "brazilsouth",
+                "koreasouth",
+                "koreacentral",
+                "francecentral",
+                "switzerlandnorth",
+                "australiaeast",
+                "southeastasia",
+                "centraluseuap",
+                "eastus2euap",
+                "canadaeast",
+                "southcentralus",
+                "usgovvirginia",
+                "usgovarizona"
+            ],
+            "metadata": {
+                "description": "Azure Migrate project location, where metadata is stored. Defaults to the location of the resource group, if it is compatible with Azure Migrate."
+            }
         }
     },
     "variables": {
@@ -101,7 +135,9 @@
         "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('sqlCustomScriptFileName'))]",
         "appServicePlanName": "[concat(resourceGroup().name, '-asp')]",
         "webAppName": "[concat('wwi-web-', uniqueString(resourceGroup().id))]",
-        "dmsName": "wwi-dms"
+        "dmsName": "wwi-dms",
+        "azureMigrateProjectName": "[concat('wwi-migrate-', uniqueString(resourceGroup().id))]",
+        "azureMigrateProjectDMA": "[concat(variables('azureMigrateProjectName'), '/Databases-Assessment-DataMigrationAssistant')]"
     },
     "resources": [
         {
@@ -1500,6 +1536,29 @@
                         }
                     }
                 ]
+            }
+        },
+        {
+            "condition": false,
+            "type": "Microsoft.Migrate/migrateProjects",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[variables('azureMigrateProjectName')]",
+            "location": "[parameters('AzureMigrateProjectLocation')]",
+            "properties": {}
+        },
+        {
+            "condition": false,
+            "type": "Microsoft.Migrate/migrateProjects/Solutions",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[variables('azureMigrateProjectDMA')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Migrate/migrateProjects', variables('azureMigrateProjectName'))]"
+            ],
+            "properties":{
+                "tool": "DataMigrationAssistant",
+                "purpose": "Assessment",
+                "goal": "Databases",
+                "status": "Active"
             }
         }
     ],
