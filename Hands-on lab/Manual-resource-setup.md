@@ -2,7 +2,7 @@
 
 This guide provides step-by-step instructions to manually provision and the configure resources created by the ARM template referenced in the before the hands-on lab guide.
 
-June 2021
+October 2021
 
 **Contents**
 
@@ -666,7 +666,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
    ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
 
-5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **From device** under Source, and then select the Browse (`...`) button to the right of the Device box.
+5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
 
    ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
 
@@ -680,7 +680,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `WideWorldImporters` database.
 
-9. Select the restore check mark. Select **WideWorldImporters** from **to database** menu. Then, select **OK** to start to restore.
+9. Select the restore check mark. Select **WideWorldImporters** from the **Database** menu. Then, select **OK** to start to restore.
 
    ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
 
