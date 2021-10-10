@@ -206,6 +206,8 @@ Of great concern to the WWI leadership team is that SQL Server 2008 R2 is now be
 
 WWI has examined the benefits of NoSQL databases, like Azure Cosmos DB. They understand that Cosmos DB provides a highly-available, globally-distributed platform, but they do not have the resources to redesign their games to utilize Cosmos DB, and they find the migration to be too complex for the timeframe. WWI has indicated that they are interested in exploring this migration path after they migrate their SQL Server databases to Azure SQL Database or Azure SQL Managed Instance.
 
+For their gaming services, WWI operates an extensive on-premises Active Directory domain to centralize access management for their network resources, including their SQL Server instances. WWI is aware of Azure Active Directory and would like to know more about the Azure Active Directory integration with SQL Managed Instance and how to extend their on-premises identity solution to Azure.
+
 In addition to their gaming services, WWI is also interested in migrating their data warehouse and its associated services to the cloud. The data warehouse uses a Symmetric Multi-Processing (SMP) based architecture and is hosted on a dedicated SQL Server 2008 R2 instance. The data warehouse is presently around 20TB in size and is growing at a rate of about 250GB per month. They use the data warehouse to build SQL Server Analysis Services (SSAS) cubes and create reports using SQL Server Reporting Services (SSRS). The SSRS reports are deployed to sites in their SharePoint environment. They feel the data warehouse's performance is adequate for meeting the requirement of presenting data to business users via BI components, such as SSAS cubes, so they indicated a desire to stick with the current architecture, if possible. They do not believe the existing data warehouse requires a Massively Parallel Processing (MPP) architecture at this time. They collect numerous game telemetry data points, including remote monitoring and analysis of game servers and user telemetry (i.e., data on players' behavior, such as their interaction with games and other players). Code embedded in the gaming software transmits data to the gaming databases. Telemetry data is then loaded into the data warehouse hourly using SQL Server Integration Services (SSIS) packages. They also noted that their customer service personnel and developers frequently connect to the data warehouse for various activities.
 
 They also mentioned some reports that are run directly against the gaming databases to analyze user telemetry and gaming metrics in near real-time. While there are not many of these reports, they are essential to the developers and business users. They have noticed that at times of peak gaming activity, running these reports can be very slow, and they have occasionally seen impacts on gaming performance. They are interested to learn if there is any way they can continue to run these reports, but do it in a way that will alleviate the performance impact they've experienced.
@@ -228,6 +230,8 @@ To help you better understand their current environment, WWI has provided the fo
 3. We want recommendations on how to minimize migration costs as much as possible.
 
 4. We want to improve our databases' security posture and learn more about potential vulnerabilities and compliance issues.
+
+   - Extending on-premises user identity to Azure SQL Managed Instance
 
 5. We have had complaints of high latency from gamers in other regions throughout the world, along with reports that players cannot join games during peaks of high usage. By migrating our gaming services to the cloud, we are looking to improve the overall gaming experience, including:
 
@@ -459,6 +463,8 @@ The primary audience is business and technology decision-makers. From the case s
    From a high level, their authentication and gateway services VMs will be migrated into Azure VMs using Azure Migrate. The two back-end authentication databases will be moved to a single Azure SQL MI General purpose service tier. Authentication services will be shared among games within the same region. Their gaming software VMs will be migrated to Azure VMs, again using Azure Migrate, and associated with a single SQL MI instance running the five gaming databases. This setup will be repeated for each game. The game and authentication databases will be migrated using the Azure Database Migration Service's online migration option for minimal downtime.
 
    In more detail, for each game, an isolated VNet will be created, with subnets for the game service, managed instances, authorization services, management, and a Gateway subnet, as displayed in the diagram below.
+
+   WWI has also decided to trial [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview). Azure Bastion allows users to securely connect with resources in the deployed virtual network through RDP and SSH. This serves the same purpose as a Jump Box in a traditional deployment, but with the advantage of being managed by the Azure platform.
 
    ![A detailed diagram of the target gaming services architecture is displayed. The resources are broken down into subnets within an isolated VNet. This setup would be used for each game.](media/target-architecture-gaming-services.png "Gaming services architecture")
 

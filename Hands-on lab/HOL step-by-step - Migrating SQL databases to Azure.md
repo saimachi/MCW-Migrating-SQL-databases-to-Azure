@@ -33,11 +33,12 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Requirements](#requirements)
   - [Exercise 1: Perform database assessments](#exercise-1-perform-database-assessments)
     - [Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM](#task-1-connect-to-the-wideworldimporters-database-on-the-sqlserver2008-vm)
-    - [Task 2: Perform assessment for migration to Azure SQL Database](#task-2-perform-assessment-for-migration-to-azure-sql-database)
+    - [Task 2: Create an Azure Migrate Project](#task-2-create-an-azure-migrate-project)
+    - [Task 3: Perform assessment for migration to Azure SQL Database](#task-3-perform-assessment-for-migration-to-azure-sql-database)
       - [Install Framework 4.8](#install-framework-48)
       - [Install migration assistant](#install-migration-assistant)
       - [Launch migration assistant](#launch-migration-assistant)
-    - [Task 3: Perform assessment for migration to Azure SQL Managed Instance](#task-3-perform-assessment-for-migration-to-azure-sql-managed-instance)
+    - [Task 4: Perform assessment for migration to Azure SQL Managed Instance](#task-4-perform-assessment-for-migration-to-azure-sql-managed-instance)
   - [Exercise 2: Migrate the database to SQL MI](#exercise-2-migrate-the-database-to-sql-mi)
     - [Task 1: Create an SMB network share on the SqlServer2008 VM](#task-1-create-an-smb-network-share-on-the-sqlserver2008-vm)
     - [Task 2: Change MSSQLSERVER service to run under sqlmiuser account](#task-2-change-mssqlserver-service-to-run-under-sqlmiuser-account)
@@ -168,7 +169,34 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
     >
     > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
 
-### Task 2: Perform assessment for migration to Azure SQL Database
+### Task 2: Create an Azure Migrate Project
+
+In this Task, you will use Azure Migrate to create a project to consolidate your assessment results for Azure SQL Database and Azure SQL Managed Instance migrations from on-premises SQL Server.
+
+1. In the global search at the top of the [Azure Portal](portal.azure.com), query for and select **Azure Migrate**.
+
+   ![This image highlights Azure Migrate in the global search results.](./media/select-azure-migrate-portal.png "Selecting Azure Migrate from global search")
+
+2. Select **Assess and migrate databases** on the **Get started** page.
+
+   ![This image highlights the Assess and migrate databases button on the Get started page of Azure Migrate.](./media/azure-migrate-in-portal.png "Assess and migrate databases button in Azure Migrate")
+
+3. Select **Create project**. On the **Create project** page, provide the following information:
+
+   - **Subscription**: Use the Azure Subscription you provisioned your lab resources in
+   - **Resource group**: Select the resource group you selected during the ARM template deployment
+   - **Project**: Use `wwi-sql-migrate-SUFFIX` as the project name
+   - **Geography**: Select the nearest geographic region from the dropdown
+
+   ![This image highlights the above parameters in the Create project page.](./media/azure-migrate-project-details.png "Create project page parameters")
+
+4. Select **Create**.
+
+5. After the project provisions, observe the **Assessment tools** and **Migration tools** sections. We will be using the mentioned **Data Migration Assessment** tool to determine whether Azure SQL Database or Azure SQL Managed Instance is the preferred target for WWI's migration.
+
+   ![This image highlights the Assessment tools section of the Databases (only) page in Azure Migrate.](./media/azure-migrate-dma-mention.png "Assessment tools box in Azure Migrate")
+
+### Task 3: Perform assessment for migration to Azure SQL Database
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
 
@@ -256,15 +284,35 @@ You can now proceed with data migration, by following these steps:
 
 10. Review the migration assessment to determine the possibility of migrating to Azure SQL DB.
 
-    ![For a target platform of Azure SQL DB, feature parity shows two features that are not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](media/dma-feature-parity-service-broker-not-supported.png "Database feature parity")
+    ![For a target platform of Azure SQL DB, feature parity shows one feature that is not supported in Azure SQL DB. The Service broker feature is selected on the left and on the right Service Broker feature is not supported in Azure SQL Database is highlighted.](media/dma-feature-parity-service-broker-not-supported.png "Database feature parity")
 
     > **Note**: The DMA assessment for migrating the `WideWorldImporters` database to a target platform of Azure SQL DB reveals features in use that are not supported. These features, including Service broker, prevent WWI from migrating to the Azure SQL DB PaaS offering without making changes to their database.
 
-11. **Cancel** migration for this project by going **back** to home page.
+11. At the bottom right-hand corner of the page, select **Upload to Azure Migrate**. Then, when prompted to select the correct **Azure Environment**, select **Azure** instead of the other sovereign clouds. Select **Connect**.
+
+12. Log into your Azure account.
+
+13. In DMA, select the lab subscription and the Azure Migrate Project you created in the previous task. Feel free to ignore any errors, so long as you can select the correct Azure subscription and Azure Migrate Project. Then, select **Upload**.
+
+    ![This image highlights the correct Azure subscription, Azure Migrate Project (wwi-sql-migrate-SUFFIX), and the Upload button in DMA.](./media/dma-subscription-and-migrate-project.png "Azure subscription and Azure Migrate Project selected in DMA")
+
+14. Navigate to Azure Migrate, as explained in the previous Task. Select **Assess and migrate databases** again.
+
+15. In the **Assessment tools** box, Azure should indicate that you assessed one database for an Azure migration. Note that you may need to select **Refresh** in the upper left-hand corner of the page to see the intended results.
+
+    ![This image highlights the Assessed databases count in the Assessment tools section of the wwi-sql-migrate-SUFFIX project.](./media/azure-migrate-assessment-results-uploaded.png "Assessed databases count")
+
+    >**Note**: If you still cannot see the uploaded assessment results after  selecting **Refresh**, ensure that the correct project (`wwi-sql-migrate-SUFFIX`) is selected at the upper right-hand corner of the page.
+    >
+    > ![This image demonstrates that the correct Azure Migrate project has been selected in the Azure Portal.](./media/correct-azure-migrate-project.png "Correct wwi-sql-migrate-SUFFIX Azure Migrate project")
+
+16. Select **Assessed databases**. Observe the `WideWorldImporters` database and that the **Target in Azure** is **Azure SQL Database** and that there is one breaking change.
+
+17. Return to DMA. **Cancel** this project by going **back** to home page.
 
     ![Cancel migration by going back to home page.](media/dma-cancel-project-migration.png "Cancel project migration")
 
-### Task 3: Perform assessment for migration to Azure SQL Managed Instance
+### Task 4: Perform assessment for migration to Azure SQL Managed Instance
 
 With one PaaS offering ruled out due to feature parity, perform a second DMA assessment against Azure SQL Managed Instance (SQL MI). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the SQL MI service.
 
@@ -312,9 +360,11 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 10. Review the **Compatibility issues** options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
 
-   ![For a target platform of Azure SQL Managed Instance, a message that full-text search has changed, and the list of impacted objects are listed.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
+   ![For a target platform of Azure SQL Managed Instance, there are no compatibility issues.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
 
-   > **Note**: The assessment report for migrating the `WideWorldImporters` database to a target platform of Azure SQL Managed Instance shows no feature parity and a note to validate full-text search functionality. The full-text search changes do not impact the migration of the `WideWorldImporters` database to SQL MI.
+11. Repeat steps 11-13 from the previous Task to upload the assessment results to Azure Migrate.
+
+12. Complete steps 14-15 of the previous Task to access the `wwi-sql-migrate-SUFFIX` project in Azure Migrate. This time, when you select the **Assessed databases** count, note that the **Target in Azure** is **Azure SQL Database Managed Instance** and that the **Breaking changes count** is 0.
 
 The database, including the Service Broker feature, can be migrated as is, providing an opportunity for WWI to have a fully managed PaaS database running in Azure. Previously, their only option for migrating a database using features incompatible with Azure SQL Database, such as Service Broker, was to deploy the database to a virtual machine running in Azure (IaaS) or modify the database and associated applications to remove the use of the unsupported features. The introduction of Azure SQL MI, however, provides the ability to migrate databases into a managed Azure SQL database service with _near 100% compatibility_, including the features that prevented them from using Azure SQL Database.
 
