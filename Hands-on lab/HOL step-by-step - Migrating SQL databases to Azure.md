@@ -589,6 +589,8 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
    ![On the Azure Database Migration Service blade, +New Migration Project is highlighted in the toolbar.](media/dms-add-new-migration-project.png "Azure Database Migration Service New Project")
 
+   >**Note**: If you are completing this lab over multiple days, you will need to start the DMS Service prior to creating a migration project.
+
 3. On the New migration project blade, enter the following:
 
    - **Project name**: Enter `OnPremToSqlMi`
@@ -1035,9 +1037,9 @@ In this task, you configure the client address pool. The address pool is a range
    - **Tunnel type (2)**: Select **SSTP (SSL)**.
    - **Authentication type (3)**: Choose **Azure certificate**.
    - **Root Certificate Name (4)**: `WWITTT`
-   - **Public certificate data**: Paste the Public Key you noted in the previous task.
+   - **Public certificate data (5)**: Paste the Public Key you noted in the previous task.
 
-4. Select **Save** to validate and save the settings.
+4. Select **Save (6)** to validate and save the settings.
 
    ![The values specified above are entered into the Point-to-site configuration form.](media/virtual-network-gateway-point-to-site-configuration.png "Virtual network gateway")
 
@@ -1053,15 +1055,15 @@ In this task, you add the networking configuration to your App Service to enable
 
    ![The wwi-web-UNIQUEID App Service is highlighted in the list of resource group resources.](media/rg-app-service.png "Resource group")
 
-2. On the App Service blade, select **Networking** from the left-hand menu and then select **Click here to configure** under **VNet Integration**.
+2. On the App Service blade, select **Networking** from the left-hand menu and then select **VNet integration**.
 
-   ![On the App Service blade, Networking is selected in the left-hand menu, then Click here to configure is highlighted under VNet Integration.](media/app-service-networking.png "App Service")
+   ![On the App Service blade, Networking is selected in the left-hand menu, then VNet integration is highlighted.](media/app-service-networking.png "App Service")
 
 3. Select **Add VNet** on the VNet Configuration blade.
 
    ![Add VNet is highlighted on the VNet Configuration blade.](media/app-service-vnet-configuration.png "App Service")
 
-4. On the Network Feature Status dialog, enter the following:
+4. On the **Add VNet Integration** dialog, enter the following:
 
    - **Virtual Network**: Select the hands-on-lab-SUFFIX-vnet.
    - **Subnet**: Select Create New Subnet.
@@ -1069,7 +1071,7 @@ In this task, you add the networking configuration to your App Service to enable
    - **Virtual Network Address Block**: Select the only option under this dropdown, 10.x.0.0/16.
    - **Subnet Address Block**: Enter a subnet with a /24 block, such as 10.x.3.0/24.
 
-   ![The values specified above are entered into the Network Feature Status dialog.](media/app-service-vnet-network-feature-status.png "Network Feature Status configuration")
+   ![The values specified above are entered into the Add VNet Integration dialog.](media/app-service-vnet-add-vnet-integration.png "Add VNet Integration configuration")
 
 5. Within a few minutes, the VNet is added, and your App Service is restarted to apply the changes. Select **Refresh** to see the details. You should see the certificate status is Certificates in sync. **Note**: If the certificate status is not in sync, try hitting refresh, as it can take a moment for that status to be reflected.
 
