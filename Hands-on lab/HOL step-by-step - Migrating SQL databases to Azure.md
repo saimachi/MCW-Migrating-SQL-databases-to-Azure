@@ -49,8 +49,9 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 7: Perform migration cutover](#task-7-perform-migration-cutover)
     - [Task 8: Verify database and transaction log migration](#task-8-verify-database-and-transaction-log-migration)
   - [Exercise 3: Update the web application to use the new SQL MI database](#exercise-3-update-the-web-application-to-use-the-new-sql-mi-database)
-    - [Task 1: Deploy the web app to Azure](#task-1-deploy-the-web-app-to-azure)
-    - [Task 2: Update App Service configuration](#task-2-update-app-service-configuration)
+    - [Task 1: Assess the Application with the Data Access Migration Toolkit (Optional)](#task-1-assess-the-application-with-the-data-access-migration-toolkit-optional)
+    - [Task 2: Deploy the web app to Azure](#task-2-deploy-the-web-app-to-azure)
+    - [Task 3: Update App Service configuration](#task-3-update-app-service-configuration)
   - [Exercise 4: Integrate App Service with the virtual network](#exercise-4-integrate-app-service-with-the-virtual-network)
     - [Task 1: Generate and export certificates for Point-to-Site](#task-1-generate-and-export-certificates-for-point-to-site)
     - [Task 2: Set point-to-site addresses](#task-2-set-point-to-site-addresses)
@@ -810,7 +811,35 @@ With the `WideWorldImporters` database now running on SQL MI in Azure, the next 
 
 > **Note**: Azure SQL Managed Instance has a private IP address in a dedicated VNet, so to connect an application, you must configure access to the VNet where Managed Instance is deployed. To learn more, read [Connect your application to Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance).
 
-### Task 1: Deploy the web app to Azure
+### Task 1: Assess the Application with the Data Access Migration Toolkit (Optional)
+
+In this Task, you will install and utilize the Data Access Migration Toolkit Visual Studio Code extension to assess the app to prevent it from hindering a migration from on-premises SQL Server.
+
+1. Launch Visual Studio Code from the start menu. It should already be installed with the Virtual Machine image, but if it is not, [download](https://code.visualstudio.com/Download) and install it.
+
+2. Open the **Extensions** tab (1). Query for the **Data Access Migration Toolkit** (2). Select **Install** (3).
+
+   ![This image shows how to navigate to the Extensions blade in Visual Studio Code and locate and install the Data Access Migration Toolkit.](./media/install-damt-vs-code.png "Installing Data Access Migration Toolkit extension")
+
+3. At the upper left-hand corner of the page, select **Open Folder**. Navigate to `C:\hands-on-lab\MCW-Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files\WideWorldImporters.Web` in the dialog. Then, select **Select Folder**.
+
+4. If you are asked to trust the authors of the files in the project folder, select **Yes, I trust the authors**.
+
+   ![This image shows how to grant consent for Visual Studio Code to trust the project files.](./media/trust-authors-vs-code.png "Trusting project files in Visual Studio Code")
+
+5. Enter Ctrl+Shift+P to open the Visual Studio Code extension console. Then, query and select **Data Access: Analyze workspace**.
+
+6. When asked to select a SQL dialect, select **SQL Server**.
+
+   ![This image shows how to select the SQL Server dialect from the list of three dialects in the Visual Studio Code Extension Console.](./media/sql-server-dialect-damt.png "Selecting SQL Server dialect")
+
+7. In the report, the Data Access Migration Toolkit identifies two connection string references (1) and a SQL Query that determines whether the referenced database supports read-write or read-only operations (for Exercise 7).
+
+   ![This image highlights the connection strings (1) and SQL queries (2) determined by the Data Access Migration Toolkit Results summary section.](./media/damt-results-summary.png "Visualizing connection strings and SQL queries in the DAMT assessment")
+
+Because the application utilizes an ORM, there are not many ad-hoc SQL queries that need to be verified for compatibility with the target Azure SQL Managed Instance.
+
+### Task 2: Deploy the web app to Azure
 
 In this task, you create an RDP connection to the JumpBox VM and then, using Visual Studio on the JumpBox, deploy the `WideWorldImporters` web application into the App Service in Azure.
 
@@ -893,7 +922,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
     ![An error screen is displayed because the database connection string has not been updated to point to SQL MI in the web app's configuration.](media/web-app-error-screen.png "Web App error")
 
-### Task 2: Update App Service configuration
+### Task 3: Update App Service configuration
 
 In this task, you update the WWI gamer info web application to connect to and utilize the SQL MI database.
 
