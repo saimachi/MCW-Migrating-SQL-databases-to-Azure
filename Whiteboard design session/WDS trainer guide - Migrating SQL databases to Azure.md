@@ -458,7 +458,7 @@ The primary audience is business and technology decision-makers. From the case s
 
    After running the Microsoft Data Migration Assistant assessments against their gaming databases, WWI found that Azure SQL Managed Instance would allow them to host their databases in a fully-managed Azure PaaS service. SQL MI will enable them to accomplish this without making changes to their databases, allowing them to shift their focus back to game development and not spend as much time worrying about administering databases. To minimize downtime, they decided to use the Azure Database Migration Service's online data migration capabilities.
 
-   ![Possible target architecture.](media/target-architecture.png "Target architecture")
+   ![Possible target architecture.](media/target-architecture-updated.png "Target architecture")
 
    From a high level, their authentication and gateway services VMs will be migrated into Azure VMs using Azure Migrate. The two back-end authentication databases will be moved to a single Azure SQL MI General purpose service tier. Authentication services will be shared among games within the same region. Their gaming software VMs will be migrated to Azure VMs, again using Azure Migrate, and associated with a single SQL MI instance running the five gaming databases. This setup will be repeated for each game. The game and authentication databases will be migrated using the Azure Database Migration Service's online migration option for minimal downtime.
 
@@ -467,6 +467,8 @@ The primary audience is business and technology decision-makers. From the case s
    WWI has also decided to trial [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview). Azure Bastion allows users to securely connect with resources in the deployed virtual network through RDP and SSH. This serves the same purpose as a Jump Box in a traditional deployment, but with the advantage of being managed by the Azure platform.
 
    ![A detailed diagram of the target gaming services architecture is displayed. The resources are broken down into subnets within an isolated VNet. This setup would be used for each game.](media/target-architecture-gaming-services.png "Gaming services architecture")
+
+   As mentioned previously, WWI needs to understand how its on-premises identity setup will integrate with Azure.
 
    Their data warehouse will be migrated using the Database Migration Service (DMS) offline migration option. The target platform will be Azure SQL Database (Hyperscale) to accommodate the large amount of data they currently have and facilitate serving more requests. Movement of telemetry data from the gaming databases into the data warehouse will be handled using the Azure-SSIS Integration Runtime in Azure Data Factory (ADF). Data can be scheduled to run hourly in ADF, just as with their existing SSIS packages. Azure Analysis Services (Azure AS) will be used for data modeling in the cloud from the data warehouse.
 
