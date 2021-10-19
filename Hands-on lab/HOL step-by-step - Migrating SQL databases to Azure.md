@@ -36,7 +36,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 2: Create an Azure Migrate Project](#task-2-create-an-azure-migrate-project)
     - [Task 3: Assess migration to Azure SQL Database](#task-3-assess-migration-to-azure-sql-database)
       - [Install .NET Framework 4.8](#install-net-framework-48)
-      - [Install Data Migration Assistant](#install-data-migration-assistant)
+      - [Install the Data Migration Assistant](#install-the-data-migration-assistant)
       - [Launch the Data Migration Assistant](#launch-the-data-migration-assistant)
     - [Task 4: Assess migration to Azure SQL Managed Instance](#task-4-assess-migration-to-azure-sql-managed-instance)
   - [Exercise 2: Migrate the database to SQL MI](#exercise-2-migrate-the-database-to-sql-mi)
@@ -219,7 +219,7 @@ As **Microsoft Data Migration Assistant** requires .NET Framework 4.8 to operate
 
    ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
-#### Install Data Migration Assistant
+#### Install the Data Migration Assistant
 
 Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
 
@@ -1126,7 +1126,7 @@ You successfully connected your application to the new SQL MI database.
 
 Duration: 30 minutes
 
-In this exercise, you enable set up some of the advanced security features of SQL MI and explore some of the security benefits that come with running your database in Azure. [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) provides advanced SQL security capabilities, including functionality for surfacing and mitigating potential database vulnerabilities and detecting anomalous activities that could indicate a threat to your database. Also, [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) allows you to discover and classify sensitive data within the database.
+In this exercise, you enable set up some of the advanced security features of SQL MI and explore some of the security benefits that come with running your database in Azure. [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) provides advanced SQL security capabilities, including functionality for surfacing and mitigating potential database vulnerabilities and detecting anomalous activities that could indicate a threat to your database. Also, the [Data Discovery and Classification](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview) tool allows you to discover and classify sensitive data within the database.
 
 ### Task 1: Configure Data Discovery and Classification
 

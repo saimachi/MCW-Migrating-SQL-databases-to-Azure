@@ -109,6 +109,8 @@ To help you better understand their current environment, WWI has provided the fo
 
 6. In the event of a regional outage, we would like to resume gaming services within minutes and recover the data warehouse within 48 hours.
 
+7. After completing the migration, we would like to modernize our cheat detection to take advantage of Azure's flexibility. What Azure services should we consider?
+
 ### Customer objections
 
 1. It appears that there are multiple options for hosting SQL databases in Azure. What are all the different options, and how do they differ? Do they all support the same features as an on-premises SQL Server instance, or are there unsupported features we should be aware of before migrating? Will we be able to continue using Service Broker with a PaaS database in Azure?
@@ -119,7 +121,9 @@ To help you better understand their current environment, WWI has provided the fo
 
 4. We want to avoid "vendor lock-in" when moving to the cloud. Will using PaaS services for hosting our databases allow us to have a valid exit strategy? Or should we stick to using VMs in Azure for hosting our databases?
 
-5. Migrating to the cloud represents a significant change in how our organization operates. We are looking for guidance that can help us succeed in making this transition. Does Microsoft have any resources for this?
+5. We want to integrate our on-premises Active Directory with the new Azure database. Is this possible? If so, what approaches are feasible?
+
+6. Migrating to the cloud represents a significant change in how our organization operates. We are looking for guidance that can help us succeed in making this transition. Does Microsoft have any resources for this?
 
 ### Infographic for common scenarios
 
@@ -188,6 +192,10 @@ Directions: With all participants at your table, respond to the following questi
 *Regional outages*
 
 1. How can their gaming services be recovered within the specified RTO/RPO?
+
+*Deriving value from the Azure Migration*
+
+1. How can WWI modernize their cheat detection system using Azure technology after they complete their migration?
 
 **Prepare**
 

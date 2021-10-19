@@ -241,6 +241,8 @@ To help you better understand their current environment, WWI has provided the fo
 
 6. In the event of a regional outage, we would like to resume gaming services within minutes and recover the data warehouse within 48 hours.
 
+7. After completing the migration, we would like to modernize our cheat detection to take advantage of Azure's flexibility. What Azure services should we consider?
+
 ### Customer objections
 
 1. It appears that there are multiple options for hosting SQL databases in Azure. What are all the different options, and how do they differ? Do they all support the same features as an on-premises SQL Server instance, or are there unsupported features we should be aware of before migrating? Will we be able to continue using Service Broker with a PaaS database in Azure?
@@ -251,7 +253,9 @@ To help you better understand their current environment, WWI has provided the fo
 
 4. We want to avoid "vendor lock-in" when moving to the cloud. Will using PaaS services for hosting our databases allow us to have a valid exit strategy? Or should we stick to using VMs in Azure for hosting our databases?
 
-5. Migrating to the cloud represents a significant change in how our organization operates. We are looking for guidance that can help us succeed in making this transition. Does Microsoft have any resources for this?
+5. We want to integrate our on-premises Active Directory with the new Azure database. Is this possible? If so, what approaches are feasible?
+
+6. Migrating to the cloud represents a significant change in how our organization operates. We are looking for guidance that can help us succeed in making this transition. Does Microsoft have any resources for this?
 
 ### Infographic for common scenarios
 
@@ -320,6 +324,10 @@ Directions: With all participants at your table, respond to the following questi
 *Regional outages*
 
 1. How can their gaming services be recovered within the specified RTO/RPO?
+
+*Deriving value from the Azure Migration*
+
+1. How can WWI modernize their cheat detection system using Azure technology after they complete their migration?
 
 **Prepare**
 
@@ -458,7 +466,7 @@ The primary audience is business and technology decision-makers. From the case s
 
    After running the Microsoft Data Migration Assistant assessments against their gaming databases, WWI found that Azure SQL Managed Instance would allow them to host their databases in a fully-managed Azure PaaS service. SQL MI will enable them to accomplish this without making changes to their databases, allowing them to shift their focus back to game development and not spend as much time worrying about administering databases. To minimize downtime, they decided to use the Azure Database Migration Service's online data migration capabilities.
 
-   ![Possible target architecture.](media/target-architecture-updated.png "Target architecture")
+   ![Possible target architecture.](media/target-architecture.png "Target architecture")
 
    From a high level, their authentication and gateway services VMs will be migrated into Azure VMs using Azure Migrate. The two back-end authentication databases will be moved to a single Azure SQL MI General purpose service tier. Authentication services will be shared among games within the same region. Their gaming software VMs will be migrated to Azure VMs, again using Azure Migrate, and associated with a single SQL MI instance running the five gaming databases. This setup will be repeated for each game. The game and authentication databases will be migrated using the Azure Database Migration Service's online migration option for minimal downtime.
 
@@ -681,6 +689,22 @@ The primary audience is business and technology decision-makers. From the case s
 
    They should use the geo-restore recovery pattern to achieve the lowest possible RTO and RPO for their data warehouse. They would use geo-restore to recover the catalog and tenant databases from automatically maintained geo-redundant backups into an alternate recovery region. After the outage is resolved, they would use geo-replication to repatriate changed databases to their original region.
 
+*Deriving value from the Azure Migration*
+
+1. How can WWI modernize their cheat detection system using Azure technology after they complete their migration?
+
+   Azure provides numerous advantages for an analytics solution, like cheat detection, including support for a wide range of frameworks, scalability, elasticity, and full platform management of infrastructure.
+
+   Azure Cosmos DB serves as an excellent ingest for real-time game usage data, and features like [autoscaling](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale) allow it to automatically accommodate increased load.
+
+   To train a real-time scoring model and utilize it, WWI can leverage Azure Databricks. Azure Databricks provides a collaborative Apache Spark environment that supports powerful machine learning tools, like MLlib.
+
+   This scenario is just one of many possible implementations on Azure. For example, through [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-solution-patterns), WWI can aggregate and filter real-time data and write it to a Power BI dataset for a live dashboard.
+
+   ![This image demonstrates a sample fraud detection solution with Azure Cosmos DB and Azure Databricks.](./media/cosmos-db-cheat-detection.png "Possible Azure fraud detection solution")
+
+   ![This image demonstrates an alternative hot path analytics solution with Azure Event Hubs, Azure Stream Analytics, and Power BI.](./media/hot-path-analytics-approach.png "Alternative hot path solution")
+
 ## Checklist of preferred objection handling
 
 1. It appears that there are multiple options for hosting SQL databases in Azure. What are all the different options, and how do they differ? Do they all support the same features as an on-premises SQL Server instance, or are there unsupported features we should be aware of before migrating? Will we be able to continue using Service Broker with a PaaS database in Azure?
@@ -769,7 +793,23 @@ The primary audience is business and technology decision-makers. From the case s
 
    Yes, it is possible to use a PaaS database service and still avoid vendor lock-in. They could use [Transactional replication](https://docs.microsoft.com/azure/azure-sql/managed-instance/replication-between-two-instances-configure-tutorial) to replicate data into remote SQL Server databases, including those in another cloud vendor's cloud.
 
-5. Migrating to the cloud represents a significant change in how our organization operates. We are looking for guidance that can help us succeed in making this transition. Does Microsoft have any resources for this?
+5. We want to integrate our on-premises Active Directory with the new Azure database. Is this possible? If so, what approaches are feasible?
+
+   Azure Active Directory supports hybrid identity scenarios through the following two models.
+
+   - **Cloud Authentication**: Azure AD manages user authentication with cloud apps
+     - *Password hash synchronization*: Credential verification in the cloud
+     - *Pass-through authentication*: Credential verification delegated to on-premises 
+
+   - **Federated Authentication**: Azure AD delegates authentication to on-premises Active Directory Federation Services
+
+   With Azure SQL Database Managed Instance, all three of the hybrid identity technologies mentioned above are supported. WWI can learn more about support for hybrid identity in SQL MI from the [Microsoft Documentation.](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell)
+
+   Deploying a hybrid identity solution requires more than just selecting a technology. WWI must plan its solution according to effort (initial deployment and maintenance), user experience, business continuity, and more. Refer to this useful image provided by Microsoft that compares the three previous technologies according to multiple important considerations.
+
+   ![This image compares Azure Active Directory Cloud Authentication and Federated Authentication approaches.](./media/azure-ad-authn-image1.png "Comparison of Cloud Authentication and Federated Authentication approaches")
+
+6. Migrating to the cloud represents a significant change in how our organization operates. We are looking for guidance that can help us succeed in making this transition. Does Microsoft have any resources for this?
 
    The Microsoft [Cloud Adoption Framework](https://docs.microsoft.com/azure/cloud-adoption-framework/overview) (CAF) for Azure contains proven guidance designed to help customers create and implement the business and technology strategies necessary to succeed in the cloud. It provides a set of tools, advice, and narratives that help shape technology, business, and people strategies for driving desired business outcomes during cloud adoption efforts.
 
