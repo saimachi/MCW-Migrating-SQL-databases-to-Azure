@@ -56,7 +56,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 # Trainer information
 
-Thank you for taking time to support the whiteboard design sessions as a trainer!
+Thank you for taking the time to support the whiteboard design sessions as a trainer!
 
 ## Role of the trainer
 
@@ -92,11 +92,11 @@ Each whiteboard design session uses the following flow:
 
 Analyze your customer's needs.
 
-- Customer's background, situation, needs and technical requirements
+- Customer's background, situation, needs, and technical requirements
 
 - Current customer infrastructure and architecture
 
-- Potential issues, objectives and blockers
+- Potential issues, objectives, and blockers
 
 **Step 2: Design a proof of concept solution (60 minutes)**
 
@@ -170,7 +170,7 @@ When participants are doing activities, you can **look ahead to refresh your mem
 
 ## Abstract and learning objectives
 
-In this whiteboard design session, you work in a group to develop a plan for migrating on-premises VMs and SQL Server databases into a combination of IaaS and PaaS services in Azure. You provide guidance on performing assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and Azure's managed database offerings. You then design a solution for migrating their on-premises services, including VMs and databases, into Azure, with minimal down-time. Finally, you provide guidance on enabling some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
+In this whiteboard design session, you work in a group to develop a plan for migrating on-premises VMs and SQL Server databases into a combination of IaaS and PaaS services in Azure. You provide guidance on performing assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and Azure's managed database offerings. You then design a solution for migrating their on-premises services, including VMs and databases, into Azure, with minimal downtime. Finally, you provide guidance on enabling some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
 
 At the end of this whiteboard design session, you will be better able to design a cloud migration solution for business-critical applications and databases.
 
@@ -204,7 +204,7 @@ WWI indicated that their current hardware rental agreement ends in three months,
 
 Of great concern to the WWI leadership team is that SQL Server 2008 R2 is now beyond the end of support. They are interested in hearing more about fully-managed platform-as-a-service (PaaS) options in Azure for their databases. They lack employees with any real database administration skills, so they feel this would be an excellent first step towards reducing their infrastructure workload. They have requested assistance in assessing any compatibility issues between their current databases and PaaS options in Azure. They have read the Service Broker feature of SQL Server is partially supported in Azure and would like clarification on whether they can continue to use this feature with the PaaS database offerings. They are using this functionality for several critical gaming processes, and cannot afford to lose this capability when migrating their gaming databases to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the gaming services to use an alternative message broker.
 
-WWI has examined the benefits of NoSQL databases, like Azure Cosmos DB. They understand that Cosmos DB provides a highly-available, globally-distributed platform, but they do not have the resources to redesign their games to utilize Cosmos DB, and they find the migration to be too complex for the timeframe. WWI has indicated that they are interested in exploring this migration path after they migrate their SQL Server databases to Azure SQL Database or Azure SQL Managed Instance.
+WWI has examined the benefits of NoSQL databases, like Azure Cosmos DB. They understand that Cosmos DB provides a highly available, globally distributed platform, but they do not have the resources to redesign their games to utilize Cosmos DB, and they find the migration to be too complex for the timeframe. WWI has indicated that they are interested in exploring this migration path after they migrate their SQL Server databases to Azure SQL Database or Azure SQL Managed Instance.
 
 For their gaming services, WWI operates an extensive on-premises Active Directory domain to centralize access management for their network resources, including their SQL Server instances. WWI is aware of Azure Active Directory and would like to know more about the Azure Active Directory integration with SQL Managed Instance and how to extend their on-premises identity solution to Azure.
 
@@ -237,7 +237,7 @@ To help you better understand their current environment, WWI has provided the fo
 
    - Reducing latency for gamers accessing our services from various places around the world.
    - Improving our ability to host more players during peak times or when new game releases.
-   - Adding redundancy to ensure high-availability for our gaming services.
+   - Adding redundancy to ensure high availability for our gaming services.
 
 6. In the event of a regional outage, we would like to resume gaming services within minutes and recover the data warehouse within 48 hours.
 
@@ -273,7 +273,7 @@ Timeframe: 60 minutes
 
 Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
 
-1. Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who should you present this solution to? Who is your target customer audience? Who are the decision-makers?
 
 2. What customer business needs do you need to address with your solution?
 
@@ -311,7 +311,7 @@ Directions: With all participants at your table, respond to the following questi
 
 3. How should the ability to scale gaming services up or down be handled?
 
-4. How can the gaming services be made highly-available?
+4. How can the gaming services be made highly available?
 
 *Data warehouse and reporting*
 
@@ -357,7 +357,7 @@ Directions:
 
 2. One table is the Microsoft team and the other table is the customer.
 
-3. The Microsoft team presents their proposed solution to the customer.
+3. The Microsoft team presents its proposed solution to the customer.
 
 4. The customer makes one of the objections from the list of objections.
 
@@ -478,7 +478,7 @@ The primary audience is business and technology decision-makers. From the case s
 
    As mentioned previously, WWI needs to understand how its on-premises identity setup will integrate with Azure.
 
-   Their data warehouse will be migrated using the Database Migration Service (DMS) offline migration option. The target platform will be Azure SQL Database (Hyperscale) to accommodate the large amount of data they currently have and facilitate serving more requests. Movement of telemetry data from the gaming databases into the data warehouse will be handled using the Azure-SSIS Integration Runtime in Azure Data Factory (ADF). Data can be scheduled to run hourly in ADF, just as with their existing SSIS packages. Azure Analysis Services (Azure AS) will be used for data modeling in the cloud from the data warehouse.
+   Their data warehouse will be migrated using the Database Migration Service (DMS) offline migration option. The target platform will be Azure SQL Database (Hyperscale) to accommodate the large amount of data they currently have and facilitate serving more requests. The movement of telemetry data from the gaming databases into the data warehouse will be handled using the Azure-SSIS Integration Runtime in Azure Data Factory (ADF). Data can be scheduled to run hourly in ADF, just as with their existing SSIS packages. Azure Analysis Services (Azure AS) will be used for data modeling in the cloud from the data warehouse.
 
    Because SSRS currently has no direct cloud-based equivalent, the customer's reports will be rewritten into paginated reports using Microsoft Power BI. Reports will be sent to SharePoint running on an Azure VM, backed by another SQL MI General-purpose instance.
 
@@ -512,7 +512,7 @@ The primary audience is business and technology decision-makers. From the case s
 
    To migrate their on-premises gaming, authentication, and gateway VMs, WWI could use [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview). Azure Migrate provides a central hub to track discovery, assessment, and migration of on-premises apps and workloads and private and public cloud VMs to Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) (ASR) could also be used to replicate their on-premises VMs into Azure VMs, but is not the recommended approach, as it is designed for business continuity and disaster recovery. It can be used, however, to manage replication for on-premises VMs into Azure.
 
-   Using the [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) (DMS) can help simplify the process of database migration. For their gaming and authentication databases, DMS provides a simple tool for migrating a large number of databases into Azure SQL Managed Instance, with minimal time and effort. DMS could be used to migrate their database while remaining online, which will cut down on time required to prepare and manage the cutover to online services. Using SQL MI will also help to minimize the amount of application and database changes needed to get up and running the cloud quickly.
+   Using the [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) (DMS) can help simplify the process of database migration. For their gaming and authentication databases, DMS provides a simple tool for migrating a large number of databases into Azure SQL Managed Instance, with minimal time and effort. DMS could be used to migrate their database while remaining online, which will cut down on the time required to prepare and manage the cutover to online services. Using SQL MI will also help to minimize the amount of application and database changes needed to get up and running the cloud quickly.
 
    DMS could also be used to handle the migration of the data warehouse into Azure SQL DB Hyperscale. However, given the considerable data size (20TB), it would not be able to handle online migration. The recommended approaches for migrating to Hyperscale are using DMS in offline mode or using the [Smart Bulk Copy tool](https://github.com/yorek/smartbulkcopy) to achieve better throughput.
 
@@ -520,13 +520,13 @@ The primary audience is business and technology decision-makers. From the case s
 
    For the PoC, we should include the following:
 
-   - All assets required for a hosting a single game in Azure:
+   - All assets required for hosting a single game in Azure:
 
      - Authentication and gateway services:
        - VMs should be hosted on Azure virtual machines.
        - The two authentication databases should be hosted on a single SQL MI General Purpose tier instance.
-     - The five gaming databases hosted on a single SQL MI Business Critical tier instance.
-     - The three gaming services virtual machines migrated to Azure VMs.
+     - The five gaming databases should be hosted on a single SQL MI Business Critical tier instance.
+     - The three gaming services virtual machines should be migrated to Azure VMs.
 
    - An upgraded data warehouse:
 
@@ -549,7 +549,7 @@ The primary audience is business and technology decision-makers. From the case s
 
    - **Cost**: Both PaaS and IaaS options include a base price that covers underlying infrastructure and licensing. However, with the IaaS option, they would need to invest additional time and resources for the management of databases, some of which can be simplified by using the [SQL VM resource provider (RP)](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-vm-resource-provider-register?tabs=azure-cli%2Cbash). With PaaS, many administration features are included in the price.
 
-   - **Administration**: PaaS options will reduce the amount of time they need to spend administering databases. However, it also limits the range of custom administration tasks and scripts they will be able to perform or run. An important option to note for helping to simplify the administration of IaaS installations is the ability to register SQL Server VMs in Azure with the [SQL VM resource provider (RP)](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-vm-resource-provider-register?tabs=azure-cli%2Cbash). The SQL VM RP unlocks automated patching, automated backups, as well as monitoring and manageability capabilities. For a customer such as WWI who have multiple SQL VMs, there is also an option for [bulk registering SQL virtual machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-vm-resource-provider-bulk-register).
+   - **Administration**: PaaS options will reduce the amount of time they need to spend administering databases. However, it also limits the range of custom administration tasks and scripts they will be able to perform or run. An important option to note for helping to simplify the administration of IaaS installations is the ability to register SQL Server VMs in Azure with the [SQL VM resource provider (RP)](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-vm-resource-provider-register?tabs=azure-cli%2Cbash). The SQL VM RP unlocks automated patching, automated backups, as well as monitoring and manageability capabilities. For a customer such as WWI who has multiple SQL VMs, there is also an option for [bulk registering SQL virtual machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-vm-resource-provider-bulk-register).
 
    - **Service-Level Agreement**: Both IaaS and PaaS provide high, industry-standard SLAs. The PaaS option guarantees a 99.99% SLA. IaaS guarantees a 99.95% SLA for infrastructure, meaning they may need to implement additional mechanisms to ensure their databases' availability.
 
@@ -597,9 +597,9 @@ The primary audience is business and technology decision-makers. From the case s
 
    SQL MI includes numerous security tools that could be leveraged by WWI, including:
 
-   - [SQL Database Advance Data Security](https://docs.microsoft.com/azure/azure-sql/database/advanced-data-security) (ADS) provides advanced SQL security capabilities, including functionality for discovering and classifying sensitive data, surfacing and mitigating potential database vulnerabilities, and detecting anomalous activities that could indicate threats to databases.
+   - [Azure Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) provides advanced SQL security capabilities, including functionality for discovering and classifying sensitive data, surfacing and mitigating potential database vulnerabilities, and detecting anomalous activities that could indicate threats to databases.
 
-   - The [SQL Data Discovery and Classification](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification?view=azuresqldb-mi-current&tabs=t-sql) feature of ADS is a new tool for discovering, classifying, labeling & reporting the sensitive data in databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in databases, not just the database.
+   - The [SQL Data Discovery and Classification](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification?view=azuresqldb-mi-current&tabs=t-sql) is a new tool for discovering, classifying, labeling & reporting sensitive data in databases. It introduces a set of advanced services, forming a new SQL Information Protection paradigm aimed at protecting the data in databases, not just the database.
 
    - The [SQL Vulnerability Assessment service](https://docs.microsoft.com/azure/azure-sql/database/sql-vulnerability-assessment) provides visibility into the security state of a database and includes actionable steps to resolve security issues and enhance database security.
 
@@ -621,7 +621,7 @@ The primary audience is business and technology decision-makers. From the case s
 
 1. How should WWI handle migrating their gaming services VMs into Azure?
 
-   WWI should use [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview) to lift-and-shift their gaming service VMs into Azure. Azure Migrate provides a central hub to track discovery, assessment, and migration of on-premises apps and workloads and VMs to Azure. The [Azure Migrate: Server Migration tool](https://docs.microsoft.com/azure/migrate/common-questions-server-migration) is an optimized, purpose-built for server migrations to Azure. It provides a mechanism for which users don't need to learn about concepts and scenarios that are not directly relevant to conducting migrations.
+   WWI should use [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview) to lift and shift their gaming service VMs into Azure. Azure Migrate provides a central hub to track discovery, assessment, and migration of on-premises apps and workloads and VMs to Azure. The [Azure Migrate: Server Migration tool](https://docs.microsoft.com/azure/migrate/common-questions-server-migration) is an optimized, purpose-built for server migrations to Azure. It provides a mechanism for which users don't need to learn about concepts and scenarios that are not directly relevant to conducting migrations.
 
    They could also consider using [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) (ASR) to replicate their on-premises VMs into Azure VMs, but is not the recommended approach, as it is designed specifically for business continuity and disaster recovery. It could be used, however, to manage replication for on-premises VMs into Azure.
 
@@ -629,7 +629,7 @@ The primary audience is business and technology decision-makers. From the case s
 
 2. What would you recommend for addressing the latency issues experienced by gamers from other regions of the world?
 
-   To address the latency issues reported by gamers, they should look at using multiple regions worldwide. By deploying their services closer to where players are, they can reduce the latency they experience when accessing the online gaming services.
+   To address the latency issues reported by gamers, they should look at using multiple regions worldwide. By deploying their services closer to where players are, they can reduce the latency they experience when accessing online gaming services.
 
 3. How should the ability to scale gaming services up or down be handled?
 
@@ -639,11 +639,11 @@ The primary audience is business and technology decision-makers. From the case s
 
    For the databases, the number of vCores assigned to the managed instance can be increased or decreased. However, this is not an automatic process and can be slow and potentially cause downtime. Another option is to add another managed instance and distribute the workload among more instances.
 
-4. How can the gaming services be made highly-available?
+4. How can the gaming services be made highly available?
 
-   Virtual machine scale sets can be used to provide high-availability for the gaming software and authentication VMs. To protect against data center failures, they could also create scale sets that use Availability Zones.
+   Virtual machine scale sets can be used to provide high availability for the gaming software and authentication VMs. To protect against data center failures, they could also create scale sets that use Availability Zones.
 
-   Azure SQL Managed Instance comes with built-in high-availability. Transactional replication could be used to keep data in sync between multiple regions.
+   Azure SQL Managed Instance comes with built-in high availability. Transactional replication could be used to keep data in sync between multiple regions.
 
 *Data warehouse and reporting*
 
@@ -717,7 +717,7 @@ The primary audience is business and technology decision-makers. From the case s
 
    [SQL DB](https://docs.microsoft.com/azure/azure-sql/database/) is a fully-managed general-purpose relational database-as-a-service (DBaaS) platform in Azure. Built on the latest stable version of the Microsoft SQL Server Database Engine, it provides a high-performance, easy-to-use, reliable, and secure database that you can use without needing to manage infrastructure. It is available as a single database or an elastic pool, which is a collection of databases with a shared set of resources.
 
-   SQL DB has additional features that are not available in on-premises SQL Server, such as built-in high-availability, intelligence, and management. It also provides options to quickly and easily scale up or out for greater power with no interruption.
+   SQL DB has additional features that are not available in on-premises SQL Server, such as built-in high availability, intelligence, and management. It also provides options to quickly and easily scale up or out for greater power with no interruption.
 
    Architecturally, Azure SQL DB uses an isolated multi-tenant model and needs to share physical resources among all service clients. As such, server-level functionality is generally restricted or unsupported. Tools such as SQL Server Utility, SQL Trace, Profiler, and many `system` tables no longer apply and are not available. In their place, several views are available to provide diagnostic and health monitoring.
 
@@ -729,9 +729,9 @@ The primary audience is business and technology decision-makers. From the case s
 
    [SQL MI](https://docs.microsoft.com/azure/azure-sql/managed-instance/) is a fully-managed PaaS SQL Server Database Engine Instance hosted in Azure that provides _near_ 100% compatibility with on-premises SQL Server database instances. Unlike SQL DB, it does not use an isolated multi-tenant model. Instead, it supplies a native virtual network (VNet) implementation that addresses many common isolation and security concerns of on-premises SQL Server customers. As such, it is the best PaaS option for migrating existing SQL Server databases to the cloud.
 
-   The managed instance model allows existing SQL Server customers to lift-and-shift their on-premises applications to the cloud with minimal application and database changes. As a deployment option of Azure SQL Database, it preserves all the PaaS capabilities that drastically reduce management overhead and TCO. While the majority of on-premises SQL features are supported, there are some features, like Filestream, that are not available. Unlike SQL DB, SQL MI does support distributed transactions, SQL Agent jobs, .NET CLR integration, and [Service broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=%2Fazure%2Fazure-sql%2Ftoc.json&view=sql-server-ver15) (including preview support for [cross-instance Service Broker message exchange](https://techcommunity.microsoft.com/t5/azure-sql/cross-instance-service-broker-message-exchange-for-azure-sql/ba-p/2217323)).
+   The managed instance model allows existing SQL Server customers to lift and shift their on-premises applications to the cloud with minimal application and database changes. As a deployment option of Azure SQL Database, it preserves all the PaaS capabilities that drastically reduce management overhead and TCO. While the majority of on-premises SQL features are supported, there are some features, like Filestream, that are not available. Unlike SQL DB, SQL MI does support distributed transactions, SQL Agent jobs, .NET CLR integration, and [Service broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=%2Fazure%2Fazure-sql%2Ftoc.json&view=sql-server-ver15) (including preview support for [cross-instance Service Broker message exchange](https://techcommunity.microsoft.com/t5/azure-sql/cross-instance-service-broker-message-exchange-for-azure-sql/ba-p/2217323)).
 
-   Azure SQL MI is best for new cloud-native applications or existing applications that want to use the latest stable SQL Server features and need to be migrated to the cloud with minimal changes. It is also recommended for teams that do not want to employ resources for configuration and management of database infrastructure.
+   Azure SQL MI is best for new cloud-native applications or existing applications that want to use the latest stable SQL Server features and need to be migrated to the cloud with minimal changes. It is also recommended for teams that do not want to employ resources for the configuration and management of database infrastructure.
 
    _[SQL Server on an Azure VM](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)_
 
@@ -753,7 +753,7 @@ The primary audience is business and technology decision-makers. From the case s
    - **Replay**: The second step of SQL Server A/B testing is to replay the trace file captured on your target servers, and then collect extensive traces from the replay for analysis.
    - **Analysis**: The final step is to generate an analysis report using the replay traces. The analysis report can help you gain insight into the implications of the proposed change.
 
-   Using the DEA analysis metrics, customers who are upgrading from an earlier version of SQL Server (starting with 2005) to a more recent version can identify compatibility errors, degraded queries and query plans, and other workload comparison data. The comparison data can lead to higher confidence and more successful upgrade experience.
+   Using the DEA analysis metrics, customers who are upgrading from an earlier version of SQL Server (starting with 2005) to a more recent version can identify compatibility errors, degraded queries and query plans, and other workload comparison data. The comparison data can lead to higher confidence and a more successful upgrade experience.
 
    _[Database Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=sqlallproducts-allversions)_
 
@@ -787,7 +787,7 @@ The primary audience is business and technology decision-makers. From the case s
 
    Customer applications can connect to managed instances and query and update databases inside the virtual network, peered virtual network, or network connected by VPN or Azure ExpressRoute. This network must use an endpoint and a private IP address.
 
-   To reduce some of the complexity of connecting to SQL MI, it is also possible to access SQL MI through a [secure public endpoint](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-overview). SQL MI has a dedicated public endpoint address, which is disabled by default. If enabled, the client-side outbound firewall and network security group rules limit outbound connectivity to this endpoint. It is recommended the traffic be allowed to connect to limited to well-known IP addresses.
+   To reduce some of the complexity of connecting to SQL MI, it is also possible to access SQL MI through a [secure public endpoint](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-overview). SQL MI has a dedicated public endpoint address, which is disabled by default. If enabled, the client-side outbound firewall and network security group rules limit outbound connectivity to this endpoint. With this approach, it is recommended to allow traffic to SQL MI from a limited set of IP addresses.
 
 4. We want to avoid "vendor lock-in" when moving to the cloud. Will using PaaS services for hosting our databases allow us to have a valid exit strategy? Or should we stick to using VMs in Azure for hosting our databases?
 

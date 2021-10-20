@@ -1,6 +1,6 @@
 # Manual resource deployment and setup guide
 
-This guide provides step-by-step instructions to manually provision and the configure resources created by the ARM template referenced in the before the hands-on lab guide.
+This guide provides step-by-step instructions to manually provision and configure resources created by the ARM template referenced in the Before the Hands-on Lab guide.
 
 October 2021
 
@@ -102,7 +102,7 @@ In this task, you configure this virtual network (VNet).
 
     ![Subnets is selected and highlighted in the left-hand menu. On the Subnets blade, +Gateway subnet is highlighted.](media/vnet-add-gateway-subnet.png "Subnets")
 
-5. The **Name** for gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required in order for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
+5. The **Name** for the gateway subnet is automatically filled in with the value `GatewaySubnet`. This value is required for Azure to recognize the subnet as the gateway subnet. Accept the auto-filled Address range value, and leave Route table, Service endpoints, and Subnet delegation set to their default values.
 
     ![The Add subnet form is displayed, with the default values.](media/vnet-add-gateway-subnet-form.png "Add subnet")
 
@@ -193,7 +193,7 @@ In this task, you create an Azure SQL Managed Instance.
    - Administrator account:
 
      - **Managed instance admin login**: Enter `sqlmiuser`
-     - **Password**: Enter `Password.1234567890`
+     - **Password**: Enter a secure password of your choice, like `Password.1234567890`
 
      ![On the Create SQL Managed Instance Basics tab, the values specified above are entered into the appropriate fields.](media/sql-managed-instance-basics-tab.png "Create SQL Managed Instance")
 
@@ -249,7 +249,7 @@ In this task, you provision a virtual machine (VM) in Azure. The VM image used h
    - Administrator account:
 
      - **Username**: Enter `sqlmiuser`
-     - **Password**: Enter `Password.1234567890`
+     - **Password**: Enter a secure password, like `Password.1234567890`
 
    - Inbound port rules:
 
@@ -318,7 +318,7 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
    - Administrator Account:
 
      - **Username**: Enter `sqlmiuser`
-     - **Password**: Enter `Password.1234567890`
+     - **Password**: Enter a secure password, like `Password.1234567890`
 
    - Inbound Port Rules:
 
@@ -359,7 +359,7 @@ In this task, you provision another virtual machine (VM) in Azure, which will ho
 
      - **SQL Authentication**: Select **Enable**.
      - **Login name**: Enter `sqlmiuser`
-     - **Password**: Enter `Password.1234567890`
+     - **Password**: Use the same secure password (like `Password.1234567890`)
 
      ![The previously specified values are entered into the SQL Server settings tab.](media/sql-server-2008-r2-vm-sql-settings.png "SQL Server settings")
 
@@ -487,7 +487,7 @@ In this task, you create an Azure Storage account.
 
 4. Select **Review + create**.
 
-5. On the **Review + create** blade, ensure the Validate passed message is displayed and then select **Create**.
+5. On the **Review + create** blade, ensure the Validation passed message is displayed and then select **Create**.
 
    ![On the Review + create blade, the Validation passed message is displayed at the top.](media/storage-create-account-review.png "Create storage account")
 
@@ -524,11 +524,11 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 7. Enter the following credentials when prompted, and then select **OK**:
 
    - **Username**: `sqlmiuser`
-   - **Password**: `Password.1234567890`
+   - **Password**: Use the JumpBox secure password (`Password.1234567890`)
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
 
-8. Select **Yes** to connect, if prompted the identity of the remote computer cannot be verified.
+8. Select **Yes** to connect if you are prompted that the identity of the remote computer cannot be verified.
 
    ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
@@ -568,7 +568,7 @@ In this task, you download the lab starter solution and install SQL Server Manag
 
    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](media/ie-download-open-folder.png "Internet Explorer")
 
-7. Once it is download, extract the ZIP file to `C:\hands-on-lab`.
+7. Once it is downloaded, extract the ZIP file to `C:\hands-on-lab`.
 
    ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](media/extract-compressed-zip.png "Extract Compressed Zip")
 
@@ -607,7 +607,7 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 4. Enter the following credentials when prompted, and then select **OK**:
 
    - **Username**: `sqlmiuser`
-   - **Password**: `Password.1234567890`
+   - **Password**: Use the SqlServer2008 VM secure password (`Password.1234567890`)
 
    ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
 
@@ -652,7 +652,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
 
     > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
-    > **Hint**: Copy file URL to VM using Internet Explorer : `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
+    > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering **sql server** into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio** from the search results.
 
@@ -680,7 +680,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `WideWorldImporters` database.
 
-9. Select the restore check mark. Select **WideWorldImporters** from the **Database** menu. Then, select **OK** to start to restore.
+9. Select the restore checkmark. Select **WideWorldImporters** from the **Database** menu. Then, select **OK** to start to restore.
 
    ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
 

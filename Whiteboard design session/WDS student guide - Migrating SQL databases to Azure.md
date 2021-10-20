@@ -44,7 +44,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 ## Abstract and learning objectives
 
-In this whiteboard design session, you work in a group to develop a plan for migrating on-premises VMs and SQL Server databases into a combination of IaaS and PaaS services in Azure. You provide guidance on performing assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and Azure's managed database offerings. You then design a solution for migrating their on-premises services, including VMs and databases, into Azure, with minimal down-time. Finally, you provide guidance on enabling some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
+In this whiteboard design session, you work in a group to develop a plan for migrating on-premises VMs and SQL Server databases into a combination of IaaS and PaaS services in Azure. You provide guidance on performing assessments to reveal any feature parity and compatibility issues between the customer's SQL Server 2008 R2 databases and Azure's managed database offerings. You then design a solution for migrating their on-premises services, including VMs and databases, into Azure, with minimal downtime. Finally, you provide guidance on enabling some of the advanced SQL features available in Azure to improve security and performance in the customer's applications.
 
 At the end of this whiteboard design session, you will be better able to design a cloud migration solution for business-critical applications and databases.
 
@@ -78,6 +78,10 @@ WWI indicated that their current hardware rental agreement ends in three months,
 
 Of great concern to the WWI leadership team is that SQL Server 2008 R2 is now beyond the end of support. They are interested in hearing more about fully-managed platform-as-a-service (PaaS) options in Azure for their databases. They lack employees with any real database administration skills, so they feel this would be an excellent first step towards reducing their infrastructure workload. They have requested assistance in assessing any compatibility issues between their current databases and PaaS options in Azure. They read the Service Broker feature of SQL Server is partially supported in Azure and would like clarification on whether they can continue to use this with the PaaS database offerings. They are using this functionality for several critical gaming processes, and cannot afford to lose this capability when migrating their gaming databases to the cloud. They have also stated that, at this time, they do not have the resources to rearchitect the gaming services to use an alternative message broker.
 
+WWI has examined the benefits of NoSQL databases, like Azure Cosmos DB. They understand that Cosmos DB provides a highly available, globally distributed platform, but they do not have the resources to redesign their games to utilize Cosmos DB, and they find the migration to be too complex for the timeframe. WWI has indicated that they are interested in exploring this migration path after they migrate their SQL Server databases to Azure SQL Database or Azure SQL Managed Instance.
+
+For their gaming services, WWI operates an extensive on-premises Active Directory domain to centralize access management for their network resources, including their SQL Server instances. WWI is aware of Azure Active Directory and would like to know more about the Azure Active Directory integration with SQL Managed Instance and how to extend their on-premises identity solution to Azure.
+
 In addition to their gaming services, WWI is also interested in migrating their data warehouse and its associated services to the cloud. The data warehouse uses a Symmetric Multi-Processing (SMP) based architecture and is hosted on a dedicated SQL Server 2008 R2 instance. The data warehouse is presently around 20TB in size and is growing at a rate of about 250GB per month. They use the data warehouse to build SQL Server Analysis Services (SSAS) cubes and create reports using SQL Server Reporting Services (SSRS). The SSRS reports are deployed to sites in their SharePoint environment. They feel the data warehouse's performance is adequate for meeting the requirement of presenting data to business users via BI components, such as SSAS cubes, so they indicated a desire to stick with the current architecture, if possible. They do not believe the existing data warehouse requires a Massively Parallel Processing (MPP) architecture at this time. They collect numerous game telemetry data points, including remote monitoring and analysis of game servers and user telemetry (i.e., data on players' behavior, such as their interaction with games and other players). Code embedded in the gaming software transmits data to the gaming databases. Telemetry data is then loaded into the data warehouse hourly using SQL Server Integration Services (SSIS) packages. They also noted that their customer service personnel and developers frequently connect to the data warehouse for various activities.
 
 They also mentioned some reports that are run directly against the gaming databases to analyze user telemetry and gaming metrics in near real-time. While there are not many of these reports, they are essential to the developers and business users. They have noticed that at times of peak gaming activity, running these reports can be very slow, and they have occasionally seen impacts on gaming performance. They are interested to learn if there is any way they can continue to run these reports, but do it in a way that will alleviate the performance impact they've experienced.
@@ -105,7 +109,7 @@ To help you better understand their current environment, WWI has provided the fo
 
    - Reducing latency for gamers accessing our services from various places around the world.
    - Improving our ability to host more players during peak times or when new game releases.
-   - Adding redundancy to ensure high-availability for our gaming services.
+   - Adding redundancy to ensure high availability for our gaming services.
 
 6. In the event of a regional outage, we would like to resume gaming services within minutes and recover the data warehouse within 48 hours.
 
@@ -141,7 +145,7 @@ Timeframe: 60 minutes
 
 Directions: With all participants at your table, answer the following questions and list the answers on a flip chart:
 
-1. Who should you present this solution to? Who is your target customer audience? Who are the decision makers?
+1. Who should you present this solution to? Who is your target customer audience? Who are the decision-makers?
 
 2. What customer business needs do you need to address with your solution?
 
@@ -179,7 +183,7 @@ Directions: With all participants at your table, respond to the following questi
 
 3. How should the ability to scale gaming services up or down be handled?
 
-4. How can the gaming services be made highly-available?
+4. How can the gaming services be made highly available?
 
 *Data warehouse and reporting*
 
@@ -225,7 +229,7 @@ Directions:
 
 2. One table is the Microsoft team and the other table is the customer.
 
-3. The Microsoft team presents their proposed solution to the customer.
+3. The Microsoft team presents its proposed solution to the customer.
 
 4. The customer makes one of the objections from the list of objections.
 

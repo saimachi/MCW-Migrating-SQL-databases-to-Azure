@@ -79,7 +79,7 @@ In this exercise, you set up your environment for use in the rest of the hands-o
 
 In this task, you register the `Microsoft.DataMigration` resource provider with your Azure subscription. Registration of this resource provider is necessary to create an Azure Database Migration Service within your subscription.
 
-1. In the [Azure portal](https://portal.azure.com), from **home page**, select **Subscriptions** from the Azure services list.
+1. In the [Azure portal](https://portal.azure.com), from the **home page**, select **Subscriptions** from the Azure services list.
 
    ![Subscriptions is highlighted in the Azure services list.](media/azure-services-subscriptions.png "Azure services")
 
@@ -122,7 +122,7 @@ Before running the ARM template, it is beneficial to quickly verify that you can
 
    > **Note**: If you see the message stating that Managed Instance creation is not available for the chosen subscription type, follow the instructions for [obtaining a larger quota for SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#obtaining-a-larger-quota-for-sql-managed-instance) before proceeding with the following steps.
 
-6. Be happy if you don't have any warnings! Just **cancel** current operation by closing blade.
+6. Be happy if you don't have any warnings! Just **cancel** the current operation by closing the blade.
 
    ![The closing button is located on top left below user name.](media/cancel-resource-sql-mi.png "Cancel SQL MI resource creation")
 
@@ -155,24 +155,24 @@ You are now ready to begin the ARM template deployment.
 
    ![Locate and select the Build your own template in the editor button.](media/build-template-button.png "Build template button")
 
-4. Whether use **Load file** button or paste content from file **Hands-on lab/lab-files/ARM-template/azure-deploy.json** from repository.
+4. Use the **Load file** button or paste the contents of the file **Hands-on lab/lab-files/ARM-template/azure-deploy.json** from the repository.
 
 5. Select the **Save** button to validate the template.
 
    ![Load file or paste content from lab file azure-deploy.json from ARM-template folder .](media/load-template-file.png "Load template file")
 
-6. On the next custom deployment, first check that **19 resources** are about to be created.
+6. On the next custom deployment, check that **19 resources** are about to be created.
 
-7. Only fill **two settings** into deployment form, and **leave others as default**:
+7. Only fill **two settings** into the deployment form, and **leave others as default**:
 
    - **Resource group**: Select the hands-on-lab-SUFFIX resource group from the dropdown list.
-   - **Managed Instance Name**: Ensure globally unique value, such as **sqlmi-SUFFIX**.
+   - **Managed Instance Name**: Provide a globally unique value, such as **sqlmi-SUFFIX**.
 
 8. Then select **Review + create** to review the custom deployment.
 
    ![The Custom deployment blade is displayed, and the information above is entered on the Custom deployment blade.](media/azure-custom-deployment.png "Custom deployment blade")
 
-9. Wait for the **Review + create** blade to refresh, and ensure the _Validation passed_ message is displayed. Finally  select **Create** to begin the custom deployment.
+9. Wait for the **Review + create** blade to refresh, and ensure the _Validation passed_ message is displayed. Finally, select **Create** to begin the custom deployment.
 
    ![On the Review + create blade for the custom deployment, the Validation passed message is highlighted, and the Create button is highlighted.](media/azure-custom-deployment-review-create.png "Review + create custom deployment")
 
