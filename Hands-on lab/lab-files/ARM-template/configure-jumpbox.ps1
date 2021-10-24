@@ -18,6 +18,6 @@ Invoke-WebRequest 'https://github.com/microsoft/MCW-Migrating-SQL-databases-to-A
 Expand-Archive -LiteralPath 'C:\MCW.zip' -DestinationPath 'C:\hands-on-lab' -Force
 
 # Download and install SQL Server Management Studio
-Invoke-WebRequest 'https://go.microsoft.com/fwlink/?linkid=2105412' -OutFile 'C:\SSMS-Setup.exe'
-$pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart /Logs log.txt}
-Invoke-Command -ScriptBlock $pathArgs
+# Invoke-WebRequest 'https://go.microsoft.com/fwlink/?linkid=2105412' -OutFile 'C:\SSMS-Setup.exe'
+# $pathArgs = {C:\SSMS-Setup.exe /Install /Quiet /Norestart /Logs log.txt}
+# Invoke-Command -ScriptBlock $pathArgs

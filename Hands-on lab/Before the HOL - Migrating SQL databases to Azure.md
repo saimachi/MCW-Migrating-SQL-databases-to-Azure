@@ -33,6 +33,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 2: Register the Microsoft DataMigration resource provider](#task-2-register-the-microsoft-datamigration-resource-provider)
     - [Task 3: Validate subscription compatibility with SQL MI](#task-3-validate-subscription-compatibility-with-sql-mi)
     - [Task 4: Run ARM template to provision lab resources](#task-4-run-arm-template-to-provision-lab-resources)
+    - [Task 5: Install SSMS on the Jump Box](#task-5-install-ssms-on-the-jump-box)
 
 <!-- /TOC -->
 
@@ -183,6 +184,28 @@ You are now ready to begin the ARM template deployment.
    ![The Deployments menu item is selected in the left-hand menu of the hands-on-lab-SUFFIX resource group and the Microsoft.Template deployment is highlighted.](media/resource-group-deployments.png "Resource group deployments")
 
 > Check back in a few hours to monitor the progress of your SQL MI provisioning. If the provisioning goes on for longer than 7 hours, you may need to issue a support ticket in the Azure portal to request the provisioning process be unblocked by Microsoft support.
+
+### Task 5: Install SSMS on the Jump Box
+
+In this Task, you will install SQL Server Management Studio on the JumpBox. You will utilize this tool to manage the SQL Server 2008 R2 instance and eventually the SQL MI instance.
+
+1. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
+
+   ![The Download SQL Server Management Studio (SSMS) link is highlighted on the page specified above.](media/download-ssms.png "Download SSMS")
+
+   > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
+
+   > **Note**: Internet Explorer ESC was disabled in the Custom Script Execution to allow you to download the SSMS executable. If it was not, the CSE may have failed, so please refer to Task 10 of the [Manual setup document.](Manual-resource-setup.md)
+
+2. Run the downloaded installer.
+
+3. On the Welcome screen, select **Install** to begin the installation.
+
+    ![The Install button is highlighted on the SSMS installation welcome screen.](media/ssms-install.png "Install SSMS")
+
+4. Select **Close** when the installation completes.
+
+    ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
 
 > **Important**
 >
