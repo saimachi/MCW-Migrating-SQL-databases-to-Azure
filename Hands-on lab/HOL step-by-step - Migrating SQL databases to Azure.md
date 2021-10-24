@@ -35,9 +35,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 1: Connect to the WideWorldImporters database on the SqlServer2008 VM](#task-1-connect-to-the-wideworldimporters-database-on-the-sqlserver2008-vm)
     - [Task 2: Create an Azure Migrate Project](#task-2-create-an-azure-migrate-project)
     - [Task 3: Assess migration to Azure SQL Database](#task-3-assess-migration-to-azure-sql-database)
-      - [Install .NET Framework 4.8](#install-net-framework-48)
-      - [Install the Data Migration Assistant](#install-the-data-migration-assistant)
-      - [Launch the Data Migration Assistant](#launch-the-data-migration-assistant)
     - [Task 4: Assess migration to Azure SQL Managed Instance](#task-4-assess-migration-to-azure-sql-managed-instance)
   - [Exercise 2: Migrate the database to SQL MI](#exercise-2-migrate-the-database-to-sql-mi)
     - [Task 1: Create an SMB network share on the SqlServer2008 VM](#task-1-create-an-smb-network-share-on-the-sqlserver2008-vm)
@@ -200,44 +197,6 @@ In this Task, you will use Azure Migrate to create a project to consolidate your
 ### Task 3: Assess migration to Azure SQL Database
 
 In this task, you use the Microsoft Data Migration Assistant (DMA) to assess the `WideWorldImporters` database against Azure SQL Database (Azure SQL DB). The assessment provides a report about any feature parity and compatibility issues between the on-premises database and the Azure SQL DB service.
-
-#### Install .NET Framework 4.8
-
-As **Microsoft Data Migration Assistant** requires .NET Framework 4.8 to operate, install it as instructed below: 
-
-   ![Migration assistant require framework .Net 4.8.](media/download-framework-4-8.png "Download framework 4.8")
-
-1. Download the offline setup file from [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into an Internet Explorer address bar.
-
-2. **Download** and **Run** the installation package to proceed with new .NET Framework 4.8 setup.
-
-3. Scroll down terms, **Accept** the license terms, and select **Install**.
-
-   ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
-
-4. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
-
-   ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
-
-#### Install the Data Migration Assistant
-
-Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
-
-1. Open `https://www.microsoft.com/en-us/download/details.aspx?id=53595` in Internet Explorer.
-
-2. Select **Download** to get the installation files.
-
-   ![Copy the URL into Internet explorer then download installation file.](media/download-migration-assistant.png "Download Migration Assistant")
-
-3. Complete the download. Execute the downloaded file on the SQL Server 2008 R2 VM.
-
-   ![Proceed with complete installation when prompted.](media/proceed-complete-installation.png "Proceed complete installation")
-
-4. As with the previous installation, start by selecting **Next**. Scroll down the license terms, **Accept** them, and select the **Install** button.
-
-#### Launch the Data Migration Assistant
-
-You can now proceed with data migration by following these steps:
 
 1. On the SqlSever2008 VM, launch DMA from the Windows Start. It should appear highlighted, as you just installed it. Otherwise, you can access it using the Windows menu by typing **data migration** into the search bar and selecting **Microsoft Data Migration Assistant** in the search results.
 

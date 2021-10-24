@@ -625,23 +625,31 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
    ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/2008-internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
-9. Close the Server Manager.
+9. Close the Server Manager, as you will proceed to install the Microsoft Data Migration Assistant v5.x.
 
-10. Next, you will install the Microsoft Data Migration Assistant v5.x by navigating to <https://www.microsoft.com/en-us/download/details.aspx?id=53595> in a web browser on the SqlServer2008 VM and then select the **Download** button.
+10. As **Microsoft Data Migration Assistant** requires .NET Framework 4.8 to operate, install it from the [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into an Internet Explorer address bar.
 
-    ![The Download button is highlighted on the Data Migration Assistant download page.](media/dma-download.png "Download Data Migration Assistant")
+11. **Download** and **Run** the installation package to proceed with new .NET Framework 4.8 setup.
 
-    > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
+12. Scroll down terms, **Accept** the license terms, and select **Install**.
 
-11. Run the downloaded installer.
+    ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
 
-12. Select **Next** on each of the screens, accepting the license terms and privacy policy in the process.
+13. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
 
-13. Select **Install** on the Privacy Policy screen to begin the installation.
+    ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
-14. On the final screen, select **Finish** to close the installer.
+14. Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
 
-    ![The Finish button is selected on the Microsoft Data Migration Assistant Setup dialog.](./media/data-migration-assistant-setup-finish.png "Run the Microsoft Data Migration Assistant")
+15. Select **Download** to get the installation files.
+
+    ![Copy the URL into Internet explorer then download installation file.](media/download-migration-assistant.png "Download Migration Assistant")
+
+16. Complete the download. Execute the downloaded file on the SQL Server 2008 R2 VM.
+
+    ![Proceed with complete installation when prompted.](media/proceed-complete-installation.png "Proceed complete installation")
+
+17. As with the previous installation, start by selecting **Next**. Scroll down the license terms, **Accept** them, and select the **Install** button.
 
 ## Task 12: Configure the WideWorldImporters database on the SqlServer2008 VM
 
