@@ -72,7 +72,7 @@
         "publicDataEndpointEnabled": false,
         "timezoneId": "UTC",
         "networkSecurityGroupName": "[concat(parameters('managedInstanceName'), '-nsg')]",
-        "virtualMachineSize": "Standard_D2s_v3",
+        "virtualMachineSize": "Standard_D4s_v3",
         "jbVirtualMachineName": "JumpBox",
         "jbNetworkSecurityGroupName": "[concat(variables('jbVirtualMachineName'), '-nsg')]",
         "jbNetworkInterfaceName": "[concat(variables('jbVirtualMachineName'), '-nic')]",
