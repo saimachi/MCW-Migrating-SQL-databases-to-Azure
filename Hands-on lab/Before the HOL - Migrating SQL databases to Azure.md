@@ -34,6 +34,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 3: Validate subscription compatibility with SQL MI](#task-3-validate-subscription-compatibility-with-sql-mi)
     - [Task 4: Run ARM template to provision lab resources](#task-4-run-arm-template-to-provision-lab-resources)
     - [Task 5: Install SSMS on the Jump Box](#task-5-install-ssms-on-the-jump-box)
+    - [Task 6: Install DMA on the SQL Server 2008 VM](#task-6-install-dma-on-the-sql-server-2008-vm)
 
 <!-- /TOC -->
 
@@ -189,7 +190,30 @@ You are now ready to begin the ARM template deployment.
 
 In this Task, you will install SQL Server Management Studio on the JumpBox. You will utilize this tool to manage the SQL Server 2008 R2 instance and eventually the SQL MI instance.
 
-1. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
+1. On your JumpBox VM blade, select **Connect** and **RDP** from the top menu.
+
+   ![The JumpBox VM blade is displayed, with the Connect and RDP button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to JumpBox VM")
+
+2. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
+
+   ![The Connect with RDP blade is displayed, and the Download RDP File button is highlighted.](./media/connect-to-virtual-machine-with-rdp.png "Connect with RDP")
+
+3. Select **Connect** on the Remote Desktop Connection dialog.
+
+   ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection.png "Remote Desktop Connection dialog")
+
+4. Enter the following credentials when prompted, and then select **OK**:
+
+   - **Username**: `sqlmiuser`
+   - **Password**: Use the JumpBox secure password (`Password.1234567890`)
+
+   ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials.png "Enter your credentials")
+
+5. Select **Yes** to connect if you are prompted that the identity of the remote computer cannot be verified.
+
+   ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
+
+6. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
 
    ![The Download SQL Server Management Studio (SSMS) link is highlighted on the page specified above.](media/download-ssms.png "Download SSMS")
 
@@ -197,18 +221,67 @@ In this Task, you will install SQL Server Management Studio on the JumpBox. You 
 
    > **Note**: Internet Explorer ESC was disabled in the Custom Script Execution to allow you to download the SSMS executable. If it was not, the CSE may have failed, so please refer to Task 10 of the [Manual setup document.](Manual-resource-setup.md)
 
-2. Run the downloaded installer.
+7. Run the downloaded installer.
 
-3. On the Welcome screen, select **Install** to begin the installation.
+8. On the Welcome screen, select **Install** to begin the installation.
 
     ![The Install button is highlighted on the SSMS installation welcome screen.](media/ssms-install.png "Install SSMS")
 
-4. Select **Close** when the installation completes.
+9. Select **Close** when the installation completes.
 
     ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
 
+### Task 6: Install DMA on the SQL Server 2008 VM
+
+1. As you did for the JumpBox, navigate to the SqlServer2008 VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu.
+
+   ![The SqlServer2008 VM blade is displayed, with the Connect button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to SqlServer2008 VM")
+
+2. On the Connect with RDP blade, select **Download RDP File**, then open the downloaded RDP file.
+
+3. Select **Connect** on the Remote Desktop Connection dialog.
+
+   ![In the Remote Desktop Connection Dialog Box, the Connect button is highlighted.](./media/remote-desktop-connection-sql-2008.png "Remote Desktop Connection dialog")
+
+4. Enter the following credentials when prompted, and then select **OK**:
+
+   - **Username**: `sqlmiuser`
+   - **Password**: Use the SqlServer2008 VM secure password (`Password.1234567890`)
+
+   ![The credentials specified above are entered into the Enter your credentials dialog.](media/rdc-credentials-sql-2008.png "Enter your credentials")
+
+5. Select **Yes** to connect, if prompted the identity of the remote computer cannot be verified.
+
+   ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
+
+6. Close the Server Manager, as you will proceed to install the Microsoft Data Migration Assistant v5.x.
+
+7. As **Microsoft Data Migration Assistant** requires .NET Framework 4.8 to operate, install it from the [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into an Internet Explorer address bar.
+
+8. **Download** and **Run** the installation package to proceed with new .NET Framework 4.8 setup.
+
+9. Scroll down terms, **Accept** the license terms, and select **Install**.
+
+    ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
+
+10. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
+
+    ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
+
+11. Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
+
+12. Select **Download** to get the installation files.
+
+    ![Copy the URL into Internet explorer then download installation file.](media/download-migration-assistant.png "Download Migration Assistant")
+
+13. Complete the download. Execute the downloaded file on the SQL Server 2008 R2 VM.
+
+    ![Proceed with complete installation when prompted.](media/proceed-complete-installation.png "Proceed complete installation")
+
+14. As with the previous installation, start by selecting **Next**. Scroll down the license terms, **Accept** them, and select the **Install** button.
+
 > **Important**
 >
-> As soon as the SqlServer2008 VM is up, verify the `WideWorldImporters` database is up. The configuration script used by the ARM template may have failed during the VM setup. In this case, follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
+> Also, verify the `WideWorldImporters` database is up. The configuration script used by the ARM template may have failed during the VM setup. In this case, follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
 
 You should follow all steps provided *before* performing the Hands-on lab.
