@@ -33,8 +33,11 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 2: Register the Microsoft DataMigration resource provider](#task-2-register-the-microsoft-datamigration-resource-provider)
     - [Task 3: Validate subscription compatibility with SQL MI](#task-3-validate-subscription-compatibility-with-sql-mi)
     - [Task 4: Run ARM template to provision lab resources](#task-4-run-arm-template-to-provision-lab-resources)
-    - [Task 5: Install SSMS on the Jump Box](#task-5-install-ssms-on-the-jump-box)
+    - [Task 5: Prepare the Jump Box](#task-5-prepare-the-jump-box)
     - [Task 6: Install DMA on the SQL Server 2008 VM](#task-6-install-dma-on-the-sql-server-2008-vm)
+    - [Task 7: Configure the WideWorldImporters database on the SqlServer2008 VM](#task-7-configure-the-wideworldimporters-database-on-the-sqlserver2008-vm)
+      - [Restore database](#restore-database)
+      - [Configure database user and service](#configure-database-user-and-service)
 
 <!-- /TOC -->
 
@@ -130,14 +133,14 @@ Before running the ARM template, it is beneficial to quickly verify that you can
 
 ### Task 4: Run ARM template to provision lab resources
 
-In this task, you run an Azure Resource Manager (ARM) template to create the resources required for this hands-on lab. The components are deployed inside a new virtual network (VNet) to facilitate communication between the VMs and SQL MI. The ARM template also adds inbound and outbound security rules to the network security groups associated with SQL MI and the VMs, including opening port 3389 to allow RDP connections to the JumpBox. In addition to creating resources, the ARM template also executes PowerShell scripts on each of the VMs to install software and configure the servers. The resources created by the ARM template include:
+In this task, you run an Azure Resource Manager (ARM) template to create the resources required for this hands-on lab. The components are deployed inside a new virtual network (VNet) to facilitate communication between the VMs and SQL MI. The ARM template also adds inbound and outbound security rules to the network security groups associated with SQL MI and the VMs, including opening port 3389 to allow RDP connections to the JumpBox. The resources created by the ARM template include:
 
 - A virtual network with three subnets, ManagedInstance, Management, and a Gateway subnet.
 - A virtual network gateway associated with the Gateway subnet.
 - A route table.
 - Azure SQL Managed Instance (SQL MI), added to the ManagedInstance subnet.
-- A JumpBox with Visual Studio 2019 Community Edition and SQL Server Management Studio (SSMS installed, added to the Management subnet).
-- A SQL Server 2008 R2 VM with the Data Migration Assistant (DMA) installed, added to the Management subnet.
+- A JumpBox with Visual Studio 2019 Community Edition
+- A SQL Server 2008 R2 VM added to the Management subnet.
 - Azure Database Migration Service (DMS).
 - Azure App Service Plan and App Service (Web App).
 - Azure Blob Storage account.
@@ -186,9 +189,9 @@ You are now ready to begin the ARM template deployment.
 
 > Check back in a few hours to monitor the progress of your SQL MI provisioning. If the provisioning goes on for longer than 7 hours, you may need to issue a support ticket in the Azure portal to request the provisioning process be unblocked by Microsoft support.
 
-### Task 5: Install SSMS on the Jump Box
+### Task 5: Prepare the Jump Box
 
-In this Task, you will install SQL Server Management Studio on the JumpBox. You will utilize this tool to manage the SQL Server 2008 R2 instance and eventually the SQL MI instance.
+In this Task, you will install SQL Server Management Studio on the JumpBox. You will utilize this tool to manage the SQL Server 2008 R2 instance and eventually the SQL MI instance. You will also obtain a copy of the lab repository. 
 
 1. On your JumpBox VM blade, select **Connect** and **RDP** from the top menu.
 
@@ -213,25 +216,61 @@ In this Task, you will install SQL Server Management Studio on the JumpBox. You 
 
    ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
-6. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
+6. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
+
+7. Select **Local Server**, then select **On** next to **IE Enhanced Security Configuration**.
+
+    ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-manager-ie-enhanced-security-configuration.png "Server Manager")
+
+8. In the Internet Explorer Enhanced Security Configuration dialog, select **Off** under both Administrators and Users, and then select **OK**.
+
+    ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
+
+9. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
 
    ![The Download SQL Server Management Studio (SSMS) link is highlighted on the page specified above.](media/download-ssms.png "Download SSMS")
 
    > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
 
-   > **Note**: Internet Explorer ESC was disabled in the Custom Script Execution to allow you to download the SSMS executable. If it was not, the CSE may have failed, so please refer to Task 10 of the [Manual setup document.](Manual-resource-setup.md)
+10. Run the downloaded installer.
 
-7. Run the downloaded installer.
-
-8. On the Welcome screen, select **Install** to begin the installation.
+11. On the Welcome screen, select **Install** to begin the installation.
 
     ![The Install button is highlighted on the SSMS installation welcome screen.](media/ssms-install.png "Install SSMS")
 
-9. Select **Close** when the installation completes.
+12. Select **Close** when the installation completes.
 
     ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
 
+13. Download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip).
+
+14. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the Internet Explorer browser window, and then select **Internet options** from the context menu.
+
+    ![The Tools icon is highlighted in the Internet Explorer toolbar, and Internet Options is highlighted in the context menu.](media/ie-tools-context-menu.png "Internet Explorer")
+
+15. In the **Internet Options** dialog, select **Custom level** in the Security level for this zone box.
+
+    ![The Custom level button is highlighted in the Internet Options dialog.](media/ie-internet-options.png "Internet Options")
+
+16. In the Security Settings - Internet Zone dialog, locate the **Downloads** settings and choose **Enable**, then select **OK**.
+
+    ![The Downloads property is highlighted in the Security Settings dialog, and Enable is selected.](media/ie-security-settings-internet-zone.png "Security Settings")
+
+17. Select **OK** on the Internet Options dialog, and then attempt the download again.
+
+18. When prompted, choose to save the file and then select Open folder.
+
+    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](media/ie-download-open-folder.png "Internet Explorer")
+
+19. Once it is downloaded, extract the ZIP file to `C:\hands-on-lab`.
+
+    ![In the Extract Compressed Zip File dialog, C:\hands-on-lab is entered into the destination field.](media/extract-compressed-zip.png "Extract Compressed Zip")
+
+    > **Important**: Ensure you use the path above, or something similarly short. Failure to do so could result in errors opening some of the files due to a long file path.
+
 ### Task 6: Install DMA on the SQL Server 2008 VM
+
+In this Task, you will install the Data Migration Assistant and .NET Framework 4.8, a dependency.
 
 1. As you did for the JumpBox, navigate to the SqlServer2008 VM blade in the Azure portal, select **Overview** from the left-hand menu, and then select **Connect** and **RDP** on the top menu.
 
@@ -254,34 +293,142 @@ In this Task, you will install SQL Server Management Studio on the JumpBox. You 
 
    ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
-6. Close the Server Manager, as you will proceed to install the Microsoft Data Migration Assistant v5.x.
+6. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
 
-7. As **Microsoft Data Migration Assistant** requires .NET Framework 4.8 to operate, install it from the [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into an Internet Explorer address bar.
+7. On the **Server Manager** view, select **Configure IE ESC** under Security Information.
 
-8. **Download** and **Run** the installation package to proceed with new .NET Framework 4.8 setup.
+   ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-2008-manager-ie-enhanced-security-configuration.png "Server Manager")
 
-9. Scroll down terms, **Accept** the license terms, and select **Install**.
+8. In the Internet Explorer Enhanced Security Configuration dialog, select **Off** under both Administrators and Users, and then select **OK**.
+
+   ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/2008-internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
+
+9. Close the Server Manager, as you will proceed to install the Microsoft Data Migration Assistant v5.x.
+
+10. As **Microsoft Data Migration Assistant** requires .NET Framework 4.8 to operate, install it from the [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into an Internet Explorer address bar.
+
+11. **Download** and **Run** the installation package to proceed with new .NET Framework 4.8 setup.
+
+12. Scroll down terms, **Accept** the license terms, and select **Install**.
 
     ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
 
-10. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
+13. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
 
     ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
-11. Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
+14. Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
 
-12. Select **Download** to get the installation files.
+15. Select **Download** to get the installation files.
 
     ![Copy the URL into Internet explorer then download installation file.](media/download-migration-assistant.png "Download Migration Assistant")
 
-13. Complete the download. Execute the downloaded file on the SQL Server 2008 R2 VM.
+16. Complete the download. Execute the downloaded file on the SQL Server 2008 R2 VM.
 
     ![Proceed with complete installation when prompted.](media/proceed-complete-installation.png "Proceed complete installation")
 
-14. As with the previous installation, start by selecting **Next**. Scroll down the license terms, **Accept** them, and select the **Install** button.
+17. As with the previous installation, start by selecting **Next**. Scroll down the license terms, **Accept** them, and select the **Install** button.
 
-> **Important**
->
-> Also, verify the `WideWorldImporters` database is up. The configuration script used by the ARM template may have failed during the VM setup. In this case, follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
+### Task 7: Configure the WideWorldImporters database on the SqlServer2008 VM
+
+In this task, you restore and configure the `WideWorldImporters` database on the SQL Server 2008 R2 instance.
+
+#### Restore database
+
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
+
+    > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
+    > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
+
+2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering **sql server** into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio** from the search results.
+
+   ![SQL Server is entered into the Windows Start menu search box, and Microsoft SQL Server Management Studio 17 is highlighted in the search results.](media/start-menu-ssms-17.png "Windows start menu search")
+
+3. In the SSMS **Connect to Server** dialog, enter **SQLSERVER2008** into the Server name box, ensure **Windows Authentication** is selected, and then select **Connect**.
+
+   ![The SQL Server Connect to Search dialog is displayed, with SQLSERVER2008 entered into the Server name and Windows Authentication selected.](media/sql-server-connect-to-server.png "Connect to Server")
+
+4. Once connected, right-click **Databases** under **SQLSERVER2008** in the Object Explorer, and then select **Restore Database** from the context menu.
+
+   ![In the SSMS Object Explorer, the context menu for Databases is displayed and Restore Database is highlighted.](media/ssms-databases-restore.png "SSMS Object Explorer")
+
+5. You will now restore the `WideWorldImporters` database using the downloaded `WideWorldImporters.bak` file. On the **General** page of the Restore Database dialog, select **Device** under Source, and then select the Browse (`...`) button to the right of the Device box.
+
+   ![Under Source in the Restore Database dialog, Device is selected and highlighted, and the Browse button is highlighted.](media/ssms-restore-database-source.png "Restore Database source")
+
+6. In the **Select backup devices** dialog that appears, select **Add**.
+
+   ![In the Select backup devices dialog, the Add button is highlighted.](media/ssms-restore-database-select-devices.png "Select backup devices")
+
+7. In the **Locate Backup File** dialog, browse to the location you saved the downloaded `WideWorldImporters.bak` file, select that file, and then select **OK**.
+
+   ![In the Location Backup File dialog, the WideWorldImporters.bak file is selected and highlighted.](media/ssms-restore-database-locate-backup-file.png "Locate Backup File")
+
+8. Select **OK** on the **Select backup devices** dialog. This returns you to the Restore Database dialog. The dialog now contains the information required to restore the `WideWorldImporters` database.
+
+9. Select the restore checkmark. Select **WideWorldImporters** from the **Database** menu. Then, select **OK** to start to restore.
+
+   ![The completed Restore Database dialog is displayed, with the WideWorldImporters database specified as the target.](media/ssms-restore-database.png "Restore Database")
+
+10. Select **OK** in the dialog when the database restore is complete.
+
+    ![A dialog is displayed with a message the database WideWorldImporters was restored successfully.](media/ssms-restore-database-success.png "Restored successfully")
+
+#### Configure database user and service
+
+1. Next, you execute a script in SSMS to create the `WorkshopUser` account. To create the script, open a new query window in SSMS by selecting **New Query** in the SSMS toolbar.
+
+    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+
+2. Copy and paste the SQL script below into the new query window:
+
+   ```sql
+   USE master;
+   GO
+
+   EXEC sp_addsrvrolemember
+      @loginame = N'WorkshopUser',
+      @rolename = N'sysadmin';
+   GO
+
+   -- Assign the user to the WideWorldImporters database
+   USE WideWorldImporters;
+   GO
+
+   IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'WorkshopUser')
+   BEGIN
+      CREATE USER [WorkshopUser] FOR LOGIN [WorkshopUser]
+      EXEC sp_addrolemember N'db_datareader', N'WorkshopUser'
+   END;
+   GO
+   ```
+
+3. To run the script, select **Execute** from the SSMS toolbar.
+
+    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+
+4. Select **New Query** from the SSMS toolbar again.
+
+    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
+
+5. Next, copy and paste the SQL script below into the new query window. This script enables Service broker on the `WideWorldImporters` database.
+
+    ```sql
+    USE [WideWorldImporters];
+    GO
+
+    -- Grant the sqlmiuser ALTER database permissions
+    GRANT ALTER ON DATABASE:: WideWorldImporters TO sqlmiuser;
+    GO
+
+    -- Enable Service Broker
+    ALTER DATABASE WideWorldImporters
+    SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+    GO
+    ```
+
+6. To run the script, select **Execute** from the SSMS toolbar.
+
+    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
 You should follow all steps provided *before* performing the Hands-on lab.

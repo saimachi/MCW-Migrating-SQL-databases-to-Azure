@@ -95,10 +95,6 @@
         "gatewaySubnetPrefix": "10.17.2.0/24",
         "managementSubnetName": "Management",
         "managementSubnetPrefix": "10.17.1.0/24",
-        "jbCustomScriptFileName": "configure-jumpbox.ps1",
-        "jbCustomScriptUri": "[concat('https://raw.githubusercontent.com/saimachi/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('jbCustomScriptFileName'))]",
-        "sqlCustomScriptFileName": "configure-sqlvm.ps1",
-        "sqlCustomScriptUri": "[concat('https://raw.githubusercontent.com/saimachi/MCW-Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/ARM-template/', variables('sqlCustomScriptFileName'))]",
         "appServicePlanName": "[concat(resourceGroup().name, '-asp')]",
         "webAppName": "[concat('wwi-web-', uniqueString(resourceGroup().id))]",
         "dmsName": "wwi-dms"
@@ -242,33 +238,7 @@
                         "provisionVmAgent": true
                     }
                 }
-            },
-            "resources": [
-                {
-                    "name": "SetupSqlVm",
-                    "apiVersion": "2019-03-01",
-                    "type": "extensions",
-                    "location": "[variables('location')]",
-                    "properties": {
-                        "publisher": "Microsoft.Compute",
-                        "type": "CustomScriptExtension",
-                        "typeHandlerVersion": "1.9",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
-                            "fileUris": [
-                                "[variables('sqlCustomScriptUri')]"
-                            ],
-                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('sqlCustomScriptFileName'))]"
-                        }
-                    },
-                    "dependsOn": [
-                        "[concat('Microsoft.Compute/virtualMachines/', variables('sqlVirtualMachineName'))]"
-                    ],
-                    "tags": {
-                        "displayName": "SetupSqlVm"
-                    }
-                }
-            ]
+            }
         },
         {
             "name": "[variables('sqlVirtualMachineName')]",
@@ -363,33 +333,7 @@
                         "provisionVmAgent": true
                     }
                 }
-            },
-            "resources": [
-                {
-                    "name": "SetupJumpBox",
-                    "apiVersion": "2019-03-01",
-                    "type": "extensions",
-                    "location": "[variables('location')]",
-                    "properties": {
-                        "publisher": "Microsoft.Compute",
-                        "type": "CustomScriptExtension",
-                        "typeHandlerVersion": "1.9",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
-                            "fileUris": [
-                                "[variables('jbCustomScriptUri')]"
-                            ],
-                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('jbCustomScriptFileName'))]"
-                        }
-                    },
-                    "dependsOn": [
-                        "[concat('Microsoft.Compute/virtualMachines/', variables('jbVirtualMachineName'))]"
-                    ],
-                    "tags": {
-                        "displayName": "SetupJumpBox"
-                    }
-                }
-            ]
+            }
         },
         {
             "type": "Microsoft.Web/serverfarms",
