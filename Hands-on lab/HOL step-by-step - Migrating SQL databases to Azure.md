@@ -163,10 +163,6 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
     ![The WideWorldImporters database is highlighted under Databases on the SQLSERVER2008 instance.](media/wide-world-importers-database.png "WideWorldImporters database")
 
-    > **Important**
-    >
-    > If you do not see the `WideWorldImporters` database listed, the configuration script used by the ARM template may have failed during the VM setup. In this case, you should follow the steps under Task 12 of the [Manual-resource-setup guide](./Manual-resource-setup.md) to **manually restore and configure the database**.
-
 ### Task 2: Create an Azure Migrate Project
 
 In this Task, you will use Azure Migrate to create a project to consolidate your assessment results for Azure SQL Database and Azure SQL Managed Instance migrations from on-premises SQL Server.
