@@ -708,6 +708,8 @@ In this task, you restore and configure the `WideWorldImporters` database on the
    USE master;
    GO
 
+   CREATE LOGIN WorkshopUser WITH PASSWORD = N'Password.1234567890';
+
    EXEC sp_addsrvrolemember
       @loginame = N'WorkshopUser',
       @rolename = N'sysadmin';

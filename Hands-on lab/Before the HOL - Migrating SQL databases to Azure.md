@@ -218,7 +218,7 @@ In this Task, you will install SQL Server Management Studio on the JumpBox. You 
 
 6. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
 
-7. Select **Local Server**, then select **On** next to **IE Enhanced Security Configuration**.
+7. Select **Local Server**, then select **IE Enhanced Security Configuration**.
 
     ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-manager-ie-enhanced-security-configuration.png "Server Manager")
 
@@ -242,7 +242,7 @@ In this Task, you will install SQL Server Management Studio on the JumpBox. You 
 
     ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
 
-13. Download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip).
+13. Download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip) (<https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip>).
 
 14. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the Internet Explorer browser window, and then select **Internet options** from the context menu.
 
@@ -317,7 +317,7 @@ In this Task, you will install the Data Migration Assistant and .NET Framework 4
 
     ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
-14. Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) with Internet Explorer.
+14. Install **Microsoft Data Migration Assistant** on your SqlSever2008 VM by accessing the [download page](https://www.microsoft.com/en-us/download/details.aspx?id=53595) (<https://www.microsoft.com/en-us/download/details.aspx?id=53595>) with Internet Explorer.
 
 15. Select **Download** to get the installation files.
 
@@ -335,7 +335,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 #### Restore database
 
-1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak) (<https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak>). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
 
     > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
     > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
@@ -385,6 +385,8 @@ In this task, you restore and configure the `WideWorldImporters` database on the
    ```sql
    USE master;
    GO
+
+   CREATE LOGIN WorkshopUser WITH PASSWORD = N'Password.1234567890';
 
    EXEC sp_addsrvrolemember
       @loginame = N'WorkshopUser',
