@@ -167,6 +167,8 @@ In this task, you perform some configuration for the `WideWorldImporters` databa
 
 In this Task, you will use Azure Migrate to create a project to consolidate your assessment results for Azure SQL Database and Azure SQL Managed Instance migrations from on-premises SQL Server.
 
+Azure Migrate is useful for large migrations of apps, servers, and data, as it assists migration teams to decide the optimal resource SKUs for the Azure landing zone and explore the relationships between on-premises applications and data. To learn more about this powerful tool, consult the [documentation.](https://docs.microsoft.com/azure/migrate/)
+
 1. In the global search at the top of the [Azure Portal](portal.azure.com), query for and select **Azure Migrate**.
 
    ![This image highlights Azure Migrate in the global search results.](./media/select-azure-migrate-portal.png "Selecting Azure Migrate from global search")
@@ -316,7 +318,7 @@ With one PaaS offering ruled out due to feature parity, perform a second DMA ass
 
 10. Review the **Compatibility issues** options of the migration assessment to determine the possibility of migrating to Azure SQL Managed Instance.
 
-   ![For a target platform of Azure SQL Managed Instance, there are no compatibility issues.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
+    ![For a target platform of Azure SQL Managed Instance, there are no compatibility issues.](media/dma-compatibility-issues-sql-mi.png "Compatibility issues")
 
 11. Repeat steps 11-13 from the previous Task to upload the assessment results to Azure Migrate.
 
@@ -586,7 +588,7 @@ In this task, you create a new online data migration project in DMS for the `Wid
 
 10. Select **Next : Configure migration settings**.
 
-   ![The Migration Wizard Select databases tab is displayed, with the WideWorldImporters database selected.](media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
+    ![The Migration Wizard Select databases tab is displayed, with the WideWorldImporters database selected.](media/dms-migration-wizard-select-databases.png "Migration Wizard Select databases")
 
 11. On the Migration Wizard **Configure migration settings** tab, enter the following configuration:
 
@@ -685,6 +687,8 @@ Since you performed an "online data migration," the migration wizard continuousl
 
     > **Note**: If the progress bar has not moved after a few minutes, you can proceed to the next step and monitor the cutover progress on the WwiMigration blade by selecting refresh.
 
+    > **Note**: To meet the Business Critical tier's high availability requirements, Azure creates a four node cluster based on *Always On* availability groups. This affects the cutover time.
+
 15. To return to the WwiMigration blade, close the Complete cutover dialog by selecting the "X" in the upper right corner of the dialog, and do the same thing for the WideWorldImporters blade. Select **Refresh**, and you should see a status of **Completed** from the WideWorldImporters database.
 
     ![On the Migration job blade, the status of Completed is highlighted.](media/dms-migration-wizard-status-complete.png "Migration with Completed status")
@@ -776,7 +780,7 @@ In this Task, you will install and utilize the Data Access Migration Toolkit Vis
 
    ![This image shows how to navigate to the Extensions blade in Visual Studio Code and locate and install the Data Access Migration Toolkit.](./media/install-damt-vs-code.png "Installing Data Access Migration Toolkit extension")
 
-3. At the upper left-hand corner of the page, select **Open Folder**. Navigate to `C:\hands-on-lab\MCW-Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files\WideWorldImporters.Web` in the dialog. Then, select **Select Folder**.
+3. At the upper left-hand corner of the page, select **File > Open Folder...**. Navigate to `C:\hands-on-lab\MCW-Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files\WideWorldImporters.Web` in the dialog. Then, select **Select Folder**.
 
 4. If you are asked to trust the authors of the files in the project folder, select **Yes, I trust the authors**.
 
@@ -938,6 +942,10 @@ In this task, you update the WWI gamer info web application to connect to and ut
 Duration: 15 minutes
 
 In this exercise, you integrate the WWI App Service with the virtual network created during the Before the hands-on lab exercises. The ARM template created a Gateway subnet on the VNet, as well as a Virtual Network Gateway. Both of these resources are required to integrate App Service and connect to SQL MI.
+
+The image below from the Microsoft documentation explains how worker virtual machines in Azure App Service can access resources on a virtual network subnet, such as SQL MI. 
+
+![This image demonstrates how Point to Site VPN can be employed for Azure App Service to securely access resources in a Virtual Network.](./media/vnetint-how-gateway-works.png "VNet integration for Azure App Service")
 
 ### Task 1: Generate and export certificates for Point-to-Site
 
@@ -1328,7 +1336,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
    ![The credit card number is masked in the query results.](media/ssms-sql-mi-ddm-results-masked.png "Query results")
 
-   > The `CardNumber` is now displayed using the mask applied to it, so only the card number's last four digits are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information. It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields while the data in the database is not changed.
+   > The `CardNumber` is now displayed using the mask applied to it, so only the card number's last four digits are visible. Dynamic Data Masking is a powerful feature that enables you to prevent unauthorized users from viewing sensitive or restricted information (`sqlmiuser` can view the data without the mask). It's a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields while the data in the database is not changed.
 
 ### Task 2: Apply DDM to email addresses
 
