@@ -476,9 +476,9 @@ The primary audience is business and technology decision-makers. From the case s
 
    ![A detailed diagram of the target gaming services architecture is displayed. The resources are broken down into subnets within an isolated VNet. This setup would be used for each game.](media/target-architecture-gaming-services.png "Gaming services architecture")
 
-   As mentioned previously, WWI needs to understand how its on-premises identity setup will integrate with Azure.
-
    Their data warehouse will be migrated using the Database Migration Service (DMS) offline migration option. The target platform will be Azure SQL Database (Hyperscale) to accommodate the large amount of data they currently have and facilitate serving more requests. The movement of telemetry data from the gaming databases into the data warehouse will be handled using the Azure-SSIS Integration Runtime in Azure Data Factory (ADF). Data can be scheduled to run hourly in ADF, just as with their existing SSIS packages. Azure Analysis Services (Azure AS) will be used for data modeling in the cloud from the data warehouse.
+
+   One preview feature that WWI will keep in mind for future migrations is that the Database Migration Service can migrate SSIS projects stored in the on-premises SSIS catalog database (SSISDB) to the SSIS catalog database in Azure SQL Managed Instance. Again, the SSISDB catalog database is created in SQL MI through the Azure-SSIS Integration Runtime in ADF.
 
    Because SSRS currently has no direct cloud-based equivalent, the customer's reports will be rewritten into paginated reports using Microsoft Power BI. Reports will be sent to SharePoint running on an Azure VM, backed by another SQL MI General-purpose instance.
 
