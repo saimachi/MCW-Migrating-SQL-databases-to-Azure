@@ -793,6 +793,10 @@ The primary audience is business and technology decision-makers. From the case s
 
    Yes, it is possible to use a PaaS database service and still avoid vendor lock-in. They could use [Transactional replication](https://docs.microsoft.com/azure/azure-sql/managed-instance/replication-between-two-instances-configure-tutorial) to replicate data into remote SQL Server databases, including those in another cloud vendor's cloud.
 
+   Additionally, [Azure Arc-enabled data services](https://docs.microsoft.com/azure/azure-arc/data/overview) allow Azure customers to operate SQL Managed Instance through on-premises resources or on other public clouds. Based on Kubernetes, Azure Arc extends the flexibility of the Azure control plane to other environments. Microsoft provides the [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) to demonstrate how to operate Azure Arc-enabled data services on the managed Kubernetes platforms offered by other popular public clouds.
+
+   Since the database objects used in WWI's solution are scripted in T-SQL, WWI can easily reconstruct those objects on the PaaS or IaaS SQL Server offerings provided by other vendors, depending on the feature compatibility they need. To move data, if the landing zone is unsupported by DMS, WWI can utilize [Azure Data Factory.](https://docs.microsoft.com/azure/data-factory/introduction)
+
 5. We want to integrate our on-premises Active Directory with the new Azure database. Is this possible? If so, what approaches are feasible?
 
    Azure Active Directory supports hybrid identity scenarios through the following two models.
