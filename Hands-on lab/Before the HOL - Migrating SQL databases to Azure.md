@@ -168,7 +168,7 @@ You are now ready to begin the ARM template deployment.
 
 6. On the next custom deployment, check that **19 resources** are about to be created.
 
-7. Only fill **two settings** into the deployment form, and **leave others as default**:
+7. Only change the two settings listed below. Keep the others at their defaults.
 
    - **Resource group**: Select the hands-on-lab-SUFFIX resource group from the dropdown list.
    - **Managed Instance Name**: Provide a globally unique value, such as **sqlmi-SUFFIX**.
@@ -193,7 +193,7 @@ You are now ready to begin the ARM template deployment.
 
 In this Task, you will install SQL Server Management Studio on the JumpBox. You will utilize this tool to manage the SQL Server 2008 R2 instance and eventually the SQL MI instance. You will also obtain a copy of the lab repository. 
 
-1. On your JumpBox VM blade, select **Connect** and **RDP** from the top menu.
+1. On your JumpBox VM blade in the Azure Portal, select **Connect** and **RDP** from the top menu.
 
    ![The JumpBox VM blade is displayed, with the Connect and RDP button highlighted in the top menu.](./media/connect-vm-rdp.png "Connect to JumpBox VM")
 
@@ -222,11 +222,13 @@ In this Task, you will install SQL Server Management Studio on the JumpBox. You 
 
     ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-manager-ie-enhanced-security-configuration.png "Server Manager")
 
-8. In the Internet Explorer Enhanced Security Configuration dialog, select **Off** under both Administrators and Users, and then select **OK**.
+8. In the Internet Explorer Enhanced Security Configuration dialog, verify that this feature is off for both Administrators and Users.
 
     ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
 9. Open a web browser on your JumpBox, navigate to <https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms> and then select the **Download SQL Server Management Studio (SSMS).x** link to download the latest version of SSMS.
+
+   >**Note**: If you receive a prompt from Internet Explorer regarding whether or not to use the recommended settings, do not use them. This will avoid any challenges encountered with downloading installers from the web.
 
    ![The Download SQL Server Management Studio (SSMS) link is highlighted on the page specified above.](media/download-ssms.png "Download SSMS")
 
@@ -299,13 +301,15 @@ In this Task, you will install the Data Migration Assistant and .NET Framework 4
 
    ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-2008-manager-ie-enhanced-security-configuration.png "Server Manager")
 
-8. In the Internet Explorer Enhanced Security Configuration dialog, select **Off** under both Administrators and Users, and then select **OK**.
+8. In the Internet Explorer Enhanced Security Configuration dialog, verify that this feature is off for both Administrators and Users.
 
    ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/2008-internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
 9. Close the Server Manager, as you will proceed to install the Microsoft Data Migration Assistant v5.x.
 
 10. As **Microsoft Data Migration Assistant** requires .NET Framework 4.8 to operate, install it from the [Microsoft Site](https://go.microsoft.com/fwlink/?linkid=2088631) by pasting `https://go.microsoft.com/fwlink/?linkid=2088631` into an Internet Explorer address bar.
+
+    >**Note**: If you receive a prompt from Internet Explorer regarding whether or not to use the recommended settings, do not use them. This will avoid any challenges encountered with downloading installers from the web.
 
 11. **Download** and **Run** the installation package to proceed with new .NET Framework 4.8 setup.
 
