@@ -534,6 +534,10 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
 9. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
 
+    >**Note**: To improve the appearance of the RDP window on your system, you can edit the downloaded RDP file to scale the resolution appropriately. Select **Show Options** and navigate to the **Display** tab. Manipulate the slider under **Display configuration**.
+    >
+    > ![This image demonstrates how to adjust the RDP display resolution by editing the RDP file downloaded from the Azure Portal.](./media/rdp-set-resolution.png "RDP monitor resolution update")
+
 10. Select **Local Server**, then select **On** next to **IE Enhanced Security Configuration**.
 
     ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-manager-ie-enhanced-security-configuration.png "Server Manager")
@@ -548,7 +552,7 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
 In this task, you download the lab starter solution and install SQL Server Management Studio (SSMS) on the JumpBox.
 
-1. First, download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip).
+1. First, download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/main.zip).
 
 2. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the Internet Explorer browser window, and then select **Internet options** from the context menu.
 
@@ -617,6 +621,10 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
 6. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
 
+    >**Note**: To improve the appearance of the RDP window on your system, you can edit the downloaded RDP file to scale the resolution appropriately. Select **Show Options** and navigate to the **Display** tab. Manipulate the slider under **Display configuration**.
+    >
+    > ![This image demonstrates how to adjust the RDP display resolution by editing the RDP file downloaded from the Azure Portal.](./media/rdp-set-resolution.png "RDP monitor resolution update")
+
 7. On the **Server Manager** view, select **Configure IE ESC** under Security Information.
 
    ![Screenshot of the Server Manager. In the left pane, Local Server is selected. In the right, Properties (For LabVM) pane, the IE Enhanced Security Configuration, which is set to On, is highlighted.](./media/windows-server-2008-manager-ie-enhanced-security-configuration.png "Server Manager")
@@ -657,10 +665,10 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 ### Restore database
 
-1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
 
     > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
-    > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
+    > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering **sql server** into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio** from the search results.
 

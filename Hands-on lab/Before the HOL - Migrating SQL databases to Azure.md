@@ -248,7 +248,7 @@ In this Task, you will install SQL Server Management Studio on the JumpBox. You 
 
     ![The Close button is highlighted on the SSMS Setup Completed dialog.](media/ssms-install-close.png "Setup completed")
 
-13. Download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip) (<https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/master.zip>).
+13. Download the lab starter solution from the [MCW Migrating SQL databases to Azure GitHub repo](https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/main.zip) (<https://github.com/microsoft/MCW-Migrating-SQL-databases-to-Azure/archive/main.zip>).
 
 14. If you receive a message that downloads are not allowed, select the Tools icon at the top right of the Internet Explorer browser window, and then select **Internet options** from the context menu.
 
@@ -347,10 +347,10 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 #### Restore database
 
-1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak) (<https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak>). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak) (<https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak>). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
 
     > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
-    > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/master/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
+    > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
 
 2. Next, open **Microsoft SQL Server Management Studio 17** (SSMS) by entering **sql server** into the search bar in the Windows Start menu and selecting **Microsoft SQL Server Management Studio** from the search results.
 

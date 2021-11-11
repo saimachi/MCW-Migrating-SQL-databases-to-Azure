@@ -780,11 +780,9 @@ In this Task, you will install and utilize the Data Access Migration Toolkit Vis
 
    ![This image shows how to navigate to the Extensions blade in Visual Studio Code and locate and install the Data Access Migration Toolkit.](./media/install-damt-vs-code.png "Installing Data Access Migration Toolkit extension")
 
-3. At the upper left-hand corner of the page, select **File > Open Folder...**. Navigate to `C:\hands-on-lab\MCW-Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files\WideWorldImporters.Web` in the dialog. Then, select **Select Folder**.
+3. At the upper left-hand corner of the page, select **File > Open Folder...**. Navigate to `C:\hands-on-lab\MCW-Migrating-SQL-databases-to-Azure-main\Hands-on lab\lab-files\WideWorldImporters.Web` in the dialog. Then, select **Select Folder**.
 
 4. If you are asked to trust the authors of the files in the project folder, select **Yes, I trust the authors**.
-
-   ![This image shows how to grant consent for Visual Studio Code to trust the project files.](./media/trust-authors-vs-code.png "Trusting project files in Visual Studio Code")
 
 5. Enter Ctrl+Shift+P to open the Visual Studio Code extension console. Then, query and select **Data Access: Analyze workspace**.
 
@@ -835,9 +833,9 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
    ![The File Explorer icon is highlighted in the Windows start bar.](media/windows-2019-start-bar-file-explorer.png "Windows start bar")
 
-9. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-master\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
+9. In the File Explorer dialog, navigate to the `C:\hands-on-lab` folder and then drill down to `Migrating-SQL-databases-to-Azure-main\Hands-on lab\lab-files`. In the `lab-files` folder, double-click `WideWorldImporters.sln` to open the solution in Visual Studio.
 
-   ![The folder at the path specified above is displayed, and WideWorldImporters.sln is highlighted.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
+   ![WideWorldImporters.sln is highlighted in the folder at the aforementioned path.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
 10. If prompted about how you want to open the file, select **Visual Studio 2019** and then select **OK**.
 
