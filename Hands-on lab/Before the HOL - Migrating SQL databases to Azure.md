@@ -160,7 +160,7 @@ You are now ready to begin the ARM template deployment.
 
    ![Locate and select the Build your own template in the editor button.](media/build-template-button.png "Build template button")
 
-4. Use the **Load file** button or paste the contents of the file **Hands-on lab/lab-files/ARM-template/azure-deploy.json** from the repository.
+4. Use the **Load file** button and select the **Hands-on lab/lab-files/ARM-template/azure-deploy.json** file from the repository.
 
 5. Select the **Save** button to validate the template.
 
@@ -217,6 +217,10 @@ In this Task, you will install SQL Server Management Studio on the JumpBox. You 
    ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-jumpbox.png "Remote Desktop Connection dialog")
 
 6. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
+
+    >**Note**: To improve the appearance of the RDP window on your system, you can edit the downloaded RDP file to scale the resolution appropriately. Select **Show Options** and navigate to the **Display** tab. Manipulate the slider under **Display configuration**.
+    >
+    > ![This image demonstrates how to adjust the RDP display resolution by editing the RDP file downloaded from the Azure Portal.](./media/rdp-set-resolution.png "RDP monitor resolution update")
 
 7. Select **Local Server**, then select **IE Enhanced Security Configuration**.
 
@@ -296,6 +300,10 @@ In this Task, you will install the Data Migration Assistant and .NET Framework 4
    ![In the Remote Desktop Connection dialog box, a warning states the identity of the remote computer cannot be verified, and asks if you want to continue anyway. At the bottom, the Yes button is circled.](./media/remote-desktop-connection-identity-verification-sqlserver2008.png "Remote Desktop Connection dialog")
 
 6. Once logged in, launch the **Server Manager**. This should start automatically, but you can access it via the Start menu if it does not.
+
+    >**Note**: To improve the appearance of the RDP window on your system, you can edit the downloaded RDP file to scale the resolution appropriately. Select **Show Options** and navigate to the **Display** tab. Manipulate the slider under **Display configuration**.
+    >
+    > ![This image demonstrates how to adjust the RDP display resolution by editing the RDP file downloaded from the Azure Portal.](./media/rdp-set-resolution.png "RDP monitor resolution update")
 
 7. On the **Server Manager** view, select **Configure IE ESC** under Security Information.
 
