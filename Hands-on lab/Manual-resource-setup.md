@@ -28,7 +28,7 @@ October 2021
 
 ## Task 1: Create a virtual network
 
-In this task, you create a virtual network (VNet), which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associate the route table with the ManagedInstance subnet, and add a Management subnet to the VNet.
+In this task, you create a virtual network (VNet), which will contain your SQL managed instance, JumpBox VM, and a few other resources use throughout this hands-on lab. Once provisioned, you will associate the route table with the ManagedInstance subnet and add a Management subnet to the VNet.
 
 ### Create virtual network
 
@@ -65,7 +65,7 @@ In this task, you create a virtual network (VNet), which will contain your SQL m
 7. Edit the subnet's properties as follows:
 
    - **Subnet Name**: Enter `ManagedInstance`
-   - **Address space**: Accept the default value. This should have a subnet mask of /24, and be within the address space indicated in the VNet's IPv4 address space, in the format **10.X.0.0/24**.
+   - **Address space**: Accept the default value. This should have a subnet mask of /24 and be within the address space indicated in the VNet's IPv4 address space, in the format **10.X.0.0/24**.
    - Select **Save**.
 
 8. Select **Review + create**. The default values will be used for the remaining tabs, so they can be skipped.
@@ -118,7 +118,7 @@ In this task, you set up a Virtual Network Gateway.
 
    ![The Show portal menu icon is highlighted, and the portal menu is displayed. Create a resource is highlighted in the portal menu.](media/create-a-resource.png "Create a resource")
 
-2. Enter **network gateway** into the Search the Marketplace box, and select **Virtual network gateway** from the results.
+2. Enter **network gateway** into the Search the Marketplace box and select **Virtual network gateway** from the results.
 
    !["Virtual network gateway" is entered into the Search the Marketplace box, and Virtual network gateway is highlighted in the results.](media/create-resource-virtual-network-gateway.png "Create a resource")
 
@@ -210,7 +210,7 @@ In this task, you create an Azure SQL Managed Instance.
 
    ![On the Create SQL Managed Instance Networking tab, the configuration specified above is entered into the form.](media/sql-managed-instance-networking-tab.png "Create SQL Managed Instance")
 
-6. Select **Next: Review + create**, and on the **Review + create** tab, review the configuration and then select **Create**.
+6. Select **Next: Review + create**, and on the **Review + create** tab, review the configuration, and then select **Create**.
 
    > **Note**: Provisioning of SQL Managed Instance can take 4+ hours if this is the first instance being deployed into a subnet. You can move on to the remaining tasks while the provisioning is in process. If the deployment process goes beyond 6 hours, you may need to submit a support ticket to request assistance in completing the setup.
 
@@ -546,7 +546,7 @@ In this task, you create an RDP connection to your JumpBox virtual machine (VM) 
 
     ![Screenshot of the Internet Explorer Enhanced Security Configuration dialog box, with Administrators set to Off.](./media/internet-explorer-enhanced-security-configuration-dialog.png "Internet Explorer Enhanced Security Configuration dialog box")
 
-12. Close the Server Manager, but leave the connection to the JumpBox open for the next task.
+12. Close the Server Manager but leave the connection to the JumpBox open for the next task.
 
 ## Task 10: Install required software on the JumpBox
 
@@ -568,7 +568,7 @@ In this task, you download the lab starter solution and install SQL Server Manag
 
 5. Select **OK** on the Internet Options dialog, and then attempt the download again.
 
-6. When prompted, choose to save the file and then select Open folder.
+6. When prompted, choose to save the file, and then select Open folder.
 
    ![The download bar is displayed in Internet Explorer, and Open folder is highlighted.](media/ie-download-open-folder.png "Internet Explorer")
 
@@ -582,7 +582,7 @@ In this task, you download the lab starter solution and install SQL Server Manag
 
    ![The Download SQL Server Management Studio (SSMS) link is highlighted on the page specified above.](media/download-ssms.png "Download SSMS")
 
-   > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download and install the most recent version.
+   > **Note**: Versions change frequently, so if the version number you see does not match the screenshot, download, and install the most recent version.
 
 9. Run the downloaded installer.
 
@@ -643,7 +643,7 @@ In this task, you open an RDP connection to the SqlServer2008 VM, disable Intern
 
     ![Read and agree framework .Net 4.8 license terms to proceed with installation.](media/agree-framework-4-8-terms.png "Agree framework .Net 4.8 license terms")
 
-13. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted, and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
+13. After framework setup, **restarting** the VM is required. Select **Restart now** when prompted and wait a moment before connecting back to your VM. Generally, restarting takes less than two minutes.
 
     ![Restarting VM is required after .Net 4.8 setup is complete.](media/restart-after-framework-4-8-setup.png "Restart after framework .Net 4.8 setup")
 
@@ -665,7 +665,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
 ### Restore database
 
-1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM, and copy the file to the  `D:\`.
+1. On the SqlServer2008 VM, download a [backup of the WideWorldImporters database](https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak). Then save it to your `C:\Users\sqlmiuser\Downloads` of the VM and copy the file to the  `D:\`.
 
     > **Note**: Accessing **Download** folder is not authorized from SQL Server Management Studio, while `D:\` is.
     > **Hint**: Copy file URL to VM using Internet Explorer: `https://raw.githubusercontent.com/microsoft/Migrating-SQL-databases-to-Azure/main/Hands-on%20lab/lab-files/Database/WideWorldImporters.bak`
