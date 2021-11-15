@@ -707,7 +707,7 @@ In this task, you connect to the SQL MI database using SSMS and quickly verify t
 
    ![In the Welcome to Azure Cloud Shell window, PowerShell is highlighted.](media/cloud-shell-select-powershell.png "Azure Cloud Shell")
 
-3. After a moment, a message is displayed that you have successfully requested a Cloud Shell, and be presented with a PS Azure prompt.
+3. After a moment, a message is displayed that you have successfully requested a Cloud Shell and be presented with a PS Azure prompt.
 
    ![In the Azure Cloud Shell dialog, a message is displayed that requesting a Cloud Shell succeeded, and the PS Azure prompt is displayed.](media/cloud-shell-ps-azure-prompt.png "Azure Cloud Shell")
 
@@ -837,7 +837,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
    ![WideWorldImporters.sln is highlighted in the folder at the aforementioned path.](media/windows-explorer-lab-files-web-solution.png "Windows Explorer")
 
-10. If prompted about how you want to open the file, select **Visual Studio 2019** and then select **OK**.
+10. If prompted about how you want to open the file, select **Visual Studio 2019**, and then select **OK**.
 
     ![In the Visual Studio version selector, Visual Studio 2019 is selected and highlighted.](media/visual-studio-version-selector.png "Visual Studio")
 
@@ -853,7 +853,7 @@ In this task, you create an RDP connection to the JumpBox VM and then, using Vis
 
     ![In the Solution Explorer, the context menu for the WideWorldImporters.Web project is displayed, and Publish is highlighted.](media/visual-studio-project-publish.png "Visual Studio")
 
-14. On the **Publish** dialog, select **Azure** in the Target box and select **Next**.
+14. On the **Publish** dialog, select **Azure** in the Target box, and select **Next**.
 
     ![In the Publish dialog, Azure is selected and highlighted in the Target box. The Next button is highlighted.](media/vs-publish-to-azure.png "Publish API App to Azure")
 
@@ -939,7 +939,7 @@ In this task, you update the WWI gamer info web application to connect to and ut
 
 Duration: 15 minutes
 
-In this exercise, you integrate the WWI App Service with the virtual network created during the Before the hands-on lab exercises. The ARM template created a Gateway subnet on the VNet, as well as a Virtual Network Gateway. Both of these resources are required to integrate App Service and connect to SQL MI.
+In this exercise, you integrate the WWI App Service with the virtual network created during the Before the hands-on lab exercises. The ARM template created a Gateway subnet on the VNet, as well as a Virtual Network Gateway. Both resources are required to integrate App Service and connect to SQL MI.
 
 The image below from the Microsoft documentation explains how worker virtual machines in Azure App Service can access resources on a virtual network subnet, such as SQL MI. 
 
@@ -982,7 +982,7 @@ Point-to-Site connections use certificates to authenticate. Each client computer
 
    ![No, do not export the private key selection is selected. The Next button is highlighted.](media/root-certificate-export-no-private-key.png "Export Private Key")
 
-6. Pick **Base-64 encoded X.509 (1)**, and select **Next (2)** to continue.
+6. Pick **Base-64 encoded X.509 (1)** and select **Next (2)** to continue.
 
    ![Base-64 encoded X.509 is selected. The Next button is highlighted.](media/root-certificate-export-base-64.png "Export File Format")
 
@@ -1018,7 +1018,7 @@ In this task, you configure the client address pool. The address pool is a range
 
 3. On the **Point-to-site** configuration page, set the following configuration:
 
-   - **Address pool (1)**: Add a private IP address range that you want to use. The address space must be in one of the following address blocks, but should not overlap the address space used by the VNet.
+   - **Address pool (1)**: Add a private IP address range that you want to use. The address space must be in one of the following address blocks but should not overlap the address space used by the VNet.
      - `10.0.0.0/8` - This means an IP address range from 10.0.0.0 to 10.255.255.255
      - `172.16.0.0/12` - This means an IP address range from 172.16.0.0 to 172.31.255.255
      - `192.168.0.0/16` - This means an IP address range from 192.168.0.0 to 192.168.255.255
@@ -1071,7 +1071,7 @@ In this task, you add the networking configuration to your App Service to enable
 
 In this task, you verify your web application now loads, and you can see the home page of the web app.
 
-1. Select **Overview** in the left-hand menu of your App Service, and select the **URL** of your App service to launch the website. This link opens the URL in a browser window.
+1. Select **Overview** in the left-hand menu of your App Service and select the **URL** of your App service to launch the website. This link opens the URL in a browser window.
 
    ![The App service URL is highlighted.](media/app-service-url.png "App service URL")
 
@@ -1107,7 +1107,7 @@ In this task, you review the [Data Discovery and Classification](https://docs.mi
 
    ![The +Add classification button is highlighted in the toolbar.](media/ads-data-discovery-and-classification-add-classification-button.png "Data Discovery & Classification")
 
-5. Quickly expand the **Sensitivity label** field, and review the various built-in labels from which you can choose. You can also add custom labels, should you desire.
+5. Quickly expand the **Sensitivity label** field and review the various built-in labels from which you can choose. You can also add custom labels, should you desire.
 
    ![The list of built-in Sensitivity labels is displayed.](media/ads-data-discovery-and-classification-sensitivity-labels.png "Data Discovery & Classification")
 
@@ -1274,7 +1274,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 1. On your JumpBox VM, return to the SQL Server Management Studio (SSMS) window you opened previously.
 
-2. Expand **Tables** under the **WideWorldImporters** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table, and choose **Select Top 1000 Rows** from the context menu.
+2. Expand **Tables** under the **WideWorldImporters** database and locate the `Sales.CreditCard` table. Expand the table columns and observe that there is a column named `CardNumber`. Right-click the table and choose **Select Top 1000 Rows** from the context menu.
 
    ![The Select Top 1000 Rows item is highlighted in the context menu for the Sales.CreditCard table.](media/ssms-sql-mi-credit-card-table-select.png "Select Top 1000 Rows")
 
@@ -1296,7 +1296,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
 
 5. Select **Execute** from the SSMS toolbar to run the query. You will get a message that the commands were completed successfully in the Messages pane.
 
-6. With the new user, run a quick query to observe the results. Select **New Query** again, and paste the following into the new query window.
+6. With the new user, run a quick query to observe the results. Select **New Query** again and paste the following into the new query window.
 
    ```sql
    USE [WideWorldImporters];
@@ -1321,7 +1321,7 @@ When inspecting the data in the `WideWorldImporters` database using the ADS Data
    ALTER COLUMN [CardNumber] NVARCHAR(25) MASKED WITH (FUNCTION = 'partial(0,"xxx-xxx-xxx-",4)')
    ```
 
-9. Run the `SELECT` query you opened in step 6 above again, and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
+9. Run the `SELECT` query you opened in step 6 above again and observe the results. Specifically, inspect the output in the `CardNumber` field. For reference, the query is below.
 
    ```sql
    USE [WideWorldImporters];
@@ -1372,7 +1372,7 @@ From the findings of the Data Discovery & Classification report in Azure Defende
 
    > **Note**: Observe the use of the built-in `Email()` masking function above. This masking function is one of several pre-defined masks available in SQL Server databases.
 
-4. Run the `SELECT` query below, and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
+4. Run the `SELECT` query below and observe the results. Specifically, inspect the output in the `LoginEmail` field. For reference, the query is below.
 
    ```sql
    USE [WideWorldImporters];
@@ -1443,7 +1443,7 @@ In this task, you enable Read Scale-Out for the `WideWorldImporters`database, us
 
 5. Select **OK**.
 
-6. Select **Save** at the top of the Configuration blade, and select **Continue** when prompted about restarting the application.
+6. Select **Save** at the top of the Configuration blade and select **Continue** when prompted about restarting the application.
 
    ![The save button on the Application settings blade is highlighted.](media/app-service-configuration-save.png "Save")
 
@@ -1451,7 +1451,7 @@ In this task, you enable Read Scale-Out for the `WideWorldImporters`database, us
 
 In this task, you refresh the Leaderboard report in the WideWorldImporters web app and observe the result.
 
-1. Return to the gamer information website you opened previously, and refresh the **Leaderboard** page. The page should now look similar to the following:
+1. Return to the gamer information website you opened previously and refresh the **Leaderboard** page. The page should now look similar to the following:
 
    ![READ_ONLY is highlighted on the Reports page.](media/gamer-leaderboard-read-only.png "Gamer Leaderboard Web App")
 
