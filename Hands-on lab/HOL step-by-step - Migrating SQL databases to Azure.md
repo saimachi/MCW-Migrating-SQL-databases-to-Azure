@@ -645,17 +645,9 @@ Since you performed an "online data migration," the migration wizard continuousl
 
    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
 
-7. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and paste the following script into the new query window:
+7. After adding the new record to the `Games` table, back up the transaction logs. DMS detects any new backups and ships them to the migration service. Select **New Query** again in the toolbar, and type the commands in the image below.
 
-   ```sql
-   USE master;
-   GO
-
-   BACKUP LOG WideWorldImporters
-   TO DISK = 'c:\dms-backups\WideWorldImportersLog.trn'
-   WITH CHECKSUM
-   GO
-   ```
+   ![This image shows the commands executed in the SQL Server system database to create a transaction log backup.](./media/system-database-create-transaction-log-backup.png "Creating a transaction log backup")
 
 8. Execute the query by selecting **Execute** in the SSMS toolbar.
 

@@ -392,19 +392,17 @@ In this task, you restore and configure the `WideWorldImporters` database on the
 
     ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
 
-2. Copy and paste the SQL script below into the new query window:
+2. In the SQL script editor, switch the script context to the SQL Server system database, create a new login, and assign it to the `sysadmin` role by typing the commands in the image below.
+
+   ![This script demonstrates how to create a new login called WorkshopUser in the system SQL Server database and add the new login to the sysadmin role.](./media/create-login-system-db.png "Create new login and assign role")
+
+3. To run the script, select **Execute** from the SSMS toolbar.
+
+    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+
+4. Create a new query window and copy and paste the SQL script below. Execute the script.
 
    ```sql
-   USE master;
-   GO
-
-   CREATE LOGIN WorkshopUser WITH PASSWORD = N'Password.1234567890';
-
-   EXEC sp_addsrvrolemember
-      @loginame = N'WorkshopUser',
-      @rolename = N'sysadmin';
-   GO
-
    -- Assign the user to the WideWorldImporters database
    USE WideWorldImporters;
    GO
@@ -417,15 +415,7 @@ In this task, you restore and configure the `WideWorldImporters` database on the
    GO
    ```
 
-3. To run the script, select **Execute** from the SSMS toolbar.
-
-    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
-
-4. Select **New Query** from the SSMS toolbar again.
-
-    ![The New Query button is highlighted in the SSMS toolbar.](media/ssms-new-query.png "SSMS Toolbar")
-
-5. Next, copy and paste the SQL script below into the new query window. This script enables Service broker on the `WideWorldImporters` database.
+5. Next, copy and paste the SQL script below into another new query window. This script enables Service broker on the `WideWorldImporters` database.
 
     ```sql
     USE [WideWorldImporters];
@@ -441,8 +431,6 @@ In this task, you restore and configure the `WideWorldImporters` database on the
     GO
     ```
 
-6. To run the script, select **Execute** from the SSMS toolbar.
-
-    ![The Execute button is highlighted in the SSMS toolbar.](media/ssms-execute.png "SSMS Toolbar")
+6. Run the script.
 
 You should follow all steps provided *before* performing the Hands-on lab.
